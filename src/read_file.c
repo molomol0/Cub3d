@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:12:38 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/15 18:16:01 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:31:26 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3dstruct.h"
+#include "cub_struct.h"
 
 

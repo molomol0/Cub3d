@@ -6,40 +6,51 @@
 #    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/15 18:12:33 by jdenis           ###   ########.fr        #
+#    Updated: 2024/03/15 18:43:28 by jdenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
+
+MLX_PATH	= minilibx/
+MLX_NAME	= libmlx.a
+MLX			= $(MLX_PATH)$(MLX_NAME)
 
 LDFLAGS = $(LIBFT) -lreadline
 
-CPPFLAGS = 	-I libft/													\
-			-I includes/												\
+CPPFLAGS = 	-I libft/								\
+			-I includes/							\
 
-OBJS =		main.o
+OBJS =		$(addprefix src/,						\
+			main.o									\
+			read_file.o			)					\
 
 NAME = Cub3d
 LIBFT = libft/libft.a
 LIBFTPATH = libft/
 
-all: $(NAME)
+all: $(MLX) $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFTPATH)
+
+$(MLX):
+	make -sC $(MLX_PATH)
+	@echo "MiniLibX \033[1;32mOK\033[m"
 
 libft: $(LIBFT)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFTPATH)
-	$(CC) $(CFLAGS) -o $(NAME) $^ $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $(NAME) $(MLX) $^ $(LDFLAGS) -lXext -lX11 -lm
 	@echo "	Compilation of  $(NAME):  \033[1;32mOK\033[m"
 
 clean:
 	$(RM) $(OBJS)
 	$(MAKE) clean -C $(LIBFTPATH)
+	$(MAKE) clean -C $(MLX_PATH)
 	@echo "\033[1;33m>> all .o files are deleted.\033[0m"
 
 fclean: clean
