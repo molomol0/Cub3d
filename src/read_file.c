@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:12:38 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/18 15:15:18 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/18 17:19:56 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	put_texture(char *line, char *texture, char **direction, t_cub *cub, int fd
 		if (*direction == NULL)
 			*direction = ft_strdup(line + skip_space(line, texture));	
 		else
-			print_duplicate(texture, "texture", cub, line, fd); //probleme de free de line dans les dup
+			print_duplicate(texture, "texture", cub, line, fd);
 	}
 }
 
@@ -120,7 +120,7 @@ void	put_ceiling_floor(char *line, char *cf, int *color, t_cub *cub, int fd)
 			valid_color(color, cub, line);
 		}
 		else
-			print_duplicate(cf, "color", cub, line, fd); //probleme de free de line dans les dup
+			print_duplicate(cf, "color", cub, line, fd);
 	}
 }
 
@@ -132,13 +132,16 @@ void	assign_data(char *line, t_cub	*cub, int fd)
 	put_texture(line, "EA ", &cub->texture->ea, cub, fd);
 	put_ceiling_floor(line, "F ", cub->floor, cub, fd);
 	put_ceiling_floor(line, "C ", cub->ceiling, cub, fd);
+	put_map(line, cub, fd);
 }
 
 int	travel_file(char *file, t_cub *cub)
 {
 	int		fd;
 	char	*line;
+	int		index;
 
+	index = 0;
 	if ((ft_strlen(file) <= 4) || ft_strncmp(file + ft_strlen(file) - 4, ".cub", 4) != 0)
 		return (print_err("Error\nInvalid file extension\n"));
 	fd = open(file, O_RDONLY);
@@ -149,11 +152,16 @@ int	travel_file(char *file, t_cub *cub)
 	while (line)
 	{
 		assign_data(line, cub, fd);
-		free(line);
-		line = get_next_line(fd);
-		delete_newline(&line);
+		if (cub->map != NULL)
+			break;
+		if (line != NULL)
+		{
+			free(line);
+			line = get_next_line(fd);
+			delete_newline(&line);
+		}
+		index++;
 	}
-	free(line);
 	close(fd);
 	return (0);
 }

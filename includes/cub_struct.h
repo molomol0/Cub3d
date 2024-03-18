@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/17 04:12:14 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/18 15:19:00 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_cub
 	t_texture	*texture;
 	int			floor[3];
 	int			ceiling[3];
+	char		**map;
 }				t_cub;	
 
 #endif

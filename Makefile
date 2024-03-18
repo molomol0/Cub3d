@@ -6,13 +6,13 @@
 #    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/17 03:56:06 by jdenis           ###   ########.fr        #
+#    Updated: 2024/03/18 16:27:04 by jdenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g3
 
 MLX_PATH	= minilibx/
 MLX_NAME	= libmlx.a
@@ -26,6 +26,7 @@ CPPFLAGS = 	-I libft/								\
 OBJS =		$(addprefix src/,						\
 			main.o									\
 			read_file.o								\
+			map.o									\
 			data.o				)					\
 
 NAME = Cub3d
