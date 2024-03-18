@@ -1,0 +1,27 @@
+
+
+NO ./path_to_north
+SO               						    ./path_to_south
+SO               						    ./path_to_south
+
+F      220,100,0
+C 225,       30,0
+
+
+gptnpigntg
+
+
+WE ./path_to_west
+EA ./path_to_east
+
+
+
+11111111111111111
+1               1
+1               1
+11111111111111111
+
+	11111111111111111
+	1               1
+	1               1
+	11111111111111111

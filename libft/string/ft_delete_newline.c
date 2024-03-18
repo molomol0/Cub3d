@@ -16,6 +16,8 @@ void	delete_newline(char **input)
 {
 	size_t	input_size;
 
+	if (!input || !*input)
+		return ;
 	input_size = ft_strlen(*input);
 	if ((*input)[input_size - 1] == '\n')
 		(*input)[input_size - 1] = '\0';

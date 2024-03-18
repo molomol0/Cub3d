@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include "gnl/get_next_line.h"
 
 char	**ft_strtok(char *str, char *charset);
 char	**find_paths(char **envp);
