@@ -6,19 +6,25 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:12:38 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/18 15:02:40 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/18 15:15:18 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_struct.h"
 #include "cub.h"
 
-void	print_duplicate(char *duplicated, char *type, t_cub *cub, char *line)
+void	print_duplicate(char *duplicated, char *type, t_cub *cub, char *line, int fd)
 {
 	ft_putstr_fd("Error\nDuplicate ", 2);
 	ft_putstr_fd(duplicated, 2);
 	ft_putstr_fd(type, 2);
 	ft_putstr_fd("\n", 2);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+		delete_newline(&line);
+	}
 	free_data(cub);
 	exit(1);
 }
@@ -39,14 +45,14 @@ int		skip_space(char *line, char *id)
 	return (index);
 }
 
-void	put_texture(char *line, char *texture, char **direction, t_cub *cub)
+void	put_texture(char *line, char *texture, char **direction, t_cub *cub, int fd)
 {
 	if (ft_strncmp(line, texture, ft_strlen(texture)) == 0)
 	{
 		if (*direction == NULL)
 			*direction = ft_strdup(line + skip_space(line, texture));	
 		else
-			print_duplicate(texture, "texture", cub, line); //probleme de free de line dans les dup
+			print_duplicate(texture, "texture", cub, line, fd); //probleme de free de line dans les dup
 	}
 }
 
@@ -96,7 +102,7 @@ void	valid_color(int *color, t_cub *cub, char *line)
 	}
 }
 
-void	put_ceiling_floor(char *line, char *cf, int *color, t_cub *cub)
+void	put_ceiling_floor(char *line, char *cf, int *color, t_cub *cub, int fd)
 {
 	int	first_coma;
 	int	second_coma;
@@ -114,18 +120,18 @@ void	put_ceiling_floor(char *line, char *cf, int *color, t_cub *cub)
 			valid_color(color, cub, line);
 		}
 		else
-			print_duplicate(cf, "color", cub, line); //probleme de free de line dans les dup
+			print_duplicate(cf, "color", cub, line, fd); //probleme de free de line dans les dup
 	}
 }
 
-void	assign_data(char *line, t_cub	*cub)
+void	assign_data(char *line, t_cub	*cub, int fd)
 {
-	put_texture(line, "NO ", &cub->texture->no, cub);
-	put_texture(line, "SO ", &cub->texture->so, cub);
-	put_texture(line, "WE ", &cub->texture->we, cub);
-	put_texture(line, "EA ", &cub->texture->ea, cub);
-	put_ceiling_floor(line, "F ", cub->floor, cub);
-	put_ceiling_floor(line, "C ", cub->ceiling, cub);
+	put_texture(line, "NO ", &cub->texture->no, cub, fd);
+	put_texture(line, "SO ", &cub->texture->so, cub, fd);
+	put_texture(line, "WE ", &cub->texture->we, cub, fd);
+	put_texture(line, "EA ", &cub->texture->ea, cub, fd);
+	put_ceiling_floor(line, "F ", cub->floor, cub, fd);
+	put_ceiling_floor(line, "C ", cub->ceiling, cub, fd);
 }
 
 int	travel_file(char *file, t_cub *cub)
@@ -142,7 +148,7 @@ int	travel_file(char *file, t_cub *cub)
 	delete_newline(&line);
 	while (line)
 	{
-		assign_data(line, cub);
+		assign_data(line, cub, fd);
 		free(line);
 		line = get_next_line(fd);
 		delete_newline(&line);

@@ -2,10 +2,11 @@
 
 NO ./path_to_north
 SO               						    ./path_to_south
-SO               						    ./path_to_south
 
 F      220,100,0
 C 225,       30,0
+C 225,       30,0
+
 
 
 gptnpigntg
