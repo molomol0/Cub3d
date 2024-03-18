@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:20:16 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/18 17:12:27 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/18 17:23:53 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	only_wall(char *line)
 		return (0);
 	while (line[index])
 	{
-		if (line[index] != '1' && line[index] != ' ')
+		if (line[index] != '1' && line[index] != ' ' && line[index] != '0')
 			return (0);
 		index++;
 	}
