@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/18 15:25:04 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/18 18:29:45 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ int		travel_file(char *file, t_cub *cub);
 t_cub	*init_data(char **argv);
 void	free_data(t_cub *cub);
 void	print_data(t_cub *cub);
+
+
+void	valid_color(int *color, t_cub *cub, char *line);
+void	print_duplicate(char *duplicated, char *type, t_cub *cub, char *line,
+		int fd);
+int		skip_space(char *line, char *texture);
+int		print_err(char *str);
+
+char	*ft_strappen(char *s1, char const *s2);
+int		other_char(char *line);
+int		only_wall(char *line);
 void	put_map(char *line, t_cub *cub, int fd);
 
 #endif

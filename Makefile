@@ -6,7 +6,7 @@
 #    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/18 16:27:04 by jdenis           ###   ########.fr        #
+#    Updated: 2024/03/18 18:30:07 by jdenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ CPPFLAGS = 	-I libft/								\
 OBJS =		$(addprefix src/,						\
 			main.o									\
 			read_file.o								\
+			check_arg.o 							\
 			map.o									\
+			map_utils.o								\
 			data.o				)					\
 
 NAME = Cub3d
