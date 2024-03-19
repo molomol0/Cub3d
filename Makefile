@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
+#    By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/19 19:03:08 by jdenis           ###   ########.fr        #
+#    Updated: 2024/03/19 19:24:11 by ftholoza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ OBJS =		$(addprefix src/,						\
 			widow.o									\
 			key_event.o								\
 			flood_fill.o							\
+			clone_tab.o								\
+			init_player.o							\
 			map_check.o			)					\
 			
 NAME = Cub3d

@@ -6,40 +6,38 @@
 /*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:25:57 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/19 14:26:44 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:36:06 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 #include "cub_struct.h"
 
-int	*find_spawn(char **map)
+void	find_spawn(char **map, int *x, int *y)
 {
-	int	*spwn;
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	spwn = malloc(sizeof(int) * 2);
-	if (!spwn)
-		return (NULL);
 	while (map[j])
 	{
 		while (map[j][i])
 		{
-			if (map[j][i] == 'N')
+			if (map[j][i] == 'N' || map[j][i] == 'W'
+				|| map[j][i] == 'E' || map[j][i] == 'S')
 			{
-				spwn[0] = j;
-				spwn[1] = i;
-				return (spwn);
+				*x = j;
+				*y = i;
+				return ;
 			}
 			i++;
 		}
 		i = 0;
 		j++;
 	}
-	return (free(spwn), NULL);
+	*x = -1;
+	return ;
 }
 
 static int	is_valid(char c)
@@ -85,21 +83,27 @@ int	err(char *str)
 	return (0);
 }
 
-int	map_check(char **map)
+int	map_check(char **m_map)
 {
-	int	*n;
-	int	signal;
+	int		signal;
+	int		spwnx;
+	int		spwny;
+	char	**map;
 
 	signal = 0;
-	n = find_spawn(map);
-	if (n == NULL)
-		return (err("Error\n"));
-	if (check_char_map(map) == 0)
-		return (free(n), err("Error: Invalid map\n"));
-	flood_fill(map, n[1], n[0], &signal);
-	free(n);
-	if (signal == 1)
+	find_spawn(m_map, &spwnx, &spwny);
+	if (spwnx == -1)
 		return (err("Error: Invalid map\n"));
+	if (check_char_map(m_map) == 0)
+		return (err("Error: Invalid map\n"));
+	map = clone_tab(m_map);
+	flood_fill(map, spwnx, spwny, &signal);
+	if (signal == 1)
+	{
+		free_strs(map);
+		return (err("Error: Invalid map\n"));
+	}
+	free_strs(map);
 	printf("Valid map\n");
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/19 18:16:50 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/19 19:34:21 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 int	main(int argc, char **argv)
 {
-	t_cub	*cub;
+	t_cub		*cub;
+	t_player	*player;
 
 	if (argc != 2)
 	{
@@ -31,6 +32,9 @@ int	main(int argc, char **argv)
 		free_data(cub);
 		return (0);
 	}
+	player = player_struct_init(cub->map);
+	printf("pos_x: %f, pos_y: %f, dir_x %f, dir_y %f", player->pos_x, player->pos_y, player->dir_x, player->dir_y);
+	free(player);
 	print_data(cub);
 	init_window(cub);
 	mlx_hook(cub->win, 17, 0, clean_close, cub);
