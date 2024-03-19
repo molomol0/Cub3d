@@ -6,7 +6,7 @@
 /*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:42:34 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/19 20:16:28 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/19 20:46:28 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ void	init_dir(t_player *player, char **map, int x, int y)
 	printf("%d, %d\n", x, y);
 	if (map[x][y] == 'N')
 	{
-		player->dir_x = x;
-		player->dir_y = y + 1;
+		player->dir_x = 0;
+		player->dir_y = 1;
 	}
 	if (map[x][y] == 'S')
 	{
-		player->dir_x = x;
-		player->dir_y = y - 1;
+		player->dir_x = 0;
+		player->dir_y = -1;
 	}
 	if (map[x][y] == 'E')
 	{
-		player->dir_x = x - 1;
-		player->dir_y = y;
+		player->dir_x = -1;
+		player->dir_y = 0;
 	}
 	if (map[x][y] == 'W')
 	{
-		player->dir_x = x + 1;
-		player->dir_y = y;
+		player->dir_x = 1;
+		player->dir_y = 0;
 	}
 	return ;
 }
@@ -43,12 +43,12 @@ void	set_cam_plane(t_player *player, int fov)
 {
 	double	lenght_plane;
 
-	lenght_plane = (tan(fov / 2) * 1);
-	printf("here: %f\n, %f\n", lenght_plane, tan(fov / 2) * 1);
-	player->camera_plane_left_x = player->pos_x - lenght_plane;
-	player->camera_plane_left_y = player->pos_y + 1;
-	player->camera_plane_right_x = player->pos_x + lenght_plane;
-	player->camera_plane_right_y = player->pos_y + 1;
+	lenght_plane = fabs(tan(fov / 2) * 1);
+	printf("lenght_plane = %f\n", lenght_plane);
+	player->camera_plane_left_x = player->pos_x + player->dir_x - lenght_plane;
+	player->camera_plane_left_y = player->pos_y + player->dir_y;
+	player->camera_plane_right_x = player->pos_x + player->dir_x + lenght_plane;
+	player->camera_plane_right_y = player->pos_y + player->dir_y;
 	return ;
 }
 
