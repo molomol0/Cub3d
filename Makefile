@@ -3,10 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
+<<<<<<< HEAD
 #    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
 #    Updated: 2024/03/19 18:00:00 by jdenis           ###   ########.fr        #
+=======
+#    By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
+#    Updated: 2024/03/19 14:32:57 by ftholoza         ###   ########.fr        #
+>>>>>>> a305efb0f9043d467c750795af3e78ba91ccadc1
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +39,14 @@ OBJS =		$(addprefix src/,						\
 			map.o									\
 			map_utils.o								\
 			data.o									\
+<<<<<<< HEAD
 			widow.o									\
 			key_event.o								\
 			map_check.o			)					\
+=======
+			map_check.o								\
+			flood_fill.o		)					\
+>>>>>>> a305efb0f9043d467c750795af3e78ba91ccadc1
 			
 NAME = Cub3d
 LIBFT = libft/libft.a
