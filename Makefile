@@ -6,7 +6,7 @@
 #    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/19 18:59:55 by jdenis           ###   ########.fr        #
+#    Updated: 2024/03/19 19:03:08 by jdenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ OBJS =		$(addprefix src/,						\
 			data.o									\
 			widow.o									\
 			key_event.o								\
+			flood_fill.o							\
 			map_check.o			)					\
 			
 NAME = Cub3d
