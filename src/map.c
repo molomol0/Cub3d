@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:20:16 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/18 17:37:47 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/19 14:00:27 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include "cub_struct.h"
 #include "libft.h"
 
-void	exit_map(t_cub *cub, char *line, int fd, char *str)
+void	exit_map(t_cub *cub, char *line, char *str)
 {
 	ft_putstr_fd(str, 2);
 	while (line)
 	{
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(cub->tmp);
 		delete_newline(&line);
 	}
 	free_data(cub);
@@ -39,7 +39,7 @@ void	split_map(t_cub *cub, char *joined_map)
 	}
 }
 
-void	put_map(char *line, t_cub *cub, int fd)
+void	put_map(char *line, t_cub *cub)
 {
 	char	*joined_map;
 
@@ -52,15 +52,15 @@ void	put_map(char *line, t_cub *cub, int fd)
 			if (other_char(line) == 1)
 			{
 				free(joined_map);
-				exit_map(cub, line, fd, "Error\nInvalid map\n");
+				exit_map(cub, line, "Error\nInvalid map\n");
 			}
 			line = ft_strappen(line, "\n");
 			joined_map = ft_strappen(joined_map, line);
 			if (!joined_map)
-				exit_map(cub, line, fd, "Error\nMalloc failed\n");
+				exit_map(cub, line, "Error\nMalloc failed\n");
 			if (line != NULL)
 				free(line);
-			line = get_next_line(fd);
+			line = get_next_line(cub->tmp);
 			delete_newline(&line);
 		}
 		split_map(cub, joined_map);
