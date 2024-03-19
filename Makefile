@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: francesco <francesco@student.42.fr>        +#+  +:+       +#+         #
+#    By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/18 23:38:15 by francesco        ###   ########.fr        #
+#    Updated: 2024/03/19 14:32:57 by ftholoza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ OBJS =		$(addprefix src/,						\
 			map.o									\
 			map_utils.o								\
 			data.o									\
-			map_check.o			)					\
+			map_check.o								\
+			flood_fill.o		)					\
 			
 NAME = Cub3d
 LIBFT = libft/libft.a

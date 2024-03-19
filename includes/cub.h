@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/19 13:56:56 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/19 14:33:35 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB_H
 # define CUB_H
 
-#include <stdlib.h>
-#include <fcntl.h>
-#include <stdio.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <stdio.h>
 
-#include "cub_struct.h"
-#include "libft.h"
+# include "cub_struct.h"
+# include "libft.h"
 
 int		travel_file(char *file, t_cub *cub);
 t_cub	*init_data(char **argv);
@@ -38,6 +37,7 @@ int		other_char(char *line);
 int		only_wall(char *line);
 void	put_map(char *line, t_cub *cub);
 
-int	map_check(char **map);
+int		map_check(char **map);
+int		flood_fill(char **map, int x, int y, int *signal);
 
 #endif
