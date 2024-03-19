@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/18 21:46:16 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/19 00:00:22 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int	main(int argc, char **argv)
 	cub = init_data(argv);
 	if (!cub)
 		return (1);
+	if (map_check(cub->map) == 0)
+	{
+		free_data(cub);
+		return (0);
+	}
 	print_data(cub);
 	free_data(cub);
 	return (0);

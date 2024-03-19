@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/18 18:29:45 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/18 23:36:35 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ char	*ft_strappen(char *s1, char const *s2);
 int		other_char(char *line);
 int		only_wall(char *line);
 void	put_map(char *line, t_cub *cub, int fd);
+
+int	map_check(char **map);
 
 #endif

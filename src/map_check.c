@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:25:57 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/18 21:41:56 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/19 02:04:26 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	check_if_null(char **map, int x, int y)
 	int	len_line;
 
 	line_count = 0;
+	if (y < 0 || x < 0)
+		return (1);	
 	while (map[line_count])
 		line_count++;
 	if (y >= line_count)
@@ -95,17 +97,15 @@ int	fill(char **map, int x, int y)
 	return (i);
 }
 
-int	flood_fill(char **map, int x, int y)
+int	flood_fill(char **map, int x, int y, int *signal)
 {
 	int	i;
 	int	j;
 	int	check;
-	int	res;
 
 	i = 0;
 	j = 0;
 	map[y][x] = '2';
-	res = 1;
 	while (map[j])
 	{
 		while (map[j][i])
@@ -114,9 +114,9 @@ int	flood_fill(char **map, int x, int y)
 			{
 				check = fill(map, i, j);
 				if (check == 0)
-					return (0);
+					*signal = 1;
 				if (check > 1)
-					flood_fill(map, i, j);
+					flood_fill(map, x, y, signal);
 			}
 			i++;
 		}
@@ -126,12 +126,15 @@ int	flood_fill(char **map, int x, int y)
 	return (1);
 }
 
-int	check_char(char c)
+static int	is_valid(char c)
 {
-	
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '0' || c == '1' || c == ' ')
+		return (1);
+	else
+		return (0);
 }
 
-int	check_char(char **map)
+int	check_char_map(char **map)
 {
 	int	i;
 	int	j;
@@ -140,29 +143,51 @@ int	check_char(char **map)
 	j = 0;
 	while (map[j])
 	{
-		while (map[j][x])
+		while (map[j][i])
 		{
-			
+			if (!is_valid(map[j][i]))
+				return (0);
+			i++;
 		}
+		i = 0;
+		j++;
 	}
+	return (1);
+}
+
+int	err(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(2, &str[i], 1);
+		i++;
+	}
+	return (0);
 }
 
 int	map_check(char **map)
 {
 	int	*n;
-	int	x;
+	int	signal;
 
+	signal = 0;
 	n = find_spawn(map);
 	if (!n)
 		return (0);
-	
-	x = flood_fill(map, n[1], n[0]);
-	if (x == 0)
-		printf("Error: Invalid map\n");
-	else
-		printf("Valid map\n");
+	if (check_char_map(map) == 0)
+		return (free(n), err("Error: Invalid map\n"));
+	flood_fill(map, n[1], n[0], &signal);
+	if (signal == 1)
+	{
+		free(n);
+		return (err("Error: Invalid map\n"));
+	}
+	printf("Valid map\n");
 	free(n);
-	return (x);
+	return (1);
 }
 
 
