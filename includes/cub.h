@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/19 13:56:56 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/19 18:15:55 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,9 @@ int		only_wall(char *line);
 void	put_map(char *line, t_cub *cub);
 
 int	map_check(char **map);
+
+void	init_window(t_cub *cub);
+int		clean_close(t_cub *cub);
+int		key_event(int keycode, t_cub *cub);
 
 #endif

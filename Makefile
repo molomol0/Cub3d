@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: francesco <francesco@student.42.fr>        +#+  +:+       +#+         #
+#    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/18 23:38:15 by francesco        ###   ########.fr        #
+#    Updated: 2024/03/19 18:00:00 by jdenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,12 @@ MLX_PATH	= minilibx/
 MLX_NAME	= libmlx.a
 MLX			= $(MLX_PATH)$(MLX_NAME)
 
-LDFLAGS = $(LIBFT) -lreadline
+LDFLAGS = $(LIBFT) $(MLX) -lreadline
 
 CPPFLAGS = 	-I libft/								\
 			-I includes/							\
+			-I src/									\
+			-I minilibx/							\
 
 OBJS =		$(addprefix src/,						\
 			main.o									\
@@ -30,6 +32,8 @@ OBJS =		$(addprefix src/,						\
 			map.o									\
 			map_utils.o								\
 			data.o									\
+			widow.o									\
+			key_event.o								\
 			map_check.o			)					\
 			
 NAME = Cub3d
@@ -42,7 +46,7 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFTPATH)
 
 $(MLX):
-	make -sC $(MLX_PATH)
+	@make -sC $(MLX_PATH) --no-print-directory
 	@echo "MiniLibX \033[1;32mOK\033[m"
 
 libft: $(LIBFT)

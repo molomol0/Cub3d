@@ -6,12 +6,13 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/19 13:59:47 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/19 18:08:02 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 #include "cub_struct.h"
+#include "mlx.h"
 
 int	check_data(t_cub *cub)
 {
@@ -77,6 +78,14 @@ void	free_data(t_cub *cub)
 	free(cub->texture);
 	if (cub->map)
 		free_strs(cub->map);
+	if (cub->win && cub->mlx)
+		mlx_destroy_window(cub->mlx, cub->win);
+	if (cub->mlx)
+	{
+		mlx_loop_end(cub->mlx);
+		mlx_destroy_display(cub->mlx);
+		free(cub->mlx);
+	}
 	free(cub);
 }
 

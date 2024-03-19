@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_struct.h                                       :+:      :+:    :+:   */
+/*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/19 18:00:58 by jdenis           ###   ########.fr       */
+/*   Created: 2024/03/19 17:58:57 by jdenis            #+#    #+#             */
+/*   Updated: 2024/03/19 18:16:40 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_STRUCT_H
-# define CUB_STRUCT_H
+#include "cub.h"
+#include "cub_struct.h"
+#include "mlx.h"
 
-typedef struct	s_texture
+int		key_event(int keycode, t_cub *cub)
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-}			t_texture;
-
-typedef struct	s_cub
-{
-	t_texture	*texture;
-	int			floor[3];
-	int			ceiling[3];
-	char		**map;
-	int			tmp;
-	void		*mlx;
-	void		*win;
-}				t_cub;	
-
-#endif
+	if (keycode == 65307)
+		clean_close(cub);
+	return (0);
+}

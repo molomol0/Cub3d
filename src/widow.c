@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   widow.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/19 18:16:50 by jdenis           ###   ########.fr       */
+/*   Created: 2024/03/19 17:37:13 by jdenis            #+#    #+#             */
+/*   Updated: 2024/03/19 18:16:24 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 #include "cub_struct.h"
 #include "mlx.h"
 
-int	main(int argc, char **argv)
+int		clean_close(t_cub *cub)
 {
-	t_cub	*cub;
-
-	if (argc != 2)
-	{
-		ft_putstr_fd("Error\nInvalid number of arguments\n", 2);
-		return (1);
-	}
-	cub = init_data(argv);
-	if (!cub)
-		return (1);
-	if (map_check(cub->map) == 0)
-	{
-		free_data(cub);
-		return (0);
-	}
-	print_data(cub);
-	init_window(cub);
-	mlx_hook(cub->win, 17, 0, clean_close, cub);
-	mlx_key_hook(cub->win, key_event, cub);
-	mlx_loop(cub->mlx);
 	free_data(cub);
+	exit(0);
 	return (0);
+}
+
+void	init_window(t_cub *cub)
+{
+	cub->mlx = mlx_init();
+	if (!cub->mlx)
+	{
+		ft_putstr_fd("Error\nmlx_init failed\n", 2);
+		free_data(cub);
+		exit(1);
+	}
+	cub->win = mlx_new_window(cub->mlx, 1920, 1080, "Cub3D");
+	if (!cub->win)
+	{
+		ft_putstr_fd("Error\nmlx_new_window failed\n", 2);
+		free_data(cub);
+		exit(1);
+	}
 }
