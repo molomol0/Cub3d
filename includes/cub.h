@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/20 20:19:36 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/20 20:33:10 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 # define KEY_SPACE 32
+# define FOV 90
 
 int			travel_file(char *file, t_cub *cub);
 t_cub		*init_data(char **argv);
