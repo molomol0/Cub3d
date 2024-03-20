@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+         #
+#    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/19 19:24:11 by ftholoza         ###   ########.fr        #
+#    Updated: 2024/03/20 17:33:45 by jdenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,38 +37,38 @@ OBJS =		$(addprefix src/,						\
 			flood_fill.o							\
 			clone_tab.o								\
 			init_player.o							\
+			get_texture.o							\
 			map_check.o			)					\
 			
 NAME = Cub3d
 LIBFT = libft/libft.a
 LIBFTPATH = libft/
 
-all: $(MLX) $(NAME)
+all: $(MLX) $(LIBFT) $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFTPATH)
+	@ $(MAKE) -C $(LIBFTPATH) --no-print-directory > /dev/null 2>&1 && echo "Libft \033[1;32mOK\033[m"
 
 $(MLX):
-	@make -sC $(MLX_PATH) --no-print-directory
-	@echo "MiniLibX \033[1;32mOK\033[m"
+	@ make -sC $(MLX_PATH) --no-print-directory > /dev/null 2>&1 && echo "MiniLibX \033[1;32mOK\033[m"
 
 libft: $(LIBFT)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFTPATH)
-	$(CC) $(CFLAGS) -o $(NAME) $(MLX) $^ $(LDFLAGS) -lXext -lX11 -lm
-	@echo "	Compilation of  $(NAME):  \033[1;32mOK\033[m"
+	@ $(MAKE) -C $(LIBFTPATH) > /dev/null 2>&1
+	@ $(CC) $(CFLAGS) -o $(NAME) $(MLX) $^ $(LDFLAGS) -lXext -lX11 -lm  > /dev/null 2>&1 
+	@ echo "Compilation of  $(NAME):  \033[1;32mOK\033[m"
 
 clean:
-	$(RM) $(OBJS)
-	$(MAKE) clean -C $(LIBFTPATH)
-	$(MAKE) clean -C $(MLX_PATH)
-	@echo "\033[1;33m>> all .o files are deleted.\033[0m"
+	@ $(RM) $(OBJS) > /dev/null 2>&1
+	@ $(MAKE) clean -C $(LIBFTPATH) > /dev/null 2>&1
+	@ $(MAKE) clean -C $(MLX_PATH) > /dev/null 2>&1
+	@ echo "\033[1;33m>> all .o files are deleted.\033[0m"
 
 fclean: clean
-	$(RM) $(NAME)
-	$(MAKE) fclean -C $(LIBFTPATH)
-	$(RM) libtest.so
+	@ $(RM) $(NAME) > /dev/null 2>&1
+	@ $(MAKE) fclean -C $(LIBFTPATH) > /dev/null 2>&1
+	@ $(RM) libtest.so > /dev/null 2>&1
 	@echo "\033[0;31m>> $(NAME) all objects are deleted.\033[0m"
 
 re: fclean all

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_struct.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/19 19:26:26 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:47:31 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@
 typedef struct	s_texture
 {
 	char	*no;
+	void	*no_img;
 	char	*so;
+	void	*so_img;
 	char	*we;
+	void	*we_img;
 	char	*ea;
+	void	*ea_img;
 }			t_texture;
 
 typedef struct	s_cub

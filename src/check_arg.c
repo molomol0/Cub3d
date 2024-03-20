@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 18:27:42 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/18 18:28:22 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/20 20:19:25 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ void	valid_color(int *color, t_cub *cub, char *line)
 	}
 }
 
-void	print_duplicate(char *duplicated, char *type, t_cub *cub, char *line,
-		int fd)
+void	print_duplicate(char *duplicated, char *type, t_cub *cub, char *line)
 {
 	ft_putstr_fd("Error\nDuplicate ", 2);
 	ft_putstr_fd(duplicated, 2);
@@ -52,7 +51,7 @@ void	print_duplicate(char *duplicated, char *type, t_cub *cub, char *line,
 	while (line)
 	{
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(cub->tmp);
 		delete_newline(&line);
 	}
 	free_data(cub);

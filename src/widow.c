@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:37:13 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/19 18:16:24 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/20 19:50:12 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_window(t_cub *cub)
 		free_data(cub);
 		exit(1);
 	}
-	cub->win = mlx_new_window(cub->mlx, 1920, 1080, "Cub3D");
+	cub->win = mlx_new_window(cub->mlx, W_WIDTH, W_HEIGHT, "Cub3D");
 	if (!cub->win)
 	{
 		ft_putstr_fd("Error\nmlx_new_window failed\n", 2);

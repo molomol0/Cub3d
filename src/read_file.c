@@ -6,21 +6,47 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:12:38 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/19 14:00:37 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/20 20:01:18 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 #include "cub_struct.h"
 
+void delete_point_texture(char **direction)
+{
+    if (*direction != NULL && **direction != '\0') 
+	{
+        char *temp = *direction;
+        while (*temp != '\0') {
+            *temp = *(temp + 1);
+            temp++;
+        }
+    }
+}
+
 void	put_texture(char *line, char *texture, char **direction, t_cub *cub)
 {
 	if (ft_strncmp(line, texture, ft_strlen(texture)) == 0)
 	{
 		if (*direction == NULL)
+		{
 			*direction = ft_strdup(line + skip_space(line, texture));
+			if (!*direction)
+			{
+				print_err("Error\nMalloc failed\n");
+				free_data(cub);
+				exit(1);
+			}
+			if (texture_valid(*direction) == -1)
+			{
+				free_data(cub);
+				exit(1);
+			}
+			delete_point_texture(direction);
+		}
 		else
-			print_duplicate(texture, "texture", cub, line, cub->tmp);
+			print_duplicate(texture, "texture", cub, line);
 	}
 }
 
@@ -60,7 +86,7 @@ void	put_ceiling_floor(char *line, char *cf, int *color, t_cub *cub)
 			valid_color(color, cub, line);
 		}
 		else
-			print_duplicate(cf, "color", cub, line, cub->tmp);
+			print_duplicate(cf, "color", cub, line);
 	}
 }
 

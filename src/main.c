@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/19 19:57:08 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:56:02 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 	printf("pos_x: %f, pos_y: %f\ndir_x %f, dir_y %f\nleft_cam: x:%f, y:%f\nright_cam: x: %f, y: %f\n", player->pos_x, player->pos_y, player->dir_x, player->dir_y, player->camera_plane_left_x, player->camera_plane_left_y, player->camera_plane_right_x, player->camera_plane_right_y);
 	free(player);
 	print_data(cub);
-	init_window(cub);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->no_img, 0, 0);
 	mlx_hook(cub->win, 17, 0, clean_close, cub);
 	mlx_key_hook(cub->win, key_event, cub);
 	mlx_loop(cub->mlx);

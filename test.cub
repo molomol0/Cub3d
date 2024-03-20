@@ -1,7 +1,7 @@
 
 
-NO ./path_to_north
-SO               						    ./path_to_south
+NO ./texture/texture_north.xpm
+SO               						    ./texture/texture_south.xpm
 
 F      220,100,0
 C 225,       30,0
@@ -10,8 +10,8 @@ C 225,       30,0
 gptnpigntg
 
 
-WE ./path_to_west
-EA ./path_to_east
+WE ./texture/texture_west.xpm
+EA ./texture/texture_east.xpm
 
 11111111
 10000001
