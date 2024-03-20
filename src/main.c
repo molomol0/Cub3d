@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/20 19:56:02 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/20 22:33:53 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int	main(int argc, char **argv)
 	}
 	player = player_struct_init(cub->map);
 	printf("pos_x: %f, pos_y: %f\ndir_x %f, dir_y %f\nleft_cam: x:%f, y:%f\nright_cam: x: %f, y: %f\n", player->pos_x, player->pos_y, player->dir_x, player->dir_y, player->camera_plane_left_x, player->camera_plane_left_y, player->camera_plane_right_x, player->camera_plane_right_y);
+	rotate_player(player, 90);
+	rotate_player(player, 90);
+	rotate_player(player, 90);
+	rotate_player(player, 90);
 	free(player);
 	print_data(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->no_img, 0, 0);

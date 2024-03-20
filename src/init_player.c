@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:42:34 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/20 20:25:25 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/20 22:32:29 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,15 @@ void	set_cam_plane(t_player *player)
 
 void	rotate_player(t_player *player, int degrees)
 {
-	(void)player;
-	(void)degrees;
+	double	radiant;
+	double	temp;
+	
+	radiant = degrees * (M_PI / 180);
+	temp = player->dir_x;
+	printf("radiant: %f\n", radiant);
+	player->dir_x = (player->dir_x * cos(radiant)) - (player->dir_y * sin(radiant));
+	player->dir_y = (player->dir_y * cos(radiant)) + (temp * sin(radiant));
+	printf("dir_x: %f, dir_y%f\n", player->dir_x, player->dir_y);
 }
 
 t_player	*player_struct_init(char **map)

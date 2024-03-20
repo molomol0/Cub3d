@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/20 20:33:10 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:58:47 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define KEY_RIGHT 65363
 # define KEY_SPACE 32
 # define FOV 90
+# define M_PI 3.14159265358979323846
 
 int			travel_file(char *file, t_cub *cub);
 t_cub		*init_data(char **argv);
@@ -62,5 +63,7 @@ char		**clone_tab(char **tab);
 void		init_window(t_cub *cub);
 int			clean_close(t_cub *cub);
 int			key_event(int keycode, t_cub *cub);
+
+void        rotate_player(t_player *player, int degrees);
 
 #endif
