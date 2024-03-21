@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/20 23:09:55 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/21 19:19:58 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <stdlib.h>
 # include <math.h>
 
-# define W_WIDTH 1920
-# define W_HEIGHT 1080
-
+# define W_WIDTH 640
+# define W_HEIGHT 480
+# define TILE_SIZE 100
 # define EVENT_CLOSE_BTN 17
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -66,5 +66,6 @@ int			key_event(int keycode, t_cub *cub);
 
 
 void        rotate_player(t_player *player, int degrees);
+void		ray_casting(t_player *player);
 
 #endif

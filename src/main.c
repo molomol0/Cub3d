@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/21 00:31:19 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/21 19:40:09 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,19 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	player = player_struct_init(cub->map);
-	//free(player);
+	printf("p_dirx: %f\np_diry: %f\n", player->dir_x, player->dir_y);
+	printf("p_dirx: %f\np_diry: %f\n", player->pix_px, player->pix_py);
+	printf("cam_plane_r: x: %f, y:%f\n",
+		player->camera_plane_right_x, player->camera_plane_right_y);
+	printf("cam_plane_l: x: %f, y:%f\n",
+		player->camera_plane_left_x, player->camera_plane_left_y);
 	print_data(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->no_img, 0, 0);
 	mlx_hook(cub->win, 17, 0, clean_close, cub);
 	mlx_key_hook(cub->win, key_event, cub);
-	for (int i = 0; i < 10; i++)
-	{
-		printf("test here\n");
-		rotate_player(player, 5);
-	}
+	ray_casting(player);
 	free(player);
-	mlx_loop(cub->mlx);
+	//mlx_loop(cub->mlx);
 	free_data(cub);
 	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
+#    By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/20 17:33:45 by jdenis           ###   ########.fr        #
+#    Updated: 2024/03/21 16:09:48 by ftholoza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ OBJS =		$(addprefix src/,						\
 			flood_fill.o							\
 			clone_tab.o								\
 			init_player.o							\
+			raycasting.o							\
 			get_texture.o							\
 			map_check.o			)					\
 			
