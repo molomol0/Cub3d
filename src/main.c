@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/20 22:33:53 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/21 00:31:19 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,24 @@ int	main(int argc, char **argv)
 	cub = init_data(argv);
 	if (!cub)
 		return (1);
+	printf ("%p\n", cub->map);
 	if (map_check(cub->map) == 0)
 	{
 		free_data(cub);
 		return (0);
 	}
 	player = player_struct_init(cub->map);
-	printf("pos_x: %f, pos_y: %f\ndir_x %f, dir_y %f\nleft_cam: x:%f, y:%f\nright_cam: x: %f, y: %f\n", player->pos_x, player->pos_y, player->dir_x, player->dir_y, player->camera_plane_left_x, player->camera_plane_left_y, player->camera_plane_right_x, player->camera_plane_right_y);
-	rotate_player(player, 90);
-	rotate_player(player, 90);
-	rotate_player(player, 90);
-	rotate_player(player, 90);
-	free(player);
+	//free(player);
 	print_data(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->no_img, 0, 0);
 	mlx_hook(cub->win, 17, 0, clean_close, cub);
 	mlx_key_hook(cub->win, key_event, cub);
+	for (int i = 0; i < 10; i++)
+	{
+		printf("test here\n");
+		rotate_player(player, 5);
+	}
+	free(player);
 	mlx_loop(cub->mlx);
 	free_data(cub);
 	return (0);

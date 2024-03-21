@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/20 21:58:47 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/20 23:09:55 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char		**clone_tab(char **tab);
 void		init_window(t_cub *cub);
 int			clean_close(t_cub *cub);
 int			key_event(int keycode, t_cub *cub);
+
 
 void        rotate_player(t_player *player, int degrees);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_struct.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/20 19:47:31 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/20 23:02:14 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,6 @@ typedef struct	s_texture
 	void	*ea_img;
 }			t_texture;
 
-typedef struct	s_cub
-{
-	t_texture	*texture;
-	int			floor[3];
-	int			ceiling[3];
-	char		**map;
-	int			tmp;
-	void		*mlx;
-	void		*win;
-}				t_cub;
-
 typedef struct s_player
 {
 	double	pos_x;
@@ -48,5 +37,16 @@ typedef struct s_player
 	double	camera_plane_right_x;
 	double	camera_plane_right_y;
 }	t_player;
+
+typedef struct	s_cub
+{
+	t_texture	*texture;
+	int			floor[3];
+	int			ceiling[3];
+	char		**map;
+	int			tmp;
+	void		*mlx;
+	void		*win;
+}				t_cub;
 
 #endif

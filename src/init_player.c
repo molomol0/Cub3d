@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:42:34 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/20 22:32:29 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/21 00:48:07 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	set_cam_plane(t_player *player)
 {
 	double	lenght_plane;
 
-	lenght_plane = fabs(tan(FOV / 2) * 1);
+	lenght_plane = (tan(FOV / 2) * 1);
 	player->camera_plane_right_x = player->pos_x
 		+ player->dir_x + (player->dir_y * lenght_plane);
 	player->camera_plane_right_y = player->pos_y
@@ -53,6 +53,8 @@ void	set_cam_plane(t_player *player)
 		+ player->dir_x + (player->dir_y * -1) * lenght_plane;
 	player->camera_plane_left_y = player->pos_y
 		+ player->dir_y + (player->dir_x * lenght_plane);
+	printf("cam_right: x:%f, y: %f\n", player->camera_plane_right_x, player->camera_plane_right_y);
+	printf("cam_left: x:%f, y:%f\n", player->camera_plane_left_x, player->camera_plane_left_y);
 	return ;
 }
 
@@ -63,10 +65,11 @@ void	rotate_player(t_player *player, int degrees)
 	
 	radiant = degrees * (M_PI / 180);
 	temp = player->dir_x;
-	printf("radiant: %f\n", radiant);
 	player->dir_x = (player->dir_x * cos(radiant)) - (player->dir_y * sin(radiant));
 	player->dir_y = (player->dir_y * cos(radiant)) + (temp * sin(radiant));
-	printf("dir_x: %f, dir_y%f\n", player->dir_x, player->dir_y);
+	set_cam_plane(player);
+	//printf("dir_x: %f, dir_y: %f\n", player->dir_x, player->dir_y);
+	
 }
 
 t_player	*player_struct_init(char **map)
