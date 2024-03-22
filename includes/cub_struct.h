@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/21 23:35:39 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/22 15:34:54 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ typedef struct s_ray
 	int		map_x;
 	int		map_y;
 	int		side;
-	double	distance;
+	double	eu_dist;
+	double	perp_dist;
 	double	wall_x;
 	double	wall_y;
 }				t_ray;
