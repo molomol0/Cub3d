@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/22 19:08:07 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/22 20:40:46 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,13 @@ void	get_delta(t_player *player)
 	player->ray->delta_x *= 10000;
 	player->ray->delta_y *= 10000;
 	//player->ray->delta_y *= -1;
-	printf("deltax: %f, deltay: %f\n",
-		player->ray->delta_x, player->ray->delta_y);
+	//printf("deltax: %f, deltay: %f\n",
+	//	player->ray->delta_x, player->ray->delta_y);
 }
 
 void	get_side(t_player *player)
 {
+	//printf("%fn", player->pix_px);
 	player->ray->delta_x /= TILE_SIZE;
 	player->ray->delta_y /= TILE_SIZE;
 	player->pos_x *= TILE_SIZE;
@@ -116,7 +117,7 @@ void	fire_ray(t_player *player, t_cub *cub)
 		if (cub->map[ray->map_y][ray->map_x] > '0')
 			ray->hit = 1;
 	}
-	ray->eu_dist = 1;
+	//ray->eu_dist = 1;
 	//printf("%c\n", cub->map[ray->map_y][ray->map_x]);
 }
 
@@ -147,11 +148,11 @@ void	get_perpwall_dist(t_player *player)
 	//printf("perp_dist: %f\n", ray->perp_dist);
 }
 
+
 void	ray_casting(t_cub *cub, t_player *player)
 {
 	//printf("%p\n", player);
 	init_ray_struct(player);
-	(void)cub;
 	//double	tempx = 0;
 	//double	tempy = 0;
 	while ((player->ray->x - player->ray->scale) <= player->camera_plane_lenght)
@@ -172,7 +173,8 @@ void	ray_casting(t_cub *cub, t_player *player)
 		player->ray->hit = 0;
 		//tempx = player->ray->map_x;
 		//tempy = player->ray->map_y;
-		//printf("%f\n", player->ray->x / player->ray->scale);
 	}
+	printf("pdir, %f, %f\n", cub->player->dir_x, cub->player->dir_y);
+	player->ray->x = 0;
 	return ;
 }

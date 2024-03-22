@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_wall.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/22 19:13:27 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/22 20:00:06 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	render_wall(t_cub *cub, t_ray *ray)
 		b_pix = W_HEIGHT;
 	if (t_pix < 0)
 		t_pix = 0;
-	printf("wall_h: %f\n", wall_h);
+	//printf("wall_h: %f\n", wall_h);
 	//printf("t_pix: %f, b_pix: %f\n", t_pix, b_pix);
 	draw_wall(cub, ray, t_pix, b_pix);
 	draw_floor_ceiling(cub, ray, t_pix, b_pix);

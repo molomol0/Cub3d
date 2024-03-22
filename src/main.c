@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/22 18:55:10 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/22 20:40:11 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	player = player_struct_init(cub->map);
-	printf("p_dirx: %f\np_diry: %f\n", player->dir_x, player->dir_y);
+	cub->player = player;
+	printf("p_dirx: %f\np_diry: %f\n", cub->player->dir_x, player->dir_y);
 	printf("p_dirx: %f\np_diry: %f\n", player->pix_px, player->pix_py);
 	printf("cam_plane_r: x: %f, y:%f\n",
 		player->camera_plane_right_x, player->camera_plane_right_y);
@@ -45,8 +46,10 @@ int	main(int argc, char **argv)
 	mlx_key_hook(cub->win, key_event, cub);
 	ray_casting(cub, player);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
-	free(player);
+	mlx_key_hook(cub->win, key_event, cub);
+	//free(player);
 	mlx_loop(cub->mlx);
+	free(player);
 	free_data(cub);
 	return (0);
 }

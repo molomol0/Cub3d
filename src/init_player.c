@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:42:34 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/21 19:55:36 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/22 20:33:01 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	rotate_player(t_player *player, int degrees)
 	double	radiant;
 	double	temp;
 
+	//printf("here:%f\n", (player->dir_x));
 	radiant = degrees * (M_PI / 180);
 	temp = player->dir_x;
 	player->dir_x = (player->dir_x * cos(radiant))

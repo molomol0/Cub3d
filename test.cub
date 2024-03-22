@@ -14,9 +14,10 @@ WE ./texture/texture_west.xpm
 EA ./texture/texture_east.xpm
 
 11111111
+10001001
 10000001
 10000001
-100N0001
+100S0001
 10000001
 10000001
 10000101

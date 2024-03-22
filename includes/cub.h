@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/22 18:15:19 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/22 19:55:58 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void        rotate_player(t_player *player, int degrees);
 void		ray_casting(t_cub *cub, t_player *player);
 
 void		render_wall(t_cub *cub, t_ray *ray);
+void	    refresh(t_cub *cub, t_player *player);
 
 #endif

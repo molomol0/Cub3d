@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/22 19:14:21 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/22 19:46:16 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_cub	*init_data(char **argv)
 		ft_putstr_fd("Error\nMalloc failed\n", 2);
 		return (NULL);
 	}
+	cub->player = malloc(sizeof(t_player));
 	cub->texture = malloc(sizeof(t_texture));
 	if (!cub->texture)
 	{
