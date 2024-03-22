@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_struct.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/21 19:17:38 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/21 23:35:39 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ typedef struct s_ray
 	double	side_y;
 	double	x;
 	double	scale;
+	int		hit;
+	int		map_x;
+	int		map_y;
+	int		side;
+	double	distance;
+	double	wall_x;
+	double	wall_y;
 }				t_ray;
 
 typedef struct s_player

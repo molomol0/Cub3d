@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/21 19:40:09 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/21 23:13:13 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->no_img, 0, 0);
 	mlx_hook(cub->win, 17, 0, clean_close, cub);
 	mlx_key_hook(cub->win, key_event, cub);
-	ray_casting(player);
+	ray_casting(cub, player);
 	free(player);
 	//mlx_loop(cub->mlx);
 	free_data(cub);
