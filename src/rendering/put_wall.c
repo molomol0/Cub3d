@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/22 17:28:33 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/22 18:54:43 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	my_mlx_pixel_put(t_cub *cub, int x, int y, int color)
 	//	return ;
 	//else if (y >= W_HEIGHT)
 	//	return ;
-	mlx_pixel_put(cub->mlx, cub->win, x, y, color);
+	//mlx_pixel_put(cub->mlx, cub->win, x, y, color);
 	put_pixel(cub->buff, x, y, color);
 }
 

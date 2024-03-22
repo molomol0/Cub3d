@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/22 16:48:54 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/22 18:55:10 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	main(int argc, char **argv)
 	printf("cam_plane_l: x: %f, y:%f\n",
 		player->camera_plane_left_x, player->camera_plane_left_y);
 	print_data(cub);
-	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
 	mlx_hook(cub->win, 17, 0, clean_close, cub);
 	mlx_key_hook(cub->win, key_event, cub);
 	ray_casting(cub, player);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
 	free(player);
 	mlx_loop(cub->mlx);
 	free_data(cub);

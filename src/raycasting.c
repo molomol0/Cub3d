@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/22 17:43:08 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/22 19:08:07 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,19 @@ void	init_ray_struct(t_player *player)
 
 void	get_delta(t_player *player)
 {
-	player->ray->delta_x = sqrt(1 + (pow(player->ray->raydir_y, 2))
-			/ (pow(player->ray->raydir_x, 2)));
-	player->ray->delta_y = sqrt(1 + (pow(player->ray->raydir_x, 2))
-			/ (pow(player->ray->raydir_y, 2)));
-	player->ray->delta_x *= TILE_SIZE;
-	player->ray->delta_y *= TILE_SIZE;
+	//player->ray->delta_x = sqrt(1 + (pow(player->ray->raydir_y, 2))
+	//		/ (pow(player->ray->raydir_x, 2)));
+	//player->ray->delta_y = sqrt(1 + (pow(player->ray->raydir_x, 2))
+	//		/ (pow(player->ray->raydir_y, 2)));
+	//player->ray->delta_x *= TILE_SIZE;
+	//player->ray->delta_y *= TILE_SIZE;
+	player->ray->delta_x = fabs(1 / player->ray->raydir_x);
+	player->ray->delta_y = fabs(1 / player->ray->raydir_y);
+	player->ray->delta_x *= 10000;
+	player->ray->delta_y *= 10000;
 	//player->ray->delta_y *= -1;
-	//printf("deltax: %f, deltay: %f\n",
-	//	player->ray->delta_x, player->ray->delta_y);
+	printf("deltax: %f, deltay: %f\n",
+		player->ray->delta_x, player->ray->delta_y);
 }
 
 void	get_side(t_player *player)
@@ -118,7 +122,7 @@ void	fire_ray(t_player *player, t_cub *cub)
 
 void	get_perpwall_dist(t_player *player)
 {
-	//double	y_dist;
+	double	y_dist;
 	t_ray	*ray;
 
 	
@@ -127,10 +131,18 @@ void	get_perpwall_dist(t_player *player)
 	//printf("%f\n", ray->raydir_y);
 	//y_dist = (ray->side_y - ray->delta_y);
 	if (ray->side == 0)
-		ray->perp_dist = (ray->side_x - ray->delta_x);
+	{
+		y_dist = (ray->side_x - ray->delta_x);
+		ray->perp_dist = fabs(y_dist / ray->raydir_y) * 100;
+		//ray->perp_dist = (player->pos_x - player->pix_px + ((1 - ray->step_x) / 2) / ray->raydir_x);
+		//ray->perp_dist = fabs((ray->side_x - ray->delta_x) / (pow(ray->raydir_x, 2) + pow(ray->raydir_y, 2))) / ray->raydir_x;
+	}
 	else
-		ray->perp_dist = (ray->side_y - ray->delta_y);
-	//ray->perp_dist = fabs(y_dist / ray->raydir_y) * 100;
+	{
+		y_dist = (ray->side_y - ray->delta_y);
+		ray->perp_dist = fabs(y_dist / ray->raydir_y) * 100;
+	}
+	//ray->perp_dist = (y_dist / ray->raydir_y) * 100;
 	//printf("ydist: %f\n", y_dist);
 	//printf("perp_dist: %f\n", ray->perp_dist);
 }
