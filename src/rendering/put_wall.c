@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_wall.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/22 17:03:43 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/22 17:28:33 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void	my_mlx_pixel_put(t_cub *cub, int x, int y, int color)
 {
 	if (x < 0)
 		return ;
-	else if (x >= W_WIDTH)
-		return ;
-	if (y < 0)
-		return ;
-	else if (y >= W_HEIGHT)
-		return ;
-	// mlx_pixel_put(cub->mlx, cub->win, x, y, color);
+	//else if (x >= W_WIDTH)
+	//	return ;
+	//if (y < 0)
+	//	return ;
+	//else if (y >= W_HEIGHT)
+	//	return ;
+	mlx_pixel_put(cub->mlx, cub->win, x, y, color);
 	put_pixel(cub->buff, x, y, color);
 }
 
@@ -116,7 +116,7 @@ void	render_wall(t_cub *cub, t_ray *ray)
 	if (t_pix < 0)
 		t_pix = 0;
 	printf("wall_h: %f\n", wall_h);
-	printf("t_pix: %f, b_pix: %f\n", t_pix, b_pix);
+	//printf("t_pix: %f, b_pix: %f\n", t_pix, b_pix);
 	draw_wall(cub, ray, t_pix, b_pix);
 	draw_floor_ceiling(cub, ray, t_pix, b_pix);
 }

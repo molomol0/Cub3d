@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/22 16:43:05 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/22 17:43:08 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,26 +118,30 @@ void	fire_ray(t_player *player, t_cub *cub)
 
 void	get_perpwall_dist(t_player *player)
 {
-	double	y_dist;
+	//double	y_dist;
 	t_ray	*ray;
 
 	
 	ray = player->ray;
-	printf("sidey %f, deltay %f\n", ray->side_y, ray->delta_y);
-	printf("%f\n", ray->raydir_y);
-	y_dist = (ray->side_y - ray->delta_y);
-	ray->perp_dist = fabs(y_dist / ray->raydir_y) * 100;
-	printf("ydist: %f\n", y_dist);
-	printf("perp_dist: %f\n", ray->perp_dist);
+	//printf("sidey %f, deltay %f\n", ray->side_y, ray->delta_y);
+	//printf("%f\n", ray->raydir_y);
+	//y_dist = (ray->side_y - ray->delta_y);
+	if (ray->side == 0)
+		ray->perp_dist = (ray->side_x - ray->delta_x);
+	else
+		ray->perp_dist = (ray->side_y - ray->delta_y);
+	//ray->perp_dist = fabs(y_dist / ray->raydir_y) * 100;
+	//printf("ydist: %f\n", y_dist);
+	//printf("perp_dist: %f\n", ray->perp_dist);
 }
 
 void	ray_casting(t_cub *cub, t_player *player)
 {
-	printf("%p\n", player);
+	//printf("%p\n", player);
 	init_ray_struct(player);
 	(void)cub;
-	double	tempx = 0;
-	double	tempy = 0;
+	//double	tempx = 0;
+	//double	tempy = 0;
 	while ((player->ray->x - player->ray->scale) <= player->camera_plane_lenght)
 	{
 		get_ray_dir(player);
@@ -148,15 +152,15 @@ void	ray_casting(t_cub *cub, t_player *player)
 		fire_ray(player, cub);
 		get_perpwall_dist(player);
 		render_wall(cub, player->ray);
-		if (player->ray->x == 0 || (player->ray->map_x != tempx && player->ray->map_y != tempy))
-			printf("ray hits: mapx: %d, mapy: %d\n", player->ray->map_x, player->ray->map_y);
+		//if (player->ray->x == 0 || (player->ray->map_x != tempx && player->ray->map_y != tempy))
+		//	printf("ray hits: mapx: %d, mapy: %d\n", player->ray->map_x, player->ray->map_y);
 		player->ray->x += player->ray->scale;
 		player->ray->map_x = player->pos_x;
 		player->ray->map_y = player->pos_y;
 		player->ray->hit = 0;
-		tempx = player->ray->map_x;
-		tempy = player->ray->map_y;
-		printf("%f\n", player->ray->x / player->ray->scale);
+		//tempx = player->ray->map_x;
+		//tempy = player->ray->map_y;
+		//printf("%f\n", player->ray->x / player->ray->scale);
 	}
 	return ;
 }
