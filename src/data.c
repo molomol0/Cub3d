@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/20 23:02:46 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/22 16:38:11 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,15 @@ void	null_init(t_cub *cub)
 	cub->map = NULL;
 	cub->mlx = NULL;
 	cub->win = NULL;
+	cub->buff = NULL;
 }
 
 t_cub	*init_data(char **argv)
 {
 	t_cub	*cub;
+	int		bit_per_pixel;
+	int		line_length;
+	int		endian;
 
 	cub = malloc(sizeof(t_cub));
 	if (!cub)
@@ -55,13 +59,21 @@ t_cub	*init_data(char **argv)
 		ft_putstr_fd("Error\nMalloc failed\n", 2);
 		return (NULL);
 	}
+	cub->texture->no_img = malloc(sizeof(t_img));
+	cub->texture->so_img = malloc(sizeof(t_img));
+	cub->texture->we_img = malloc(sizeof(t_img));
+	cub->texture->ea_img = malloc(sizeof(t_img));
 	null_init(cub);
 	if (travel_file(argv[1], cub) == -1 || check_data(cub) == -1)
 	{
 		free_data(cub);
 		return (NULL);
 	}
+	cub->buff = malloc(sizeof(t_img));
 	init_window(cub);
+	cub->buff->img = mlx_new_image(cub->mlx, W_WIDTH, W_HEIGHT);
+	cub->buff->addr = mlx_get_data_addr(cub->buff->img, &bit_per_pixel,
+			&line_length, &endian);
 	get_texture(cub);
 	return (cub);
 }
@@ -78,10 +90,19 @@ void	free_data(t_cub *cub)
 			free(cub->texture->we);
 		if (cub->texture->ea)
 			free(cub->texture->ea);
+		free(cub->texture->no_img);
+		free(cub->texture->so_img);
+		free(cub->texture->we_img);
+		free(cub->texture->ea_img);
 	}
 	free(cub->texture);
 	if (cub->map)
 		free_strs(cub->map);
+	if (cub->buff)
+	{
+		mlx_destroy_image(cub->mlx, cub->buff->img);
+		free(cub->buff);
+	}
 	if (cub->mlx && cub->win)
 		mlx_destroy_window(cub->mlx, cub->win);
 	if (cub->mlx)

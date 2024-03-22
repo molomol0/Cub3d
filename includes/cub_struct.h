@@ -3,27 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub_struct.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/22 15:34:54 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/22 16:42:05 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_STRUCT_H
 # define CUB_STRUCT_H
-
-typedef struct s_texture
-{
-	char	*no;
-	void	*no_img;
-	char	*so;
-	void	*so_img;
-	char	*we;
-	void	*we_img;
-	char	*ea;
-	void	*ea_img;
-}			t_texture;
 
 typedef struct s_ray
 {
@@ -66,6 +54,30 @@ typedef struct s_player
 	t_ray	*ray;
 }	t_player;
 
+typedef struct	s_img
+{
+	void	*img;
+	char	*addr;
+	int		bit_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+}				t_img;
+
+typedef struct	s_texture
+{
+	char	*no;
+	t_img	*no_img;
+	char	*so;
+	t_img	*so_img;
+	char	*we;
+	t_img	*we_img;
+	char	*ea;
+	t_img	*ea_img;
+}			t_texture;
+
+
 typedef struct s_cub
 {
 	t_texture	*texture;
@@ -75,6 +87,7 @@ typedef struct s_cub
 	int			tmp;
 	void		*mlx;
 	void		*win;
+	t_img		*buff;
 }				t_cub;
 
 #endif

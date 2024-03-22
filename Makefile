@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+         #
+#    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/21 16:09:48 by ftholoza         ###   ########.fr        #
+#    Updated: 2024/03/22 16:36:13 by jdenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,10 @@ OBJS =		$(addprefix src/,						\
 			init_player.o							\
 			raycasting.o							\
 			get_texture.o							\
-			map_check.o			)					\
+			map_check.o								\
+													\
+			$(addprefix rendering/,					\
+			put_wall.o						))
 			
 NAME = Cub3d
 LIBFT = libft/libft.a

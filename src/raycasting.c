@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/22 16:31:35 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/22 16:43:05 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void	ray_casting(t_cub *cub, t_player *player)
 		get_side(player);
 		fire_ray(player, cub);
 		get_perpwall_dist(player);
+		render_wall(cub, player->ray);
 		if (player->ray->x == 0 || (player->ray->map_x != tempx && player->ray->map_y != tempy))
 			printf("ray hits: mapx: %d, mapy: %d\n", player->ray->map_x, player->ray->map_y);
 		player->ray->x += player->ray->scale;
