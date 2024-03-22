@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_wall.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/22 18:54:43 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/22 19:13:27 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	put_pixel(t_img *img, int x, int y, int color)
 {
 	char	*pixel;
 	
-	img->width = W_WIDTH;
-	img->height = W_HEIGHT;
-	img->bit_per_pixel = 32;
-	img->line_length = img->width * (img->bit_per_pixel / 8);
+	// img->width = W_WIDTH;
+	// img->height = W_HEIGHT;
+	// img->bit_per_pixel = 32;
+	// img->line_length = img->width * (img->bit_per_pixel / 8);
 	if (x >= 0 && x < img->width && y >= 0 && y < img->height)
 	{
 		pixel = img->addr + (y * img->line_length + x * (img->bit_per_pixel

@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/22 16:38:11 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/22 19:14:21 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ void	null_init(t_cub *cub)
 t_cub	*init_data(char **argv)
 {
 	t_cub	*cub;
-	int		bit_per_pixel;
-	int		line_length;
-	int		endian;
 
 	cub = malloc(sizeof(t_cub));
 	if (!cub)
@@ -69,11 +66,12 @@ t_cub	*init_data(char **argv)
 		free_data(cub);
 		return (NULL);
 	}
-	cub->buff = malloc(sizeof(t_img));
 	init_window(cub);
+	cub->buff = malloc(sizeof(t_img));
 	cub->buff->img = mlx_new_image(cub->mlx, W_WIDTH, W_HEIGHT);
-	cub->buff->addr = mlx_get_data_addr(cub->buff->img, &bit_per_pixel,
-			&line_length, &endian);
+	cub->buff->width = W_WIDTH;
+	cub->buff->height = W_HEIGHT;
+	cub->buff->addr = mlx_get_data_addr(cub->buff->img, &cub->buff->bit_per_pixel, &cub->buff->line_length, &cub->buff->endian);
 	get_texture(cub);
 	return (cub);
 }
