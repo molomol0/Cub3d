@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/23 04:15:38 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/23 04:22:12 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	fire_ray(t_player *player, t_cub *cub)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (cub->map[ray->map_y][ray->map_x] > '0')
+		if (cub->map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
 	printf("side_x %f, side_y %f, delta_x %f, delta_y %f\n", ray->side_x, ray->side_y, ray->delta_x, ray->delta_y);
