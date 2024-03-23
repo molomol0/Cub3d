@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/23 15:01:58 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/23 15:20:26 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	ray_casting(t_cub *cub, t_player *player)
 		player->ray->map_x = player->map_x;
 		player->ray->map_y = player->map_y;
 		player->ray->hit = 0;
-		printf("%f, %f\n", player->ray->x, player->ray->perp_dist);
+		//printf("%f, %f\n", player->ray->x, player->ray->perp_dist);
 	}
 	return ;
 }
