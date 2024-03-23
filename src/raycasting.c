@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/23 04:55:21 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/23 07:40:05 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	get_ray_dir(t_player *player)
 		+ (player->dir_x * -1) * (lenght_plane - player->ray->x);
 	player->ray->raydir_x = player->ray->raypoint_x - player->map_x;
 	player->ray->raydir_y = player->ray->raypoint_y - player->map_y;
-	printf("ray_dir_x: %f, ray_dir_y: %f\n", player->ray->raydir_x, player->ray->raydir_y);
+	//printf("ray_dir_x: %f, ray_dir_y: %f\n", player->ray->raydir_x, player->ray->raydir_y);
 }
 
 void	init_ray_struct(t_player *player)
@@ -73,8 +73,8 @@ void	get_side(t_player *player)
 		player->ray->side_y = fabs(player->map_y + 1.0
 				- player->pos_y) * player->ray->delta_y;
 	}
-	player->ray->side_x /= 100;
-	player->ray->side_y /= 100;
+	player->ray->side_x /= 1000;
+	player->ray->side_y /= 1000;
 }
 
 void	fire_ray(t_player *player, t_cub *cub)
@@ -100,7 +100,7 @@ void	fire_ray(t_player *player, t_cub *cub)
 			ray->hit = 1;
 	}
 	printf("side_x %f, side_y %f, delta_x %f, delta_y %f\n", ray->side_x, ray->side_y, ray->delta_x, ray->delta_y);
-	printf("ray %f: hitted wall: y %d, x%d\n", ray->x, ray->map_y, ray->map_x);
+	//printf("ray %f: hitted wall: y %d, x%d\n", ray->x, ray->map_y, ray->map_x);
 }
 
 void	get_perpwall_dist(t_player *player)

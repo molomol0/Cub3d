@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:42:34 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/23 04:40:12 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/23 07:35:28 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	init_dir(t_player *player, char **map, int x, int y)
 		player->dir_x = 1;
 		player->dir_y = 0;
 	}
+	map[x][y] = '0';
 	return ;
 }
 
@@ -78,8 +79,8 @@ t_player	*player_struct_init(char **map)
 	res = malloc(sizeof(*res));
 	find_spawn(map, &x, &y);
 	res->ray = malloc(sizeof(t_ray));
-	res->map_x = x;
-	res->map_y = y;
+	res->map_x = x + 0.5;
+	res->map_y = y + 0.5;
 	init_dir(res, map, x, y);
 	res->pos_x = (res->map_x * TILE_SIZE) + (TILE_SIZE / 2);
 	res->pos_y = (res->map_y * TILE_SIZE) + (TILE_SIZE / 2);
