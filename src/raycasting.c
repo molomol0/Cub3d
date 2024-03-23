@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/23 04:22:12 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/23 04:55:21 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ void	get_side(t_player *player)
 	}
 	if (player->ray->raydir_y < 0)
 	{
-		player->ray->step_y = -1;
+		player->ray->step_y = 1;
 		player->ray->side_y = fabs(player->pos_y
 				- player->map_y) * player->ray->delta_y;
 	}
 	else
 	{
-		player->ray->step_y = 1;
+		player->ray->step_y = -1;
 		player->ray->side_y = fabs(player->map_y + 1.0
 				- player->pos_y) * player->ray->delta_y;
 	}
