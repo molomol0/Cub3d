@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/23 07:38:46 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/23 14:40:30 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ void	draw_floor_ceiling(t_cub *cub, t_ray *ray, int t_pix, int b_pix) // draw th
 
 	i = b_pix;
 	while (i < W_HEIGHT)
-		my_mlx_pixel_put(cub,  ray->x / ray->scale - 1, i++, convert_color(cub->floor));
+		my_mlx_pixel_put(cub,  ray->x -1, i++, convert_color(cub->floor));
 	i = 0;
 	while (i < t_pix)
-		my_mlx_pixel_put(cub,  ray->x / ray->scale - 1, i++, convert_color(cub->ceiling));
+		my_mlx_pixel_put(cub,  ray->x -1, i++, convert_color(cub->ceiling));
 }
 
 int	get_color(t_cub *cub, int flag) // get the color of the wall
@@ -97,7 +97,7 @@ void	draw_wall(t_cub *cub, t_ray *ray, int t_pix, int b_pix)
 
 	color = get_color(cub, ray->side);
 	while (t_pix < b_pix)
-		my_mlx_pixel_put(cub, (ray->x / ray->scale), t_pix++, color);
+		my_mlx_pixel_put(cub, ray->x -1, t_pix++, color);
 }
 
 void	render_wall(t_cub *cub, t_ray *ray)

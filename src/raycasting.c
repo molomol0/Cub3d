@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/23 07:40:05 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/23 15:01:58 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	get_ray_dir(t_player *player)
 
 	lenght_plane = player->camera_plane_lenght;
 	player->ray->raypoint_x = player->map_x
-		+ player->dir_x + (player->dir_y * (lenght_plane - player->ray->x));
+		+ player->dir_x + (player->dir_y * (lenght_plane - player->ray->x / player->ray->scale));
 	player->ray->raypoint_y = player->map_y + player->dir_y
-		+ (player->dir_x * -1) * (lenght_plane - player->ray->x);
+		+ (player->dir_x * -1) * (lenght_plane - player->ray->x / player->ray->scale);
 	player->ray->raydir_x = player->ray->raypoint_x - player->map_x;
 	player->ray->raydir_y = player->ray->raypoint_y - player->map_y;
 	//printf("ray_dir_x: %f, ray_dir_y: %f\n", player->ray->raydir_x, player->ray->raydir_y);
@@ -33,7 +33,7 @@ void	init_ray_struct(t_player *player)
 	player->ray->hit = 0;
 	player->ray->map_x = player->map_x;
 	player->ray->map_y = player->map_y;
-	player->ray->scale = (player->camera_plane_lenght * 2) / W_WIDTH;
+	player->ray->scale = W_WIDTH / (player->camera_plane_lenght * 2);
 }
 
 void	get_delta(t_player *player)
@@ -75,6 +75,8 @@ void	get_side(t_player *player)
 	}
 	player->ray->side_x /= 1000;
 	player->ray->side_y /= 1000;
+	//player->ray->side_x /= 2;
+	//player->ray->side_y /= 2;
 }
 
 void	fire_ray(t_player *player, t_cub *cub)
@@ -117,7 +119,7 @@ void	get_perpwall_dist(t_player *player)
 void	ray_casting(t_cub *cub, t_player *player)
 {
 	init_ray_struct(player);
-	while ((player->ray->x - player->ray->scale) <= player->camera_plane_lenght * 2)
+	while ((player->ray->x) <= W_WIDTH - 1)
 	{
 		get_ray_dir(player);
 		get_delta(player);
@@ -125,10 +127,11 @@ void	ray_casting(t_cub *cub, t_player *player)
 		fire_ray(player, cub);
 		get_perpwall_dist(player);
 		render_wall(cub, player->ray);
-		player->ray->x += player->ray->scale;
+		player->ray->x += 1;
 		player->ray->map_x = player->map_x;
 		player->ray->map_y = player->map_y;
 		player->ray->hit = 0;
+		printf("%f, %f\n", player->ray->x, player->ray->perp_dist);
 	}
 	return ;
 }
