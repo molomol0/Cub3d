@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/22 20:40:46 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/23 04:15:38 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,80 +17,64 @@ void	get_ray_dir(t_player *player)
 {
 	double	lenght_plane;
 
-	lenght_plane = (player->camera_plane_lenght / 2);
-	player->ray->raypoint_x = player->pos_x
+	lenght_plane = player->camera_plane_lenght;
+	player->ray->raypoint_x = player->map_x
 		+ player->dir_x + (player->dir_y * (lenght_plane - player->ray->x));
-	player->ray->raypoint_y = player->pos_y + player->dir_y
+	player->ray->raypoint_y = player->map_y + player->dir_y
 		+ (player->dir_x * -1) * (lenght_plane - player->ray->x);
-	player->ray->raydir_x = player->ray->raypoint_x - player->pos_x;
-	player->ray->raydir_y = player->ray->raypoint_y - player->pos_y;
-	//player->ray->delta_y *= -1;
+	player->ray->raydir_x = player->ray->raypoint_x - player->map_x;
+	player->ray->raydir_y = player->ray->raypoint_y - player->map_y;
+	printf("ray_dir_x: %f, ray_dir_y: %f\n", player->ray->raydir_x, player->ray->raydir_y);
 }
 
 void	init_ray_struct(t_player *player)
 {
 	player->ray->x = 0;
 	player->ray->hit = 0;
-	//player->ray->distance = 0;
-	player->ray->map_x = player->pos_x;
-	player->ray->map_y = player->pos_y;
-	player->ray->scale = player->camera_plane_lenght / W_WIDTH;
+	player->ray->map_x = player->map_x;
+	player->ray->map_y = player->map_y;
+	player->ray->scale = (player->camera_plane_lenght * 2) / W_WIDTH;
 }
 
 void	get_delta(t_player *player)
 {
-	//player->ray->delta_x = sqrt(1 + (pow(player->ray->raydir_y, 2))
-	//		/ (pow(player->ray->raydir_x, 2)));
-	//player->ray->delta_y = sqrt(1 + (pow(player->ray->raydir_x, 2))
-	//		/ (pow(player->ray->raydir_y, 2)));
-	//player->ray->delta_x *= TILE_SIZE;
-	//player->ray->delta_y *= TILE_SIZE;
-	player->ray->delta_x = fabs(1 / player->ray->raydir_x);
-	player->ray->delta_y = fabs(1 / player->ray->raydir_y);
-	player->ray->delta_x *= 10000;
-	player->ray->delta_y *= 10000;
-	//player->ray->delta_y *= -1;
-	//printf("deltax: %f, deltay: %f\n",
-	//	player->ray->delta_x, player->ray->delta_y);
+	t_ray *ray;
+
+	ray = player->ray;
+	ray->delta_x = fabs(1 / ray->raydir_x);
+	ray->delta_y = fabs(1 / ray->raydir_y);
+	ray->delta_x *= 100;
+	ray->delta_y *= 100;
 }
 
 void	get_side(t_player *player)
 {
-	//printf("%fn", player->pix_px);
-	player->ray->delta_x /= TILE_SIZE;
-	player->ray->delta_y /= TILE_SIZE;
-	player->pos_x *= TILE_SIZE;
-	player->pos_y *= TILE_SIZE;
 	if (player->ray->raydir_x < 0)
 	{
 		player->ray->step_x = -1;
-		player->ray->side_x = (player->pix_px
-				- player->pos_x) * player->ray->delta_x;
+		player->ray->side_x = fabs(player->pos_x
+				- player->map_x) * player->ray->delta_x;
 	}
 	else
 	{
 		player->ray->step_x = 1;
-		player->ray->side_x = (player->pos_x + 1.0
-				- player->pix_px) * player->ray->delta_x;
+		player->ray->side_x = fabs(player->map_x + 1.0
+				- player->pos_x) * player->ray->delta_x;
 	}
 	if (player->ray->raydir_y < 0)
 	{
-		player->ray->step_y = 1;
-		player->ray->side_y = (player->pix_py
-				- player->pos_y) * player->ray->delta_y;
+		player->ray->step_y = -1;
+		player->ray->side_y = fabs(player->pos_y
+				- player->map_y) * player->ray->delta_y;
 	}
 	else
 	{
-		player->ray->step_y = -1;
-		player->ray->side_y = (player->pos_y + 1.0
-				- player->pix_py) * player->ray->delta_y;
+		player->ray->step_y = 1;
+		player->ray->side_y = fabs(player->map_y + 1.0
+				- player->pos_y) * player->ray->delta_y;
 	}
-	player->pos_x /= TILE_SIZE;
-	player->pos_y /= TILE_SIZE;
-	player->ray->delta_x *= TILE_SIZE;
-	player->ray->delta_y *= TILE_SIZE;
-	//player->ray->delta_y *= -1;
-	//printf("side_x: %f, side_y: %f\n", player->ray->side_x, player->ray->side_y);
+	player->ray->side_x /= 100;
+	player->ray->side_y /= 100;
 }
 
 void	fire_ray(t_player *player, t_cub *cub)
@@ -112,69 +96,39 @@ void	fire_ray(t_player *player, t_cub *cub)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		//printf("side x: %f, side y: %f\n", ray->side_x, ray->side_y);
-		//printf("mapx %d, mapy %d\n", ray->map_x, ray->map_y);
 		if (cub->map[ray->map_y][ray->map_x] > '0')
 			ray->hit = 1;
 	}
-	//ray->eu_dist = 1;
-	//printf("%c\n", cub->map[ray->map_y][ray->map_x]);
+	printf("side_x %f, side_y %f, delta_x %f, delta_y %f\n", ray->side_x, ray->side_y, ray->delta_x, ray->delta_y);
+	printf("ray %f: hitted wall: y %d, x%d\n", ray->x, ray->map_y, ray->map_x);
 }
 
 void	get_perpwall_dist(t_player *player)
 {
-	double	y_dist;
 	t_ray	*ray;
 
-	
 	ray = player->ray;
-	//printf("sidey %f, deltay %f\n", ray->side_y, ray->delta_y);
-	//printf("%f\n", ray->raydir_y);
-	//y_dist = (ray->side_y - ray->delta_y);
 	if (ray->side == 0)
-	{
-		y_dist = (ray->side_x - ray->delta_x);
-		ray->perp_dist = fabs(y_dist / ray->raydir_y) * 100;
-		//ray->perp_dist = (player->pos_x - player->pix_px + ((1 - ray->step_x) / 2) / ray->raydir_x);
-		//ray->perp_dist = fabs((ray->side_x - ray->delta_x) / (pow(ray->raydir_x, 2) + pow(ray->raydir_y, 2))) / ray->raydir_x;
-	}
+		ray->perp_dist = fabs(ray->side_x - ray->delta_x);
 	else
-	{
-		y_dist = (ray->side_y - ray->delta_y);
-		ray->perp_dist = fabs(y_dist / ray->raydir_y) * 100;
-	}
-	//ray->perp_dist = (y_dist / ray->raydir_y) * 100;
-	//printf("ydist: %f\n", y_dist);
-	//printf("perp_dist: %f\n", ray->perp_dist);
+		ray->perp_dist = fabs(ray->side_y - ray->delta_y);
 }
-
 
 void	ray_casting(t_cub *cub, t_player *player)
 {
-	//printf("%p\n", player);
 	init_ray_struct(player);
-	//double	tempx = 0;
-	//double	tempy = 0;
-	while ((player->ray->x - player->ray->scale) <= player->camera_plane_lenght)
+	while ((player->ray->x - player->ray->scale) <= player->camera_plane_lenght * 2)
 	{
 		get_ray_dir(player);
-		//printf("ray_dir_x: %f\nray_dir_y: %f\n",
-		//	player->ray->raydir_x, player->ray->raydir_y);
 		get_delta(player);
 		get_side(player);
 		fire_ray(player, cub);
 		get_perpwall_dist(player);
 		render_wall(cub, player->ray);
-		//if (player->ray->x == 0 || (player->ray->map_x != tempx && player->ray->map_y != tempy))
-		//	printf("ray hits: mapx: %d, mapy: %d\n", player->ray->map_x, player->ray->map_y);
 		player->ray->x += player->ray->scale;
-		player->ray->map_x = player->pos_x;
-		player->ray->map_y = player->pos_y;
+		player->ray->map_x = player->map_x;
+		player->ray->map_y = player->map_y;
 		player->ray->hit = 0;
-		//tempx = player->ray->map_x;
-		//tempy = player->ray->map_y;
 	}
-	printf("pdir, %f, %f\n", cub->player->dir_x, cub->player->dir_y);
-	player->ray->x = 0;
 	return ;
 }

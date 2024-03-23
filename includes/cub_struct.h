@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/22 19:45:12 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/23 01:31:27 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ typedef struct s_ray
 
 typedef struct s_player
 {
+	double	map_x;
+	double	map_y;
 	double	pos_x;
 	double	pos_y;
-	double	pix_px;
-	double	pix_py;
 	char	orientation;
 	double	dir_x;
 	double	dir_y;

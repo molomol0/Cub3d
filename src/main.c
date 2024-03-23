@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/22 20:40:11 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/23 03:48:44 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	main(int argc, char **argv)
 	player = player_struct_init(cub->map);
 	cub->player = player;
 	printf("p_dirx: %f\np_diry: %f\n", cub->player->dir_x, player->dir_y);
-	printf("p_dirx: %f\np_diry: %f\n", player->pix_px, player->pix_py);
 	printf("cam_plane_r: x: %f, y:%f\n",
 		player->camera_plane_right_x, player->camera_plane_right_y);
 	printf("cam_plane_l: x: %f, y:%f\n",
