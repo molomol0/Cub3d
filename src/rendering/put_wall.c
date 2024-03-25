@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_wall.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/23 14:40:30 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/25 18:54:13 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ void	put_pixel(t_img *img, int x, int y, int color)
 {
 	char	*pixel;
 	
-	// img->width = W_WIDTH;
-	// img->height = W_HEIGHT;
-	// img->bit_per_pixel = 32;
-	// img->line_length = img->width * (img->bit_per_pixel / 8);
 	if (x >= 0 && x < img->width && y >= 0 && y < img->height)
 	{
 		pixel = img->addr + (y * img->line_length + x * (img->bit_per_pixel
@@ -74,7 +70,6 @@ void	draw_floor_ceiling(t_cub *cub, t_ray *ray, int t_pix, int b_pix) // draw th
 
 int	get_color(t_cub *cub, int flag) // get the color of the wall
 {
-	(void)cub;
 	if (flag == 0)
 	{
 		// if (cub->ray->ray_ngl > M_PI / 2 && cub->ray->ray_ngl < 3 * (M_PI / 2))
@@ -107,16 +102,12 @@ void	render_wall(t_cub *cub, t_ray *ray)
 	double t_pix;
 
 	wall_h = (W_HEIGHT / (ray->perp_dist / TILE_SIZE));
-	// b_pix = -wall_h / 2 + W_HEIGHT / 2;
-	// t_pix = wall_h / 2 + W_HEIGHT / 2;
 	t_pix = -wall_h / 2 + W_HEIGHT / 2;
 	b_pix = wall_h / 2 + W_HEIGHT / 2;
 	if (b_pix > W_HEIGHT)
 		b_pix = W_HEIGHT;
 	if (t_pix < 0)
 		t_pix = 0;
-	//printf("wall_h: %f\n", wall_h);
-	//printf("t_pix: %f, b_pix: %f\n", t_pix, b_pix);
 	draw_wall(cub, ray, t_pix, b_pix);
 	draw_floor_ceiling(cub, ray, t_pix, b_pix);
 }

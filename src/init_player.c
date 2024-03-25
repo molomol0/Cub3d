@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:42:34 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/23 07:35:28 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/25 17:47:31 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,9 @@ t_player	*player_struct_init(char **map)
 	res->map_x = x + 0.5;
 	res->map_y = y + 0.5;
 	init_dir(res, map, x, y);
-	res->pos_x = (res->map_x * TILE_SIZE) + (TILE_SIZE / 2);
-	res->pos_y = (res->map_y * TILE_SIZE) + (TILE_SIZE / 2);
+	res->pos_x = (res->map_x * TILE_SIZE);
+	res->pos_y = (res->map_y * TILE_SIZE);
+	printf("dans init : pos_x: %f, pos_y: %f\n", res->pos_x, res->pos_y);
 	set_cam_plane(res);
 	return (res);
 }

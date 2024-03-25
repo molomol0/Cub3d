@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_struct.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/23 01:31:27 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/25 18:39:13 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_ray
 	double	scale;
 	int		hit;
 	int		map_x;
-	int		map_y;
+	int	map_y;
 	int		side;
 	double	eu_dist;
 	double	perp_dist;

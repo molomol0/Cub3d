@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/22 19:55:58 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/25 18:05:58 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define W_WIDTH 1020
 # define W_HEIGHT 1080
 # define TILE_SIZE 100
+# define PLAYER_SPEED 10
+
 # define EVENT_CLOSE_BTN 17
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -70,5 +72,7 @@ void		ray_casting(t_cub *cub, t_player *player);
 
 void		render_wall(t_cub *cub, t_ray *ray);
 void	    refresh(t_cub *cub, t_player *player);
+
+void	print_player(t_cub *cub);
 
 #endif
