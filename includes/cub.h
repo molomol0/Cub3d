@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/25 18:05:58 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/25 20:23:35 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define W_WIDTH 1020
 # define W_HEIGHT 1080
-# define TILE_SIZE 100
+# define TILE_SIZE 50
 # define PLAYER_SPEED 10
 
 # define EVENT_CLOSE_BTN 17

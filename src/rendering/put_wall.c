@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/25 18:54:13 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/25 20:36:26 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,41 @@ void	draw_floor_ceiling(t_cub *cub, t_ray *ray, int t_pix, int b_pix) // draw th
 		my_mlx_pixel_put(cub,  ray->x -1, i++, convert_color(cub->ceiling));
 }
 
-int	get_color(t_cub *cub, int flag) // get the color of the wall
+int	get_xpm_color(t_img *img, int x, int y, t_cub *cub)
 {
+	char	*dst;
+
+	dst = img->addr + (((y * img->height) / cub->player->ray->wall_x) * img->line_length + ((x * img->width) / cub->player->ray->wall_y)* (img->bit_per_pixel / 8));
+	return (*(unsigned int *)dst);
+}
+
+int	get_color(t_cub *cub, int flag, int x, int y) // get the color of the wall
+{
+	if (x < 0)
+		x = 0;
+	if (y < 0)
+		y = 0;
+	if (x >= TILE_SIZE)
+		x = TILE_SIZE - 1;
+	if (y >= TILE_SIZE)
+		y = TILE_SIZE - 1;
+	// x = x % TILE_SIZE;
+	// y = y % TILE_SIZE;
 	if (flag == 0)
 	{
-		// if (cub->ray->ray_ngl > M_PI / 2 && cub->ray->ray_ngl < 3 * (M_PI / 2))
-			return (0xB5B5B5FF); // west wall
+		// return (0x00FF0000); // red
+			// return get_xpm_color(cub->texture->we_img, x, y); // west wall
 		// else
-		// 	return (0xB5B5B5FF); // east wall
+			return get_xpm_color(cub->texture->ea_img, x, y, cub); // east wall
 	}
 	else
 	{
-		// if (cub->ray->ray_ngl > 0 && cub->ray->ray_ngl < M_PI)
-			return (0xF5F5F5FF); // south wall
+		// (void)cub;
+		// return (0x0000FF00); // green
+		// if ()
+			// return get_xpm_color(cub->texture->so_img, x, y); // south wall
 		// else
-		// 	return (0xF5F5F5FF); // north wall
+			return get_xpm_color(cub->texture->no_img, x, y, cub); // north wall
 	}
 }
 
@@ -90,9 +110,13 @@ void	draw_wall(t_cub *cub, t_ray *ray, int t_pix, int b_pix)
 {
 	int color;
 
-	color = get_color(cub, ray->side);
 	while (t_pix < b_pix)
-		my_mlx_pixel_put(cub, ray->x -1, t_pix++, color);
+	{
+		color = get_color(cub, ray->side, ray->x - 1, t_pix);
+		// printf("color = %d\n", color);
+		my_mlx_pixel_put(cub, ray->x -1, t_pix, color);
+		t_pix++;
+	}
 }
 
 void	render_wall(t_cub *cub, t_ray *ray)
@@ -102,6 +126,8 @@ void	render_wall(t_cub *cub, t_ray *ray)
 	double t_pix;
 
 	wall_h = (W_HEIGHT / (ray->perp_dist / TILE_SIZE));
+	ray->wall_x = wall_h;
+	ray->wall_y = (W_WIDTH / (ray->perp_dist / TILE_SIZE));
 	t_pix = -wall_h / 2 + W_HEIGHT / 2;
 	b_pix = wall_h / 2 + W_HEIGHT / 2;
 	if (b_pix > W_HEIGHT)

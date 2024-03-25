@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:32:19 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/22 16:38:40 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/25 19:41:30 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	get_texture(t_cub *cub)
 		free_data(cub);
 		exit(1);
 	}
-	cub->texture->no_img->addr = mlx_get_data_addr(cub->texture->no_img, &cub->texture->no_img->bit_per_pixel, &cub->texture->no_img->line_length, &cub->texture->no_img->endian);
+	cub->texture->no_img->addr = mlx_get_data_addr(cub->texture->no_img->img, &cub->texture->no_img->bit_per_pixel, &cub->texture->no_img->line_length, &cub->texture->no_img->endian);
 	cub->texture->so_img->img = mlx_xpm_file_to_image(cub->mlx, cub->texture->so + 1, &cub->texture->so_img->width, &cub->texture->so_img->height);
 	if (!cub->texture->so_img->img)
 	{
@@ -60,7 +60,7 @@ void	get_texture(t_cub *cub)
 		free_data(cub);
 		exit(1);
 	}
-	cub->texture->so_img->addr = mlx_get_data_addr(cub->texture->so_img, &cub->texture->so_img->bit_per_pixel, &cub->texture->so_img->line_length, &cub->texture->so_img->endian);
+	cub->texture->so_img->addr = mlx_get_data_addr(cub->texture->so_img->img, &cub->texture->so_img->bit_per_pixel, &cub->texture->so_img->line_length, &cub->texture->so_img->endian);
 	cub->texture->we_img->img = mlx_xpm_file_to_image(cub->mlx, cub->texture->we + 1, &cub->texture->we_img->width, &cub->texture->we_img->height);
 	if (!cub->texture->we_img->img)
 	{
@@ -68,7 +68,7 @@ void	get_texture(t_cub *cub)
 		free_data(cub);
 		exit(1);
 	}
-	cub->texture->we_img->addr = mlx_get_data_addr(cub->texture->we_img, &cub->texture->we_img->bit_per_pixel, &cub->texture->we_img->line_length, &cub->texture->we_img->endian);
+	cub->texture->we_img->addr = mlx_get_data_addr(cub->texture->we_img->img, &cub->texture->we_img->bit_per_pixel, &cub->texture->we_img->line_length, &cub->texture->we_img->endian);
 	cub->texture->ea_img->img = mlx_xpm_file_to_image(cub->mlx, cub->texture->ea + 1, &cub->texture->ea_img->width, &cub->texture->ea_img->height);
 	if (!cub->texture->ea_img->img)
 	{
@@ -76,5 +76,5 @@ void	get_texture(t_cub *cub)
 		free_data(cub);
 		exit(1);
 	}
-	cub->texture->ea_img->addr = mlx_get_data_addr(cub->texture->ea_img, &cub->texture->ea_img->bit_per_pixel, &cub->texture->ea_img->line_length, &cub->texture->ea_img->endian);
+	cub->texture->ea_img->addr = mlx_get_data_addr(cub->texture->ea_img->img, &cub->texture->ea_img->bit_per_pixel, &cub->texture->ea_img->line_length, &cub->texture->ea_img->endian);
 }
