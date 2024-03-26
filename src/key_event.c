@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:58:57 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/26 06:47:53 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/26 12:44:01 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ int	move_forward(t_cub *cub)
 	cub->player->map_x = cub->player->pos_x / TILE_SIZE;
 	cub->player->map_y = cub->player->pos_y / TILE_SIZE;
 	ray_casting(cub, cub->player);
+	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
 	return (0);
 }
 
@@ -89,7 +91,9 @@ int	move_backward(t_cub *cub)
 	cub->player->map_x = cub->player->pos_x / TILE_SIZE;
 	cub->player->map_y = cub->player->pos_y / TILE_SIZE;
 	ray_casting(cub, cub->player);
+	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
 	return (0);
 }
 
@@ -97,7 +101,9 @@ int	rotate_left(t_cub *cub)
 {
 	rotate_player(cub->player, -5);
 	ray_casting(cub, cub->player);
+	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
 	return (0);
 }
 
@@ -105,7 +111,9 @@ int	rotate_right(t_cub *cub)
 {
 	rotate_player(cub->player, 5);
 	ray_casting(cub, cub->player);
+	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
 	return (0);
 }
 

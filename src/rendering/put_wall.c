@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/26 06:35:40 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/26 12:10:30 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	put_pixel(t_img *img, int x, int y, int color)
 {
 	char	*pixel;
 	
+	//printf("here: %d\n", x);
 	if (x >= 0 && x < img->width && y >= 0 && y < img->height)
 	{
 		pixel = img->addr + (y * img->line_length + x * (img->bit_per_pixel

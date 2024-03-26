@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/26 04:25:15 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/26 10:40:37 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int			texture_valid(char *texture);
 
 int			map_check(char **map);
 int			flood_fill(char **map, int x, int y, int *signal);
+int         check_if_null(char **map, int x, int y);
 void		find_spawn(char **map, int *x, int *y);
 char		**clone_tab(char **tab);
 
@@ -74,5 +75,9 @@ void		render_wall(t_cub *cub, t_ray *ray);
 void	    refresh(t_cub *cub, t_player *player);
 
 void	print_player(t_cub *cub);
+void	my_mlx_pixel_put(t_cub *cub, int x, int y, int color);
+void	put_pixel(t_img *img, int x, int y, int color);
+int     draw_minimap(t_cub *cub);
+int		convert_color(int *color);
 
 #endif

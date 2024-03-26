@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/25 19:21:56 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/26 12:06:44 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	null_init(t_cub *cub)
 	cub->mlx = NULL;
 	cub->win = NULL;
 	cub->buff = NULL;
+	cub->minimap = NULL;
 }
 
 t_cub	*init_data(char **argv)
@@ -69,6 +70,13 @@ t_cub	*init_data(char **argv)
 	}
 	init_window(cub);
 	cub->buff = malloc(sizeof(t_img));
+	cub->minimap = malloc(sizeof(t_img));
+	cub->minimap->img = mlx_new_image(cub->mlx, W_WIDTH / 5, W_HEIGHT / 5);
+	cub->minimap->width = W_HEIGHT / 5;
+	cub->minimap->height = W_HEIGHT / 5;
+	//cub->minimap->bit_per_pixel = 4;
+	//cub->minimap->line_length = 4 * cub->minimap->width;
+	cub->minimap->addr = mlx_get_data_addr(cub->minimap->img, &cub->minimap->bit_per_pixel, &cub->minimap->line_length, &cub->minimap->endian);
 	cub->buff->img = mlx_new_image(cub->mlx, W_WIDTH, W_HEIGHT);
 	cub->buff->width = W_WIDTH;
 	cub->buff->height = W_HEIGHT;

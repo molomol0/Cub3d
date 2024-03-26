@@ -6,13 +6,15 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/26 01:09:53 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/26 12:41:11 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 #include "cub_struct.h"
 #include "mlx.h"
+
+
 
 int	main(int argc, char **argv)
 {
@@ -45,6 +47,8 @@ int	main(int argc, char **argv)
 	mlx_key_hook(cub->win, key_event, cub);
 	ray_casting(cub, player);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
+	//draw_minimap(cub);
+	//mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
 	mlx_hook(cub->win, 2, 1L << 0, key_event, cub);
 	//free(player);
 	mlx_loop(cub->mlx);

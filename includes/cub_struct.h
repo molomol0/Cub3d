@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/26 01:26:51 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/26 08:09:06 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_cub
 	void		*mlx;
 	void		*win;
 	t_img		*buff;
+	t_img		*minimap;
 	t_player	*player;
 }				t_cub;
 

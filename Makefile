@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
+#    By: francesco <francesco@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/22 16:36:13 by jdenis           ###   ########.fr        #
+#    Updated: 2024/03/26 10:27:12 by francesco        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ OBJS =		$(addprefix src/,						\
 			init_player.o							\
 			raycasting.o							\
 			get_texture.o							\
+			minimap.o								\
 			map_check.o								\
 													\
 			$(addprefix rendering/,					\

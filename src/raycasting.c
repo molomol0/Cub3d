@@ -6,12 +6,13 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/26 06:51:03 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/26 12:43:39 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 #include "cub_struct.h"
+#include "mlx.h"
 
 void	get_ray_dir(t_player *player)
 {
@@ -114,7 +115,6 @@ void	get_perpwall_dist(t_player *player)
 
 void	ray_casting(t_cub *cub, t_player *player)
 {
-
 	//printf("here: pointer: %p, map_x: %f, map_y: %f\n", cub->player, cub->player->map_x, cub->player->map_y);
 	init_ray_struct(cub->player);
 	while ((player->ray->x) <= W_WIDTH - 1)
