@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/25 20:36:18 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/26 01:09:53 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ int	main(int argc, char **argv)
 	mlx_key_hook(cub->win, key_event, cub);
 	ray_casting(cub, player);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
-	// mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->ea_img->img, 0, 0);
-	mlx_key_hook(cub->win, key_event, cub);
+	mlx_hook(cub->win, 2, 1L << 0, key_event, cub);
 	//free(player);
 	mlx_loop(cub->mlx);
 	free(player);

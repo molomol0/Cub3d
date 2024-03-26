@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:58:57 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/25 18:39:54 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/26 01:20:54 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,10 @@ void	print_player(t_cub *cub)
 
 int	move_forward(t_cub *cub)
 {
-	printf("pos_x: %f, pos_y: %f\n", cub->player->pos_x, cub->player->pos_y);
 	cub->player->pos_x += cub->player->dir_x * PLAYER_SPEED;
 	cub->player->pos_y += cub->player->dir_y * PLAYER_SPEED;
-	printf("pos_x: %f, pos_y: %f\n", cub->player->pos_x, cub->player->pos_y);
-	printf("dir_x: %f, dir_y: %f\n", cub->player->dir_x, cub->player->dir_y);
-	printf("map_x: %f, map_y: %f\n", cub->player->map_x, cub->player->map_y);
 	cub->player->map_x = cub->player->pos_x / TILE_SIZE;
 	cub->player->map_y = cub->player->pos_y / TILE_SIZE;
-	printf("pointer: %p, map_x: %f, map_y: %f\n", cub->player, cub->player->map_x, cub->player->map_y);
-	print_player(cub);
 	ray_casting(cub, cub->player);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
 	return (0);

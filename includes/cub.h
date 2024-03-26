@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/25 20:23:35 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/26 04:25:15 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define W_WIDTH 1020
 # define W_HEIGHT 1080
 # define TILE_SIZE 50
-# define PLAYER_SPEED 10
+# define PLAYER_SPEED 5
 
 # define EVENT_CLOSE_BTN 17
 # define KEY_ESC 65307
