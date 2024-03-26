@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:58:57 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/26 01:20:54 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/26 06:47:53 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,48 @@ void	print_player(t_cub *cub)
 	printf("---FIN PRINT STRUCT---\n");
 }
 
+int	check_forward(t_cub *cub)
+{
+	double	pos_x;
+	double	pos_y;
+	double	map_x;
+	double	map_y;
+	
+	pos_x = cub->player->pos_x;
+	pos_x += cub->player->dir_x * PLAYER_SPEED;
+	pos_y =	cub->player->pos_y;
+	pos_y += cub->player->dir_y * PLAYER_SPEED;
+	map_x = pos_x / TILE_SIZE;
+	map_y = pos_y / TILE_SIZE;
+	if (cub->map[(int)map_y][(int)map_x] > '0')
+		return (0);
+	return (1);
+}
+
+int	check_backward(t_cub *cub)
+{
+	double	pos_x;
+	double	pos_y;
+	double	map_x;
+	double	map_y;
+	
+	pos_x = cub->player->pos_x;
+	pos_x -= cub->player->dir_x * PLAYER_SPEED;
+	pos_y =	cub->player->pos_y;
+	pos_y -= cub->player->dir_y * PLAYER_SPEED;
+	map_x = pos_x / TILE_SIZE;
+	map_y = pos_y / TILE_SIZE;
+	if (cub->map[(int)map_y][(int)map_x] > '0')
+		return (0);
+	return (1);
+}
+
+
+
 int	move_forward(t_cub *cub)
 {
+	if (!check_forward(cub))
+		return (0);
 	cub->player->pos_x += cub->player->dir_x * PLAYER_SPEED;
 	cub->player->pos_y += cub->player->dir_y * PLAYER_SPEED;
 	cub->player->map_x = cub->player->pos_x / TILE_SIZE;
@@ -42,6 +82,8 @@ int	move_forward(t_cub *cub)
 
 int	move_backward(t_cub *cub)
 {
+	if (!check_backward(cub))
+		return (0);
 	cub->player->pos_x -= cub->player->dir_x * PLAYER_SPEED;
 	cub->player->pos_y -= cub->player->dir_y * PLAYER_SPEED;
 	cub->player->map_x = cub->player->pos_x / TILE_SIZE;

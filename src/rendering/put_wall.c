@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/26 06:11:29 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/26 06:35:40 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,10 @@ int	get_color(t_cub *cub, int flag, int x, int y) // get the color of the wall
     else
 		wall_x =  cub->player->map_x + ray->perp_dist * ray->raydir_x;
     wall_x -= floor((wall_x));
-	//printf("wallx:%f, ", wall_x);
 	if (flag == 0)
-		return get_xpm_color(cub->texture->ea_img, x, y, cub, wall_x);
+		return get_xpm_color(cub->texture->so_img, x, y, cub, wall_x);
 	else
-		return get_xpm_color(cub->texture->we_img, x, y, cub, wall_x);
-		//return (0xF5F5F5FF);
+		return get_xpm_color(cub->texture->no_img, x, y, cub, wall_x);
 }
 
 void	draw_wall(t_cub *cub, t_ray *ray, int t_pix, int b_pix)

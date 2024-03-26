@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/26 04:23:00 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/26 06:51:03 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ void	get_perpwall_dist(t_player *player)
 		ray->perp_dist = fabs(ray->side_x - ray->delta_x);
 	else
 		ray->perp_dist = fabs(ray->side_y - ray->delta_y);
+	if (ray->perp_dist == 0)
+		ray->perp_dist = 0.1;
 }
 
 void	ray_casting(t_cub *cub, t_player *player)
