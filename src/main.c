@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/27 01:48:16 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/27 02:35:42 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ int	main(int argc, char **argv)
 	mlx_hook(cub->win, 17, 0, clean_close, cub);
 	mlx_key_hook(cub->win, key_event, cub);
 	ray_casting(cub, player);
+	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
 	//draw_minimap(cub);
 	//mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
 	mlx_hook(cub->win, 2, 1L << 0, key_event, cub);

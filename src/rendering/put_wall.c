@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/26 12:10:30 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/27 02:49:49 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ void	draw_floor_ceiling(t_cub *cub, t_ray *ray, int t_pix, int b_pix) // draw th
 
 	i = b_pix;
 	while (i < W_HEIGHT)
-		my_mlx_pixel_put(cub,  ray->x -1, i++, convert_color(cub->floor));
+		my_mlx_pixel_put(cub,  ray->x -1, i++, convert_color(cub->ceiling));
 	i = 0;
 	while (i < t_pix)
-		my_mlx_pixel_put(cub,  ray->x -1, i++, convert_color(cub->ceiling));
+		my_mlx_pixel_put(cub,  ray->x -1, i++, create_trgb(0, 0, 0, 0));
 }
 
 int	get_xpm_color(t_img *img, int x, int y, t_cub *cub, double wall_x)
@@ -94,9 +94,9 @@ int	get_color(t_cub *cub, int flag, int x, int y) // get the color of the wall
 		wall_x =  cub->player->map_x + ray->perp_dist * ray->raydir_x;
     wall_x -= floor((wall_x));
 	if (flag == 0)
-		return get_xpm_color(cub->texture->so_img, x, y, cub, wall_x);
+		return get_xpm_color(cub->texture->we_img, x, y, cub, wall_x);
 	else
-		return get_xpm_color(cub->texture->no_img, x, y, cub, wall_x);
+		return get_xpm_color(cub->texture->we_img, x, y, cub, wall_x);
 }
 
 void	draw_wall(t_cub *cub, t_ray *ray, int t_pix, int b_pix)
@@ -120,9 +120,9 @@ void	render_wall(t_cub *cub, t_ray *ray)
 	double b_pix;
 	double t_pix;
 
-	wall_h = (W_HEIGHT / ray->perp_dist / 3.2);
+	wall_h = (W_HEIGHT / ray->perp_dist / 1.5);
 	ray->wall_h = wall_h;
-	ray->wall_w = (W_WIDTH / ray->perp_dist / 3.2);
+	ray->wall_w = (W_WIDTH / ray->perp_dist / 1.5);
 	t_pix = -wall_h / 2 + W_HEIGHT / 2;
 	b_pix = wall_h / 2 + W_HEIGHT / 2;
 	if (b_pix > W_HEIGHT)

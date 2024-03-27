@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/27 02:01:43 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/27 02:29:00 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_cub	*init_data(char **argv)
 	cub->buff = malloc(sizeof(t_img));
 	cub->minimap = malloc(sizeof(t_img));
 	cub->minimap->img = mlx_new_image(cub->mlx, W_WIDTH / 5, W_HEIGHT / 5);
-	cub->minimap->width = W_HEIGHT / 5;
+	cub->minimap->width = W_WIDTH / 5;
 	cub->minimap->height = W_HEIGHT / 5;
 	//cub->minimap->bit_per_pixel = 4;
 	//cub->minimap->line_length = 4 * cub->minimap->width;

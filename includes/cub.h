@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/27 01:47:36 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/27 02:45:04 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void	put_pixel(t_img *img, int x, int y, int color);
 int     draw_minimap(t_cub *cub);
 int		convert_color(int *color);
 int     mouse_track(int x, int y, t_cub *cub);
+int     create_trgb(int t, int r, int g, int b);
 
 #endif
