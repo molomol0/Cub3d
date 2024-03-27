@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/26 12:06:44 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/27 02:01:43 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	null_init(t_cub *cub)
 	cub->texture->ea = NULL;
 	cub->floor[0] = -1;
 	cub->ceiling[0] = -1;
+	cub->prev_mouse_x = 0;
 	cub->map = NULL;
 	cub->mlx = NULL;
 	cub->win = NULL;

@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:58:57 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/26 12:44:01 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/27 02:09:49 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ int	move_backward(t_cub *cub)
 	return (0);
 }
 
-int	rotate_left(t_cub *cub)
+int	rotate_left(t_cub *cub, int rotate)
 {
-	rotate_player(cub->player, -5);
+	rotate_player(cub->player, -rotate);
 	ray_casting(cub, cub->player);
 	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
@@ -107,9 +107,9 @@ int	rotate_left(t_cub *cub)
 	return (0);
 }
 
-int	rotate_right(t_cub *cub)
+int	rotate_right(t_cub *cub, int rotate)
 {
-	rotate_player(cub->player, 5);
+	rotate_player(cub->player, rotate);
 	ray_casting(cub, cub->player);
 	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
@@ -125,10 +125,26 @@ int		key_event(int keycode, t_cub *cub)
 	if (keycode == KEY_W)
 		return move_forward(cub);
 	if (keycode == KEY_A)
-		return rotate_left(cub);
+		return rotate_left(cub, 5);
 	if (keycode == KEY_S)
 		return move_backward(cub);
 	if (keycode == KEY_D)
-		return rotate_right(cub);
+		return rotate_right(cub, 5);
+	return (0);
+}
+
+int	mouse_track(int x, int y, t_cub *cub)
+{
+	if (cub->prev_mouse_x == 0)
+		cub->prev_mouse_x = x;
+	(void)y;
+	//printf("%d, %d\n", x, cub->prev_mouse_x);
+	if (x > cub->prev_mouse_x + 2)
+		rotate_right(cub, 5);
+	else if (x < cub->prev_mouse_x - 2)
+		rotate_left(cub, 5);
+	else
+		return (0);
+	cub->prev_mouse_x = x;
 	return (0);
 }

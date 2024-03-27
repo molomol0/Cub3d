@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/26 13:44:37 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/27 01:48:16 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	main(int argc, char **argv)
 	//draw_minimap(cub);
 	//mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
 	mlx_hook(cub->win, 2, 1L << 0, key_event, cub);
+	mlx_hook(cub->win, 6, 1l << 6, mouse_track, cub);
 	//free(player);
 	mlx_loop(cub->mlx);
 	free(player);
