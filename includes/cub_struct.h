@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/27 01:56:50 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/28 03:12:37 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,14 @@ typedef struct	s_texture
 	t_img	*we_img;
 	char	*ea;
 	t_img	*ea_img;
+	t_img	*pistol;
+	char	*pi;
+	t_img	*pistol_flame;
+	char	*pif;
+	t_img	*pistol_r1;
+	char	*pir1;
+	t_img	*pistol_r2;
+	char	*pir2;
 }			t_texture;
 
 

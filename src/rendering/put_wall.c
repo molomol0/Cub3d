@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/27 02:49:49 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/28 02:27:21 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	draw_floor_ceiling(t_cub *cub, t_ray *ray, int t_pix, int b_pix) // draw th
 		my_mlx_pixel_put(cub,  ray->x -1, i++, create_trgb(0, 0, 0, 0));
 }
 
-int	get_xpm_color(t_img *img, int x, int y, t_cub *cub, double wall_x)
+int	get_xpm_color(t_img *img, int x, int y, t_cub *cub, double wall_x, int t_pix)
 {
 	char	*dst;
 	double	scale_y;
@@ -73,6 +73,8 @@ int	get_xpm_color(t_img *img, int x, int y, t_cub *cub, double wall_x)
 	(void)y;
 	(void)cub;
 	scale_y = ((double)img->height / (double)cub->player->ray->wall_h);
+	if (t_pix < 0)
+		y += (t_pix * -1);
 	scale_x = ((double)img->width / (double)cub->player->ray->wall_w);
 	real_y = (int)y * scale_y;
 	real_x = (int)cub->player->ray->wall_w * (double)wall_x;
@@ -81,12 +83,11 @@ int	get_xpm_color(t_img *img, int x, int y, t_cub *cub, double wall_x)
 	return (*(unsigned int *)dst);
 }
 
-int	get_color(t_cub *cub, int flag, int x, int y) // get the color of the wall
+int	get_color(t_cub *cub, int flag, int x, int y, int t_pix) // get the color of the wall
 {
 	t_ray	*ray;
 	double	wall_x;
 	(void)y;
-
 	ray = cub->player->ray;
     if (ray->side == 0)
 		wall_x =  cub->player->map_y + ray->perp_dist * ray->raydir_y;
@@ -94,20 +95,26 @@ int	get_color(t_cub *cub, int flag, int x, int y) // get the color of the wall
 		wall_x =  cub->player->map_x + ray->perp_dist * ray->raydir_x;
     wall_x -= floor((wall_x));
 	if (flag == 0)
-		return get_xpm_color(cub->texture->we_img, x, y, cub, wall_x);
+		return get_xpm_color(cub->texture->so_img, x, y , cub, wall_x, t_pix);
 	else
-		return get_xpm_color(cub->texture->we_img, x, y, cub, wall_x);
+		return get_xpm_color(cub->texture->we_img, x, y, cub, wall_x, t_pix);
 }
 
 void	draw_wall(t_cub *cub, t_ray *ray, int t_pix, int b_pix)
 {
 	int color;
 	int	index;
+	int	temp_t;
 
 	index = 0;
+	temp_t = t_pix;
+	if (b_pix > W_HEIGHT)
+		b_pix = W_HEIGHT;
+	if (t_pix < 0)
+		t_pix = 0;
 	while (t_pix < b_pix)
 	{
-		color = get_color(cub, ray->side, ray->x - 1, index);
+		color = get_color(cub, ray->side, ray->x - 1, index, temp_t);
 		my_mlx_pixel_put(cub, ray->x -1, t_pix, color);
 		t_pix++;
 		index++;
@@ -125,10 +132,7 @@ void	render_wall(t_cub *cub, t_ray *ray)
 	ray->wall_w = (W_WIDTH / ray->perp_dist / 1.5);
 	t_pix = -wall_h / 2 + W_HEIGHT / 2;
 	b_pix = wall_h / 2 + W_HEIGHT / 2;
-	if (b_pix > W_HEIGHT)
-		b_pix = W_HEIGHT;
-	if (t_pix < 0)
-		t_pix = 0;
+	//printf("%f, %f, %f\n", t_pix, b_pix, wall_h);
 	draw_wall(cub, ray, t_pix, b_pix);
 	draw_floor_ceiling(cub, ray, t_pix, b_pix);
 }

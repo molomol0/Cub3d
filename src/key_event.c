@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:58:57 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/27 02:33:50 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/28 05:18:18 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	move_forward(t_cub *cub)
 	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->pistol->img, (W_WIDTH / 2) - (cub->texture->pistol->width / 2), W_HEIGHT - cub->texture->pistol->height - 65);
 	return (0);
 }
 
@@ -94,6 +95,7 @@ int	move_backward(t_cub *cub)
 	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->pistol->img, (W_WIDTH / 2) - (cub->texture->pistol->width / 2), W_HEIGHT - cub->texture->pistol->height - 65);
 	return (0);
 }
 
@@ -104,6 +106,7 @@ int	rotate_left(t_cub *cub, int rotate)
 	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->pistol->img, (W_WIDTH / 2) - (cub->texture->pistol->width / 2), W_HEIGHT - cub->texture->pistol->height - 65);
 	return (0);
 }
 
@@ -114,12 +117,26 @@ int	rotate_right(t_cub *cub, int rotate)
 	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->pistol->img, (W_WIDTH / 2) - (cub->texture->pistol->width / 2), W_HEIGHT - cub->texture->pistol->height - 65);
+	return (0);
+}
+
+int	fire_anim(t_cub *cub)
+{
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->pistol_flame->img, (W_WIDTH / 2) - (cub->texture->pistol_flame->width / 2), W_HEIGHT - cub->texture->pistol_flame->height - 65);
+	//mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->pistol_r1->img, (W_WIDTH / 2) - (cub->texture->pistol_r1->width / 2), W_HEIGHT - cub->texture->pistol_r1->height - 65);
+	//mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->pistol_r2->img, (W_WIDTH / 2) - (cub->texture->pistol_r2->width / 2), W_HEIGHT - cub->texture->pistol_r2->height - 65);
+	//sleep(1);
+	//mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->pistol->img, (W_WIDTH / 2) - (cub->texture->pistol->width / 2), W_HEIGHT - cub->texture->pistol->height - 65);
+	//printf("ok\n");
 	return (0);
 }
 
 int		key_event(int keycode, t_cub *cub)
 {
-	// printf("%d\n", keycode);
+	//printf("%d\n", keycode);
 	if (keycode == KEY_ESC)
 		clean_close(cub);
 	if (keycode == KEY_W)
@@ -130,6 +147,18 @@ int		key_event(int keycode, t_cub *cub)
 		return move_backward(cub);
 	if (keycode == KEY_D)
 		return rotate_right(cub, 5);
+	return (0);
+}
+
+int	key_anim(int keycode, t_cub *cub)
+{
+	if (keycode == 65513)
+	{
+		fire_anim(cub);
+		//sleep(1);
+		printf("iciok\n");
+		//mlx_put_image_to_window(cub->mlx, cub->win, cub->texture->pistol->img, (W_WIDTH / 2) - (cub->texture->pistol->width / 2), W_HEIGHT - cub->texture->pistol->height - 65);
+	}
 	return (0);
 }
 

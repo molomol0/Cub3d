@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:32:19 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/25 19:41:30 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/28 04:54:25 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,15 @@ int		texture_valid(char *texture)
 
 void	get_texture(t_cub *cub)
 {
+	//printf("%s, %s\n", cub->texture->pi, cub->texture->ea);
+	cub->texture->pistol->img = mlx_xpm_file_to_image(cub->mlx, cub->texture->pi + 1, &cub->texture->pistol->width, &cub->texture->pistol->height);
+	cub->texture->pistol->addr = mlx_get_data_addr(cub->texture->pistol->img, &cub->texture->pistol->bit_per_pixel, &cub->texture->pistol->line_length, &cub->texture->pistol->endian);
+	cub->texture->pistol_flame->img = mlx_xpm_file_to_image(cub->mlx, cub->texture->pif + 1, &cub->texture->pistol_flame->width, &cub->texture->pistol_flame->height);
+	cub->texture->pistol_flame->addr = mlx_get_data_addr(cub->texture->pistol_flame->img, &cub->texture->pistol_flame->bit_per_pixel, &cub->texture->pistol_flame->line_length, &cub->texture->pistol_flame->endian);
+	cub->texture->pistol_r1->img = mlx_xpm_file_to_image(cub->mlx, cub->texture->pir1 + 1, &cub->texture->pistol_r1->width, &cub->texture->pistol_r1->height);
+	cub->texture->pistol_r1->addr = mlx_get_data_addr(cub->texture->pistol_r1->img, &cub->texture->pistol_r1->bit_per_pixel, &cub->texture->pistol_r1->line_length, &cub->texture->pistol_r1->endian);
+	cub->texture->pistol_r2->img = mlx_xpm_file_to_image(cub->mlx, cub->texture->pir2 + 1, &cub->texture->pistol_r2->width, &cub->texture->pistol_r2->height);
+	cub->texture->pistol_r2->addr = mlx_get_data_addr(cub->texture->pistol_r2->img, &cub->texture->pistol_r2->bit_per_pixel, &cub->texture->pistol_r2->line_length, &cub->texture->pistol_r2->endian);
 	cub->texture->no_img->img = mlx_xpm_file_to_image(cub->mlx, cub->texture->no + 1, &cub->texture->no_img->width, &cub->texture->no_img->height);
 	if (!cub->texture->no_img->img)
 	{

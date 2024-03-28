@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/27 02:29:00 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/28 04:41:27 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ t_cub	*init_data(char **argv)
 	cub->texture->so_img = malloc(sizeof(t_img));
 	cub->texture->we_img = malloc(sizeof(t_img));
 	cub->texture->ea_img = malloc(sizeof(t_img));
+	cub->texture->pistol = malloc(sizeof(t_img));
+	cub->texture->pistol_flame = malloc(sizeof(t_img));
+	cub->texture->pistol_r1 = malloc(sizeof(t_img));
+	cub->texture->pistol_r2 = malloc(sizeof(t_img));
 	null_init(cub);
 	if (travel_file(argv[1], cub) == -1 || check_data(cub) == -1)
 	{
@@ -134,6 +138,11 @@ void	print_data(t_cub *cub)
 	(ft_putstr_fd(cub->texture->we, 1), ft_putstr_fd("\n", 1));
 	ft_putstr_fd("EA: ", 1);
 	(ft_putstr_fd(cub->texture->ea, 1), ft_putstr_fd("\n", 1));
+	printf("PISTOL0: %s\n", cub->texture->pi);
+	//printf("PISTOL1: %s\n", cub->texture->pif);
+	//printf("PISTOL2: %s\n", cub->texture->pir1);
+	//printf("PISTOL3: %s\n", cub->texture->pir2);
+
 	(ft_putstr_fd("F: ", 1), ft_putnbr_fd(cub->floor[0], 1));
 	(ft_putstr_fd(",", 1), ft_putnbr_fd(cub->floor[1], 1));
 	ft_putstr_fd(",", 1);

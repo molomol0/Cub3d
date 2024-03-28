@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:12:38 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/20 20:01:18 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/28 04:49:36 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,17 @@ void	assign_data(char *line, t_cub *cub)
 	put_texture(line, "SO ", &cub->texture->so, cub);
 	put_texture(line, "WE ", &cub->texture->we, cub);
 	put_texture(line, "EA ", &cub->texture->ea, cub);
+	//put_texture(line, "PISTOL0", &cub->texture->pi, cub);
+	//put_texture(line, "PISTOL1", &cub->texture->pif, cub);
+	//put_texture(line, "PISTOL2", &cub->texture->pir1, cub);
+	//put_texture(line, "PISTOL3", &cub->texture->pir2, cub);
+	cub->texture->pi = ft_strdup("/texture/gun.xpm");
+	cub->texture->pif = ft_strdup("/texture/feu.xpm");
+	cub->texture->pir1 = ft_strdup("/texture/recul1.xpm");
+	cub->texture->pir2 = ft_strdup("/texture/recul2.xpm");
+
+
+	
 	put_ceiling_floor(line, "F ", cub->floor, cub);
 	put_ceiling_floor(line, "C ", cub->ceiling, cub);
 	put_map(line, cub);

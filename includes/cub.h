@@ -6,7 +6,7 @@
 /*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/27 02:45:04 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/28 05:08:50 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ int     draw_minimap(t_cub *cub);
 int		convert_color(int *color);
 int     mouse_track(int x, int y, t_cub *cub);
 int     create_trgb(int t, int r, int g, int b);
+int     key_anim(int keycode, t_cub *cub);
 
 #endif
