@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:58:57 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/28 16:23:12 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/28 17:39:59 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	check_forward(t_cub *cub)
 	pos_y =	cub->player->pos_y;
 	pos_y += cub->player->dir_y * PLAYER_SPEED;
 	map_x = pos_x / TILE_SIZE;
-	map_y = pos_y / TILE_SIZE;
-	if (cub->map[(int)map_y][(int)map_x] > '0')
+	map_y = (pos_y - 5) / TILE_SIZE;
+	if (cub->map[(int)map_y][(int)map_x] > '0' || cub->map[(int)(pos_y / TILE_SIZE)][(int)map_x] > '0')
 		return (0);
 	return (1);
 }
