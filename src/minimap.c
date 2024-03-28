@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 08:59:46 by francesco         #+#    #+#             */
-/*   Updated: 2024/03/28 16:25:38 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/28 16:26:12 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int draw_minimap(t_cub *cub)
             }
             else if (cub->map[(int)(y_max + y * scale_y)][(int)(x_max + x * scale_x)] == '1')
             {
-                put_pixel(cub->minimap, x, y, create_trgb(0, 240, 69, 42));
+                put_pixel(cub->minimap, x, y, create_trgb(0, 69, 69, 69));
             }
             else
             {
