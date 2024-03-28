@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:42:34 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/25 17:47:31 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/28 15:04:02 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_player	*player_struct_init(char **map)
 	t_player	*res;
 	int			x;
 	int			y;
+	int			i;
 
 	res = malloc(sizeof(*res));
 	find_spawn(map, &x, &y);
@@ -84,7 +85,12 @@ t_player	*player_struct_init(char **map)
 	init_dir(res, map, x, y);
 	res->pos_x = (res->map_x * TILE_SIZE);
 	res->pos_y = (res->map_y * TILE_SIZE);
-	printf("dans init : pos_x: %f, pos_y: %f\n", res->pos_x, res->pos_y);
 	set_cam_plane(res);
+	i = 0;
+	while (i < 4)
+	{
+		res->move[i] = false;
+		i++;
+	}
 	return (res);
 }

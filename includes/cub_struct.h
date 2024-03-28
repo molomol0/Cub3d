@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub_struct.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/28 11:13:58 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:17:50 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_STRUCT_H
 # define CUB_STRUCT_H
+
+#include <stdbool.h>
 
 typedef struct s_ray
 {
@@ -53,6 +55,7 @@ typedef struct s_player
 	double	camera_plane_right_y;
 	double	camera_plane_lenght;
 	t_ray	*ray;
+	bool	move[4];
 }	t_player;
 
 typedef struct	s_img

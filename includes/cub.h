@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/28 14:14:46 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:18:09 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include <sys/time.h>
+#include <X11/X.h>
 
 # define W_WIDTH 720
 # define W_HEIGHT 720
@@ -86,6 +87,10 @@ int     	key_anim(int keycode, t_cub *cub);
 long		ft_gettime(long start);
 long		ft_get_start(void);
 int			game_run(t_cub	*cub);
-int			mouse_event(int code, t_cub *cub);
+int			mouse_event(int code, int x, int y, t_cub *cub);
+
+int			check_press(int key, t_cub *cub);
+int			check_release(int key, t_cub *cub);
+void		do_move(t_cub *cub);
 
 #endif

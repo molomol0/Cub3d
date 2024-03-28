@@ -4,6 +4,7 @@
 		"stdio.h": "c",
 		"fcntl.h": "c",
 		"cub_struct.h": "c",
-		"cub.h": "c"
+		"cub.h": "c",
+		"mlx.h": "c"
 	}
 }

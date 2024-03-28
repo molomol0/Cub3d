@@ -3,16 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:58:57 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/28 14:14:22 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:23:12 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 #include "cub_struct.h"
 #include "mlx.h"
+
+int	check_press(int key, t_cub *cub)
+{
+	if (key == KEY_W)
+		cub->player->move[0] = true;
+	if (key == KEY_A)
+		cub->player->move[1] = true;
+	if (key == KEY_S)
+		cub->player->move[2] = true;
+	if (key == KEY_D)
+		cub->player->move[3] = true;
+	if (key == KEY_ESC)
+		clean_close(cub);
+	return (0);
+}
+
+int	check_release(int key, t_cub *cub)
+{
+	if (key == KEY_W)
+		cub->player->move[0] = false;
+	if (key == KEY_A)
+		cub->player->move[1] = false;
+	if (key == KEY_S)
+		cub->player->move[2] = false;
+	if (key == KEY_D)
+		cub->player->move[3] = false;
+	return (0);
+}
 
 void	print_player(t_cub *cub)
 {
@@ -65,8 +93,6 @@ int	check_backward(t_cub *cub)
 	return (1);
 }
 
-
-
 int	move_forward(t_cub *cub)
 {
 	if (!check_forward(cub))
@@ -109,20 +135,16 @@ int	rotate_right(t_cub *cub, int rotate)
 	return (0);
 }
 
-int		key_event(int keycode, t_cub *cub)
+void	do_move(t_cub *cub)
 {
-	//printf("%d\n", keycode);
-	if (keycode == KEY_ESC)
-		clean_close(cub);
-	if (keycode == KEY_W)
-		return move_forward(cub);
-	if (keycode == KEY_A)
-		return rotate_left(cub, 5);
-	if (keycode == KEY_S)
-		return move_backward(cub);
-	if (keycode == KEY_D)
-		return rotate_right(cub, 5);
-	return (0);
+	if (cub->player->move[0])
+		move_forward(cub);
+	if (cub->player->move[1])
+		rotate_left(cub, 5);
+	if (cub->player->move[2])
+		move_backward(cub);
+	if (cub->player->move[3])
+		rotate_right(cub, 5);
 }
 
 int	key_anim(int keycode, t_cub *cub)
@@ -134,9 +156,10 @@ int	key_anim(int keycode, t_cub *cub)
 	return (0);
 }
 
-int	mouse_event(int code, t_cub *cub)
+int	mouse_event(int code, int x, int y, t_cub *cub)
 {
-	printf("%d\n", code);
+	(void)x;
+	(void)y;
 	if (code == 1)
 	{
 		cub->on_of = 1;
@@ -154,9 +177,9 @@ int	mouse_track(int x, int y, t_cub *cub)
 		mlx_mouse_move(cub->mlx, cub->win, W_WIDTH / 2 + 100, y);
 	//printf("%d, %d\n", x, cub->prev_mouse_x);
 	if (x > cub->prev_mouse_x)
-		rotate_right(cub, 5);
+		rotate_right(cub, 2);
 	else if (x < cub->prev_mouse_x)
-		rotate_left(cub, 5);
+		rotate_left(cub, 2);
 	else
 		return (0);
 	cub->prev_mouse_x = x;

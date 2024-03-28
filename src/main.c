@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/28 14:13:30 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:22:32 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ int	main(int argc, char **argv)
 		player->camera_plane_left_x, player->camera_plane_left_y);
 	print_data(cub);
 	mlx_hook(cub->win, 17, 0, clean_close, cub);
-	mlx_hook(cub->win, 2, 1L << 0, key_event, cub);
 	mlx_hook(cub->win, 6, 1l << 6, mouse_track, cub);
 	mlx_key_hook(cub->win, key_anim, cub);
 	mlx_mouse_hook(cub->win, mouse_event, cub);
 	mlx_loop_hook(cub->mlx, game_run, cub);
+		mlx_hook(cub->win, KeyPress, KeyPressMask, check_press, cub);
+	mlx_hook(cub->win, KeyRelease, KeyReleaseMask, check_release, cub);
 	mlx_loop(cub->mlx);
 	free(player);
 	free_data(cub);
@@ -146,6 +147,8 @@ void	animation(t_cub	*cub)
 int	game_run(t_cub	*cub)
 {
 	double	frame_time;
+
+	do_move(cub);
 	cub->current_time = ft_gettime(cub->start_time);
 	frame_time = ((double)cub->current_time - (double)cub->old_time) / 1000;
 	ray_casting(cub, cub->player);
