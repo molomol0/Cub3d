@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 08:59:46 by francesco         #+#    #+#             */
-/*   Updated: 2024/03/27 02:30:52 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/28 16:25:38 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,14 @@ int draw_minimap(t_cub *cub)
             {
                 put_pixel(cub->minimap, x, y, create_trgb(0, 0, 0, 0));
             }
+            else if (cub->map[(int)(y_max + y * scale_y)][(int)(x_max + x * scale_x)] == '1')
+            {
+                put_pixel(cub->minimap, x, y, create_trgb(0, 240, 69, 42));
+            }
             else
             {
                 put_pixel(cub->minimap, x, y, create_trgb(0, 255, 255, 255));
             }
-            //printf("%f, %f\n", roundf(x_max + x * scale));
             if ((roundf(x_max + x * scale_x) == cub->player->ray->map_x) && (roundf(y_max + y * scale_y) == cub->player->ray->map_y))
                 put_pixel(cub->minimap, x, y, create_trgb(0, 205, 92, 92));
             x ++;
