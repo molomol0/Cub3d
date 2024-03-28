@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/28 04:41:27 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/28 11:01:45 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ void	null_init(t_cub *cub)
 	cub->floor[0] = -1;
 	cub->ceiling[0] = -1;
 	cub->prev_mouse_x = 0;
+	cub->end = 0;
+	cub->on_of = 0;
+	cub->frame_start = 0;
 	cub->map = NULL;
 	cub->mlx = NULL;
 	cub->win = NULL;

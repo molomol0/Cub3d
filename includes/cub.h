@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/28 05:08:50 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/28 14:14:46 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
+# include <sys/time.h>
 
-# define W_WIDTH 1020
-# define W_HEIGHT 1080
+# define W_WIDTH 720
+# define W_HEIGHT 720
 # define TILE_SIZE 50
 # define PLAYER_SPEED 5
 
@@ -74,13 +75,17 @@ void		ray_casting(t_cub *cub, t_player *player);
 void		render_wall(t_cub *cub, t_ray *ray);
 void	    refresh(t_cub *cub, t_player *player);
 
-void	print_player(t_cub *cub);
-void	my_mlx_pixel_put(t_cub *cub, int x, int y, int color);
-void	put_pixel(t_img *img, int x, int y, int color);
-int     draw_minimap(t_cub *cub);
-int		convert_color(int *color);
-int     mouse_track(int x, int y, t_cub *cub);
-int     create_trgb(int t, int r, int g, int b);
-int     key_anim(int keycode, t_cub *cub);
+void		print_player(t_cub *cub);
+void		my_mlx_pixel_put(t_cub *cub, int x, int y, int color);
+void		put_pixel(t_img *img, int x, int y, int color);
+int     	draw_minimap(t_cub *cub);
+int			convert_color(int *color);
+int     	mouse_track(int x, int y, t_cub *cub);
+int     	create_trgb(int t, int r, int g, int b);
+int     	key_anim(int keycode, t_cub *cub);
+long		ft_gettime(long start);
+long		ft_get_start(void);
+int			game_run(t_cub	*cub);
+int			mouse_event(int code, t_cub *cub);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_wall.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/28 02:27:21 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/28 11:58:46 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ void	draw_floor_ceiling(t_cub *cub, t_ray *ray, int t_pix, int b_pix) // draw th
 
 	i = b_pix;
 	while (i < W_HEIGHT)
+	{
 		my_mlx_pixel_put(cub,  ray->x -1, i++, convert_color(cub->ceiling));
+	}
 	i = 0;
 	while (i < t_pix)
 		my_mlx_pixel_put(cub,  ray->x -1, i++, create_trgb(0, 0, 0, 0));

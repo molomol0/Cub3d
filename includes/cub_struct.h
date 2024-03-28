@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_struct.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/28 03:12:37 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/28 11:13:58 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,14 @@ typedef struct s_cub
 	t_img		*minimap;
 	t_player	*player;
 	int			prev_mouse_x;
+	int			end;
+	long		start_time;
+	long		anim_start;
+	long		anim_time;
+	long		frame_start;
+	int			on_of;
+	long		current_time;
+	long		old_time;
 }				t_cub;
 
 #endif

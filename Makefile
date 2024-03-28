@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: francesco <francesco@student.42.fr>        +#+  +:+       +#+         #
+#    By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/26 10:27:12 by francesco        ###   ########.fr        #
+#    Updated: 2024/03/28 08:54:38 by ftholoza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ OBJS =		$(addprefix src/,						\
 			raycasting.o							\
 			get_texture.o							\
 			minimap.o								\
+			ft_gettime.o							\
 			map_check.o								\
 													\
 			$(addprefix rendering/,					\
