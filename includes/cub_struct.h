@@ -6,89 +6,88 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/28 16:17:50 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/29 15:59:31 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_STRUCT_H
 # define CUB_STRUCT_H
 
-#include <stdbool.h>
+# include <stdbool.h>
 
 typedef struct s_ray
 {
-	double	raypoint_x;
-	double	raypoint_y;
-	double	raydir_x;
-	double	raydir_y;
-	double	delta_x;
-	double	delta_y;
-	int		step_x;
-	int		step_y;
-	double	side_x;
-	double	side_y;
-	double	x;
-	double	scale;
-	int		hit;
-	int		map_x;
-	int		map_y;
-	int		side;
-	double	eu_dist;
-	double	perp_dist;
-	int		wall_h;
-	int		wall_w;
-	int		wall_x;
+	double		raypoint_x;
+	double		raypoint_y;
+	double		raydir_x;
+	double		raydir_y;
+	double		delta_x;
+	double		delta_y;
+	int			step_x;
+	int			step_y;
+	double		side_x;
+	double		side_y;
+	double		x;
+	double		scale;
+	int			hit;
+	int			map_x;
+	int			map_y;
+	int			side;
+	double		eu_dist;
+	double		perp_dist;
+	int			wall_h;
+	int			wall_w;
+	int			wall_x;
 }				t_ray;
 
 typedef struct s_player
 {
-	double	map_x;
-	double	map_y;
-	double	pos_x;
-	double	pos_y;
-	char	orientation;
-	double	dir_x;
-	double	dir_y;
-	double	camera_plane_left_x;
-	double	camera_plane_left_y;
-	double	camera_plane_right_x;
-	double	camera_plane_right_y;
-	double	camera_plane_lenght;
-	t_ray	*ray;
-	bool	move[4];
-}	t_player;
+	double		map_x;
+	double		map_y;
+	double		pos_x;
+	double		pos_y;
+	char		orientation;
+	double		dir_x;
+	double		dir_y;
+	double		camera_plane_left_x;
+	double		camera_plane_left_y;
+	double		camera_plane_right_x;
+	double		camera_plane_right_y;
+	double		camera_plane_lenght;
+	t_ray		*ray;
+	bool		move[4];
+}				t_player;
 
-typedef struct	s_img
+typedef struct s_img
 {
-	void	*img;
-	char	*addr;
-	int		bit_per_pixel;
-	int		line_length;
-	int		endian;
-	int		width;
-	int		height;
+	void		*img;
+	char		*addr;
+	int			bit_per_pixel;
+	int			line_length;
+	int			endian;
+	int			width;
+	int			height;
 }				t_img;
 
-typedef struct	s_texture
+typedef struct s_texture
 {
-	char	*no;
-	t_img	*no_img;
-	char	*so;
-	t_img	*so_img;
-	char	*we;
-	t_img	*we_img;
-	char	*ea;
-	t_img	*ea_img;
-	t_img	*pistol;
-	char	*pi;
-	t_img	*pistol_flame;
-	char	*pif;
-	t_img	*pistol_r1;
-	char	*pir1;
-	t_img	*pistol_r2;
-	char	*pir2;
-}			t_texture;
-
+	char		*no;
+	t_img		*no_img;
+	char		*so;
+	t_img		*so_img;
+	char		*we;
+	t_img		*we_img;
+	char		*ea;
+	t_img		*ea_img;
+	t_img		*pistol;
+	char		*pi;
+	t_img		*pistol_flame;
+	char		*pif;
+	t_img		*pistol_r1;
+	char		*pir1;
+	t_img		*pistol_r2;
+	char		*pir2;
+}				t_texture;
 
 typedef struct s_cub
 {

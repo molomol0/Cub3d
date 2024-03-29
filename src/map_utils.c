@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 17:37:12 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/18 17:37:45 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/29 15:57:01 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ int	other_char(char *line)
 	index = 0;
 	while (line[index])
 	{
-		if (line[index] != '1' && line[index] != '0'
-			&& line[index] != ' ' && line[index] != 'N'
-			&& line[index] != 'S' && line[index] != 'W'
+		if (line[index] != '1' && line[index] != '0' && line[index] != ' '
+			&& line[index] != 'N' && line[index] != 'S' && line[index] != 'W'
 			&& line[index] != 'E')
 			return (1);
 		index++;

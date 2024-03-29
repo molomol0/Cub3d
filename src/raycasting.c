@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/28 17:44:20 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/29 16:40:35 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,64 +14,13 @@
 #include "cub_struct.h"
 #include "mlx.h"
 
-void	get_ray_dir(t_player *player)
-{
-	double	lenght_plane;
-
-	lenght_plane = player->camera_plane_lenght;
-	player->ray->raypoint_x = player->map_x
-		+ player->dir_x + (player->dir_y * (lenght_plane - player->ray->x / player->ray->scale));
-	player->ray->raypoint_y = player->map_y + player->dir_y
-		+ (player->dir_x * -1) * (lenght_plane - player->ray->x / player->ray->scale);
-	player->ray->raydir_x = player->ray->raypoint_x - player->map_x;
-	player->ray->raydir_y = player->ray->raypoint_y - player->map_y;
-}
-
 void	init_ray_struct(t_player *player)
 {
-	//printf("dans le init: %p\n", player);
 	player->ray->x = 0;
 	player->ray->hit = 0;
 	player->ray->map_x = (int)player->map_x;
 	player->ray->map_y = (int)player->map_y;
 	player->ray->scale = W_WIDTH / (player->camera_plane_lenght * 2);
-}
-
-void	get_delta(t_player *player)
-{
-	t_ray *ray;
-
-	ray = player->ray;
-	ray->delta_x = fabs(1 / ray->raydir_x);
-	ray->delta_y = fabs(1 / ray->raydir_y);
-}
-
-void	get_side(t_player *player)
-{
-	if (player->ray->raydir_x < 0)
-	{
-		player->ray->step_x = 1;
-		player->ray->side_x = fabs(player->map_x
-				- player->ray->map_x) * player->ray->delta_x;
-	}
-	else
-	{
-		player->ray->step_x =-1;
-		player->ray->side_x = fabs(player->ray->map_x + 1.0
-				- player->map_x) * player->ray->delta_x;
-	}
-	if (player->ray->raydir_y < 0)
-	{
-		player->ray->step_y = 1;
-		player->ray->side_y = fabs(player->map_y
-				- player->ray->map_y) * player->ray->delta_y;
-	}
-	else
-	{
-		player->ray->step_y = -1;
-		player->ray->side_y = fabs(player->ray->map_y + 1.0
-				- player->map_y) * player->ray->delta_y;
-	}
 }
 
 void	fire_ray(t_player *player, t_cub *cub)
@@ -96,8 +45,6 @@ void	fire_ray(t_player *player, t_cub *cub)
 		if (cub->map[(int)ray->map_y][(int)ray->map_x] == '1')
 			ray->hit = 1;
 	}
-	// printf("side_x %f, side_y %f, delta_x %f, delta_y %f\n", ray->side_x, ray->side_y, ray->delta_x, ray->delta_y);
-	//printf("ray %f: hitted wall: y %d, x%d\n", ray->x, ray->map_y, ray->map_x);
 }
 
 void	get_perpwall_dist(t_player *player)
@@ -115,7 +62,6 @@ void	get_perpwall_dist(t_player *player)
 
 void	ray_casting(t_cub *cub, t_player *player)
 {
-	//printf("here: pointer: %p, map_x: %f, map_y: %f\n", cub->player, cub->player->map_x, cub->player->map_y);
 	init_ray_struct(cub->player);
 	while ((player->ray->x) <= W_WIDTH - 1)
 	{
@@ -124,13 +70,11 @@ void	ray_casting(t_cub *cub, t_player *player)
 		get_side(player);
 		fire_ray(player, cub);
 		get_perpwall_dist(player);
-		// print_player(cub);
 		render_wall(cub, player->ray);
 		player->ray->x += 1;
 		player->ray->map_x = player->map_x;
 		player->ray->map_y = player->map_y;
 		player->ray->hit = 0;
-		//printf("%f, %f\n", player->ray->x, player->ray->perp_dist);
 	}
 	return ;
 }

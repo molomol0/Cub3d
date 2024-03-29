@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+         #
+#    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/28 08:54:38 by ftholoza         ###   ########.fr        #
+#    Updated: 2024/03/29 17:51:55 by jdenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,22 +28,29 @@ CPPFLAGS = 	-I libft/								\
 OBJS =		$(addprefix src/,						\
 			main.o									\
 			read_file.o								\
+			read_file_utils.o						\
 			check_arg.o 							\
 			map.o									\
 			map_utils.o								\
 			data.o									\
 			widow.o									\
 			key_event.o								\
+			key_check.o								\
+			movement.o								\
 			flood_fill.o							\
 			clone_tab.o								\
 			init_player.o							\
 			raycasting.o							\
+			raycasting_utils.o						\
 			get_texture.o							\
 			minimap.o								\
 			ft_gettime.o							\
 			map_check.o								\
 													\
 			$(addprefix rendering/,					\
+			colors.o								\
+			animation.o								\
+			put_frame.o								\
 			put_wall.o						))
 			
 NAME = Cub3d

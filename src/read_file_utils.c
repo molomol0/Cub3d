@@ -1,40 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   widow.c                                            :+:      :+:    :+:   */
+/*   read_file_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 17:37:13 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/29 15:56:51 by jdenis           ###   ########.fr       */
+/*   Created: 2024/03/29 16:49:17 by jdenis            #+#    #+#             */
+/*   Updated: 2024/03/29 16:51:01 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 #include "cub_struct.h"
-#include "mlx.h"
 
-int	clean_close(t_cub *cub)
+void	delete_point_texture(char **direction)
 {
-	free_data(cub);
-	exit(0);
-	return (0);
+	char	*temp;
+
+	if (*direction != NULL && **direction != '\0')
+	{
+		temp = *direction;
+		while (*temp != '\0')
+		{
+			*temp = *(temp + 1);
+			temp++;
+		}
+	}
 }
 
-void	init_window(t_cub *cub)
+void	get_comas(char *line, int *first_coma, int *second_coma)
 {
-	cub->mlx = mlx_init();
-	if (!cub->mlx)
+	int	start;
+
+	start = 0;
+	while (line[start])
 	{
-		ft_putstr_fd("Error\nmlx_init failed\n", 2);
-		free_data(cub);
-		exit(1);
-	}
-	cub->win = mlx_new_window(cub->mlx, W_WIDTH, W_HEIGHT, "Cub3D");
-	if (!cub->win)
-	{
-		ft_putstr_fd("Error\nmlx_new_window failed\n", 2);
-		free_data(cub);
-		exit(1);
+		if (line[start] == ',')
+		{
+			if (*first_coma)
+				*second_coma = start;
+			else
+				*first_coma = start;
+		}
+		start++;
 	}
 }

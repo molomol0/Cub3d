@@ -3,27 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:12:38 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/28 04:49:36 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/29 16:49:37 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 #include "cub_struct.h"
-
-void delete_point_texture(char **direction)
-{
-    if (*direction != NULL && **direction != '\0') 
-	{
-        char *temp = *direction;
-        while (*temp != '\0') {
-            *temp = *(temp + 1);
-            temp++;
-        }
-    }
-}
 
 void	put_texture(char *line, char *texture, char **direction, t_cub *cub)
 {
@@ -47,24 +35,6 @@ void	put_texture(char *line, char *texture, char **direction, t_cub *cub)
 		}
 		else
 			print_duplicate(texture, "texture", cub, line);
-	}
-}
-
-void	get_comas(char *line, int *first_coma, int *second_coma)
-{
-	int	start;
-
-	start = 0;
-	while (line[start])
-	{
-		if (line[start] == ',')
-		{
-			if (*first_coma)
-				*second_coma = start;
-			else
-				*first_coma = start;
-		}
-		start++;
 	}
 }
 
@@ -96,17 +66,10 @@ void	assign_data(char *line, t_cub *cub)
 	put_texture(line, "SO ", &cub->texture->so, cub);
 	put_texture(line, "WE ", &cub->texture->we, cub);
 	put_texture(line, "EA ", &cub->texture->ea, cub);
-	//put_texture(line, "PISTOL0", &cub->texture->pi, cub);
-	//put_texture(line, "PISTOL1", &cub->texture->pif, cub);
-	//put_texture(line, "PISTOL2", &cub->texture->pir1, cub);
-	//put_texture(line, "PISTOL3", &cub->texture->pir2, cub);
 	cub->texture->pi = ft_strdup("/texture/gun.xpm");
 	cub->texture->pif = ft_strdup("/texture/feu.xpm");
 	cub->texture->pir1 = ft_strdup("/texture/recul1.xpm");
 	cub->texture->pir2 = ft_strdup("/texture/recul2.xpm");
-
-
-	
 	put_ceiling_floor(line, "F ", cub->floor, cub);
 	put_ceiling_floor(line, "C ", cub->ceiling, cub);
 	put_map(line, cub);

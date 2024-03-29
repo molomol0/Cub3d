@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:42:34 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/28 15:04:02 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/29 15:59:27 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ void	set_cam_plane(t_player *player)
 
 	lenght_plane = (tan(FOV / 2));
 	player->camera_plane_lenght = lenght_plane;
-	player->camera_plane_right_x = player->map_x
-		+ player->dir_x + (player->dir_y * lenght_plane);
-	player->camera_plane_right_y = player->map_y
-		+ player->dir_y + (player->dir_x * -1) * lenght_plane;
-	player->camera_plane_left_x = player->map_x
-		+ player->dir_x + (player->dir_y * -1) * lenght_plane;
-	player->camera_plane_left_y = player->map_y
-		+ player->dir_y + (player->dir_x * lenght_plane);
+	player->camera_plane_right_x = player->map_x + player->dir_x
+		+ (player->dir_y * lenght_plane);
+	player->camera_plane_right_y = player->map_y + player->dir_y
+		+ (player->dir_x * -1) * lenght_plane;
+	player->camera_plane_left_x = player->map_x + player->dir_x + (player->dir_y
+			* -1) * lenght_plane;
+	player->camera_plane_left_y = player->map_y + player->dir_y + (player->dir_x
+			* lenght_plane);
 	return ;
 }
 
@@ -64,8 +64,8 @@ void	rotate_player(t_player *player, int degrees)
 
 	radiant = degrees * (M_PI / 180);
 	temp = player->dir_x;
-	player->dir_x = (player->dir_x * cos(radiant))
-		- (player->dir_y * sin(radiant));
+	player->dir_x = (player->dir_x * cos(radiant)) - (player->dir_y
+			* sin(radiant));
 	player->dir_y = (player->dir_y * cos(radiant)) + (temp * sin(radiant));
 	set_cam_plane(player);
 }

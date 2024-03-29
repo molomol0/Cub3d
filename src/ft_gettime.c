@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_gettime.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:47:50 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/28 08:55:20 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/29 15:59:09 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 long	ft_gettime(long start)
 {
-	struct timeval		time;
-	long				sres;
-	long				ures;
+	struct timeval	time;
+	long			sres;
+	long			ures;
 
 	gettimeofday(&time, NULL);
 	sres = (time.tv_sec);

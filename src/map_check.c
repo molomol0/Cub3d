@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:25:57 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/28 18:24:34 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/29 15:56:43 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	find_spawn(char **map, int *x, int *y)
 	{
 		while (map[j][i])
 		{
-			if (map[j][i] == 'N' || map[j][i] == 'W'
-				|| map[j][i] == 'E' || map[j][i] == 'S')
+			if (map[j][i] == 'N' || map[j][i] == 'W' || map[j][i] == 'E'
+				|| map[j][i] == 'S')
 			{
 				*x = j;
 				*y = i;
@@ -42,8 +42,8 @@ void	find_spawn(char **map, int *x, int *y)
 
 static int	is_valid(char c)
 {
-	if (c == 'N' || c == 'S'
-		|| c == 'E' || c == 'W' || c == '0' || c == '1' || c == ' ')
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '0' || c == '1'
+		|| c == ' ')
 		return (1);
 	else
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:20:16 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/28 18:28:30 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/29 17:58:02 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ void	split_map(t_cub *cub, char *joined_map)
 	}
 }
 
+void	exit_invalid_map(t_cub *cub, char *line, char *joined_map)
+{
+	free(joined_map);
+	exit_map(cub, line, "Error\nInvalid\n");
+}
+
 void	put_map(char *line, t_cub *cub)
 {
 	char	*joined_map;
@@ -52,10 +58,7 @@ void	put_map(char *line, t_cub *cub)
 		while (line)
 		{
 			if (other_char(line) == 1)
-			{
-				free(joined_map);
-				exit_map(cub, line, "Error\nInvalid map\n");
-			}
+				exit_invalid_map(cub, line, joined_map);
 			line = ft_strappen(line, "\n");
 			joined_map = ft_strappen(joined_map, line);
 			if (!joined_map)
