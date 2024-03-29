@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:58:57 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/28 17:39:59 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/29 15:49:13 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,14 @@ int	check_forward(t_cub *cub)
 	double	map_y;
 
 	pos_x = cub->player->pos_x;
-	pos_x += cub->player->dir_x * PLAYER_SPEED;
+	pos_x += cub->player->dir_x * (PLAYER_SPEED * 5);
 	pos_y =	cub->player->pos_y;
-	pos_y += cub->player->dir_y * PLAYER_SPEED;
+	pos_y += cub->player->dir_y * (PLAYER_SPEED * 5);
 	map_x = pos_x / TILE_SIZE;
-	map_y = (pos_y - 5) / TILE_SIZE;
-	if (cub->map[(int)map_y][(int)map_x] > '0' || cub->map[(int)(pos_y / TILE_SIZE)][(int)map_x] > '0')
+	map_y = pos_y / TILE_SIZE;
+	// map_y = (pos_y - 5) / TILE_SIZE;
+	// if (cub->map[(int)map_y][(int)map_x] > '0' || cub->map[(int)(pos_y / TILE_SIZE)][(int)map_x] > '0')
+	if (cub->map[(int)map_y][(int)map_x] > '0')
 		return (0);
 	return (1);
 }
@@ -83,9 +85,9 @@ int	check_backward(t_cub *cub)
 	double	map_y;
 	
 	pos_x = cub->player->pos_x;
-	pos_x -= cub->player->dir_x * PLAYER_SPEED;
+	pos_x -= cub->player->dir_x * (PLAYER_SPEED * 5);
 	pos_y =	cub->player->pos_y;
-	pos_y -= cub->player->dir_y * PLAYER_SPEED;
+	pos_y -= cub->player->dir_y * (PLAYER_SPEED * 5);
 	map_x = pos_x / TILE_SIZE;
 	map_y = pos_y / TILE_SIZE;
 	if (cub->map[(int)map_y][(int)map_x] > '0')

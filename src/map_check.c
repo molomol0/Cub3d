@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:25:57 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/23 07:31:18 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/28 18:24:34 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,5 @@ int	map_check(char **m_map)
 		return (err("Error: Invalid map\n"));
 	}
 	free_strs(map);
-	printf("Valid map\n");
 	return (1);
 }

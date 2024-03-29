@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 08:59:46 by francesco         #+#    #+#             */
-/*   Updated: 2024/03/28 16:26:12 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/29 15:45:43 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int draw_minimap(t_cub *cub)
     double  y_max;
     double  scale_x;
     double  scale_y;
-    //int     flag;
+    double  x_pos;
+    double  y_pos;
 
     x = 0;
     y = 0;
@@ -52,11 +53,18 @@ int draw_minimap(t_cub *cub)
                 put_pixel(cub->minimap, x, y, create_trgb(0, 255, 255, 255));
             }
             if ((roundf(x_max + x * scale_x) == cub->player->ray->map_x) && (roundf(y_max + y * scale_y) == cub->player->ray->map_y))
-                put_pixel(cub->minimap, x, y, create_trgb(0, 205, 92, 92));
+            {
+                x_pos = x;
+                y_pos = y;
+            }
             x ++;
         }
         x = 0;
         y++;
     }
+    put_pixel(cub->minimap, x_pos, y_pos, create_trgb(0, 205, 92, 92));
+    put_pixel(cub->minimap, x_pos, y_pos + 1, create_trgb(0, 205, 92, 92));
+    put_pixel(cub->minimap, x_pos + 1, y_pos, create_trgb(0, 205, 92, 92));
+    put_pixel(cub->minimap, x_pos + 1, y_pos + 1, create_trgb(0, 205, 92, 92));
     return (0);
 }

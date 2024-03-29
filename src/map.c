@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:20:16 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/19 14:00:27 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/03/28 18:28:30 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	put_map(char *line, t_cub *cub)
 	if (only_wall(line) == 1)
 	{
 		joined_map = malloc(1);
+		if (!joined_map)
+			exit_map(cub, line, "Error\nMalloc failed\n");
 		joined_map[0] = 0;
 		while (line)
 		{

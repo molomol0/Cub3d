@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/28 11:01:45 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:23:43 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,6 @@ t_cub	*init_data(char **argv)
 	cub->minimap->img = mlx_new_image(cub->mlx, W_WIDTH / 5, W_HEIGHT / 5);
 	cub->minimap->width = W_WIDTH / 5;
 	cub->minimap->height = W_HEIGHT / 5;
-	//cub->minimap->bit_per_pixel = 4;
-	//cub->minimap->line_length = 4 * cub->minimap->width;
 	cub->minimap->addr = mlx_get_data_addr(cub->minimap->img, &cub->minimap->bit_per_pixel, &cub->minimap->line_length, &cub->minimap->endian);
 	cub->buff->img = mlx_new_image(cub->mlx, W_WIDTH, W_HEIGHT);
 	cub->buff->width = W_WIDTH;

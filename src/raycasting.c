@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/27 16:32:00 by francesco        ###   ########.fr       */
+/*   Updated: 2024/03/28 17:44:20 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ void	get_perpwall_dist(t_player *player)
 		ray->perp_dist = fabs(ray->side_x - ray->delta_x);
 	else
 		ray->perp_dist = fabs(ray->side_y - ray->delta_y);
-	//if (ray->perp_dist == 0)
-	//	ray->perp_dist = 0.1;
+	if (ray->perp_dist == 0)
+		ray->perp_dist = 0.1;
 }
 
 void	ray_casting(t_cub *cub, t_player *player)
