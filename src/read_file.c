@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:12:38 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 07:56:07 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 09:03:31 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,6 @@ void	assign_data(char *line, t_cub *cub)
 	put_texture(line, "SO ", &cub->texture->so, cub);
 	put_texture(line, "WE ", &cub->texture->we, cub);
 	put_texture(line, "EA ", &cub->texture->ea, cub);
-	cub->texture->pi = ft_strdup("/texture/gun.xpm");
-	cub->texture->pif = ft_strdup("/texture/feu.xpm");
-	cub->texture->pir1 = ft_strdup("/texture/recul1.xpm");
-	cub->texture->pir2 = ft_strdup("/texture/recul2.xpm");
-	cub->texture->door = ft_strdup("/texture/door.xpm");
 	put_ceiling_floor(line, "F ", cub->floor, cub);
 	put_ceiling_floor(line, "C ", cub->ceiling, cub);
 	put_map(line, cub);
@@ -100,6 +95,11 @@ int	travel_file(char *file, t_cub *cub)
 			delete_newline(&line);
 		}
 	}
+	cub->texture->pi = ft_strdup("/texture/gun.xpm");
+	cub->texture->pif = ft_strdup("/texture/feu.xpm");
+	cub->texture->pir1 = ft_strdup("/texture/recul1.xpm");
+	cub->texture->pir2 = ft_strdup("/texture/recul2.xpm");
+	cub->texture->door = ft_strdup("/texture/door.xpm");
 	close(cub->tmp);
 	return (0);
 }

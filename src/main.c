@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 01:18:44 by francesco        ###   ########.fr       */
+/*   Updated: 2024/04/01 08:32:37 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	main(int argc, char **argv)
 int	game_run(t_cub *cub)
 {
 	double	frame_time;
+	char	*tmp;
 
 	do_move(cub);
 	cub->current_time = ft_gettime(cub->start_time);
@@ -70,8 +71,9 @@ int	game_run(t_cub *cub)
 	animation(cub);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
-	mlx_string_put(cub->mlx, cub->win, 0, 10, create_trgb(0, 255, 255, 255),
-		ft_itoa((int)(1 / frame_time)));
+	tmp = ft_itoa((int)(1 / frame_time));
+	mlx_string_put(cub->mlx, cub->win, 0, 10, create_trgb(0, 255, 255, 255), tmp);
+	free(tmp);
 	cub->old_time = cub->current_time;
 	return (0);
 }

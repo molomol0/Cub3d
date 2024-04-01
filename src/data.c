@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 07:55:11 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 09:07:49 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ t_cub	*init_data(char **argv)
 		ft_putstr_fd("Error\nMalloc failed\n", 2);
 		return (NULL);
 	}
-	cub->player = malloc(sizeof(t_player));
 	cub->texture = malloc(sizeof(t_texture));
 	if (!cub->texture)
 	{
@@ -71,6 +70,7 @@ t_cub	*init_data(char **argv)
 	cub->texture->pistol_r1 = malloc(sizeof(t_img));
 	cub->texture->pistol_r2 = malloc(sizeof(t_img));
 	cub->texture->door_img = malloc(sizeof(t_img));
+	cub->minimap_t = malloc(sizeof(t_minimap));
 	null_init(cub);
 	if (travel_file(argv[1], cub) == -1 || check_data(cub) == -1)
 	{
@@ -102,20 +102,51 @@ void	free_texture(t_cub *cub)
 	{
 		if (cub->texture->no)
 			free(cub->texture->no);
+		mlx_destroy_image(cub->mlx, cub->texture->no_img->img);
+		if (cub->texture->no_img)
+			free(cub->texture->no_img);
+
 		if (cub->texture->so)
 			free(cub->texture->so);
+		mlx_destroy_image(cub->mlx, cub->texture->so_img->img);
+		if (cub->texture->so_img)
+			free(cub->texture->so_img);
+
 		if (cub->texture->we)
 			free(cub->texture->we);
+		mlx_destroy_image(cub->mlx, cub->texture->we_img->img);
+		if (cub->texture->we_img)
+			free(cub->texture->we_img);
+
 		if (cub->texture->ea)
 			free(cub->texture->ea);
-		free(cub->texture->no_img);
-		free(cub->texture->so_img);
-		free(cub->texture->we_img);
-		free(cub->texture->ea_img);
+		mlx_destroy_image(cub->mlx, cub->texture->ea_img->img);
+		if (cub->texture->ea_img)
+			free(cub->texture->ea_img);
+
+		if (cub->texture->pi)
+			free(cub->texture->pi);
+		mlx_destroy_image(cub->mlx, cub->texture->pistol->img);
 		free(cub->texture->pistol);
+		
+		if (cub->texture->pif)
+			free(cub->texture->pif);
+		mlx_destroy_image(cub->mlx, cub->texture->pistol_flame->img);
 		free(cub->texture->pistol_flame);
+
+		if (cub->texture->pir1)
+			free(cub->texture->pir1);
+		mlx_destroy_image(cub->mlx, cub->texture->pistol_r1->img);
 		free(cub->texture->pistol_r1);
+
+		if (cub->texture->pir2)
+			free(cub->texture->pir2);
+		mlx_destroy_image(cub->mlx, cub->texture->pistol_r2->img);
 		free(cub->texture->pistol_r2);
+
+		if (cub->texture->door)
+			free(cub->texture->door);
+		mlx_destroy_image(cub->mlx, cub->texture->door_img->img);
 		free(cub->texture->door_img);
 	}
 	free(cub->texture);
@@ -126,6 +157,19 @@ void	free_data(t_cub *cub)
 	free_texture(cub);
 	if (cub->map)
 		free_strs(cub->map);
+	if (cub->minimap_t)
+		free(cub->minimap_t);
+	if (cub->player)
+	{
+		if (cub->player->ray)
+			free(cub->player->ray);
+		free(cub->player);
+	}
+	if (cub->minimap)
+	{
+		mlx_destroy_image(cub->mlx, cub->minimap->img);
+		free(cub->minimap);
+	}
 	if (cub->buff)
 	{
 		mlx_destroy_image(cub->mlx, cub->buff->img);
