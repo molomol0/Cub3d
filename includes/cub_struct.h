@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_struct.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 07:54:38 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 08:51:39 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ enum	e_side
 	DOOR_NS,
 	DOOR_EW
 };
+
+typedef struct s_minimap
+{
+	double	x;
+	double	y;
+	double	x_max;
+	double	y_max;
+	double	scale_x;
+	double	scale_y;
+	double	x_pos;
+	double	y_pos;
+}	t_minimap;
 
 typedef struct s_ray
 {
@@ -113,6 +125,7 @@ typedef struct s_cub
 	t_img		*buff;
 	t_img		*minimap;
 	t_player	*player;
+	t_minimap	*minimap_t;
 	int			prev_mouse_x;
 	int			end;
 	long		start_time;

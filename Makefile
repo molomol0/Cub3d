@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
+#    By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/03/29 17:51:55 by jdenis           ###   ########.fr        #
+#    Updated: 2024/04/01 08:46:33 by ftholoza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ OBJS =		$(addprefix src/,						\
 			minimap.o								\
 			ft_gettime.o							\
 			map_check.o								\
+			raycasting_fire.o						\
 													\
 			$(addprefix rendering/,					\
 			colors.o								\

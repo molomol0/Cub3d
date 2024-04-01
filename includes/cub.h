@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 07:32:24 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 08:47:06 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ int			rotate_right(t_cub *cub, int rotate);
 int			rotate_left(t_cub *cub, int rotate);
 void		do_move(t_cub *cub);
 void		check_doors(t_cub *cub);
+void		fire_ray(t_player *player, t_cub *cub);
 
 #endif
