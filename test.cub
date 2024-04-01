@@ -1,6 +1,7 @@
 
 
-NO ./texture/texture_north.xm
+NO ./texture/texture_north.xpm
+
 
 
 SO               						    ./texture/texture_south.xpm

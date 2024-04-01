@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 09:53:17 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 10:32:36 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,16 @@
 # define FOV 90
 # define M_PI 3.14159265358979323846
 
+int			check_data(t_cub *cub);
+void		null_init(t_cub *cub);
+int			malloc_texture(t_cub *cub);
+int			malloc_pistol(t_cub *cub);
+int			init_buff_minimap(t_cub *cub);
+
 int			travel_file(char *file, t_cub *cub);
 t_cub		*init_data(char **argv);
 void		free_data(t_cub *cub);
+void		free_texture(t_cub *cub);
 void		print_data(t_cub *cub);
 t_player	*player_struct_init(char **map);
 

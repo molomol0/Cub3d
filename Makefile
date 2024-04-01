@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+         #
+#    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/04/01 09:49:21 by ftholoza         ###   ########.fr        #
+#    Updated: 2024/04/01 10:34:07 by jdenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ OBJS =		$(addprefix src/,						\
 			check_arg.o 							\
 			map.o									\
 			map_utils.o								\
-			data.o									\
 			widow.o									\
 			key_event.o								\
 			key_check.o								\
@@ -48,6 +47,11 @@ OBJS =		$(addprefix src/,						\
 			map_check.o								\
 			check_mouvement.o						\
 			raycasting_fire.o						\
+													\
+			$(addprefix data/,						\
+			data.o									\
+			free_utils.o							\
+			init_utils.o					)		\
 													\
 			$(addprefix rendering/,					\
 			colors.o								\
