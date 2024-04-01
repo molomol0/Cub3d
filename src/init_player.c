@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:42:34 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/29 15:59:27 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 01:57:33 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,27 @@
 
 void	init_dir(t_player *player, char **map, int x, int y)
 {
-	if (map[x][y] == 'N')
+	if (map[y][x] == 'N')
 	{
 		player->dir_x = 0;
 		player->dir_y = -1;
 	}
-	if (map[x][y] == 'S')
+	if (map[y][x] == 'S')
 	{
 		player->dir_x = 0;
 		player->dir_y = 1;
 	}
-	if (map[x][y] == 'E')
+	if (map[y][x] == 'E')
 	{
 		player->dir_x = -1;
 		player->dir_y = 0;
 	}
-	if (map[x][y] == 'W')
+	if (map[y][x] == 'W')
 	{
 		player->dir_x = 1;
 		player->dir_y = 0;
 	}
-	map[x][y] = '0';
+	map[y][x] = '0';
 	return ;
 }
 
@@ -77,9 +77,13 @@ t_player	*player_struct_init(char **map)
 	int			y;
 	int			i;
 
-	res = malloc(sizeof(*res));
-	find_spawn(map, &x, &y);
+	res = malloc(sizeof(t_player));
+	if (!res)
+		return (NULL);
 	res->ray = malloc(sizeof(t_ray));
+	if (!res->ray)
+		return (NULL);
+	find_spawn(map, &x, &y);
 	res->map_x = x + 0.5;
 	res->map_y = y + 0.5;
 	init_dir(res, map, x, y);

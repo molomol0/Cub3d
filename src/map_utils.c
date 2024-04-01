@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 17:37:12 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/29 15:57:01 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 01:33:46 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	other_char(char *line)
 	{
 		if (line[index] != '1' && line[index] != '0' && line[index] != ' '
 			&& line[index] != 'N' && line[index] != 'S' && line[index] != 'W'
-			&& line[index] != 'E')
+			&& line[index] != 'E' && line[index] != '3')
 			return (1);
 		index++;
 	}

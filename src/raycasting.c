@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:03:10 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/29 16:40:35 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 01:37:09 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,12 @@ void	fire_ray(t_player *player, t_cub *cub)
 			ray->map_y -= ray->step_y;
 			ray->side = 1;
 		}
-		if (cub->map[(int)ray->map_y][(int)ray->map_x] == '1')
+		if (cub->map[(int)ray->map_y][(int)ray->map_x] == '1'
+			|| cub->map[(int)ray->map_y][(int)ray->map_x] == '3')
 			ray->hit = 1;
 	}
+	if (cub->map[(int)ray->map_y][(int)ray->map_x] == '3')
+		ray->side += 2;
 }
 
 void	get_perpwall_dist(t_player *player)
@@ -52,7 +55,7 @@ void	get_perpwall_dist(t_player *player)
 	t_ray	*ray;
 
 	ray = player->ray;
-	if (ray->side == 0)
+	if (ray->side == 0 || ray->side == 2)
 		ray->perp_dist = fabs(ray->side_x - ray->delta_x);
 	else
 		ray->perp_dist = fabs(ray->side_y - ray->delta_y);

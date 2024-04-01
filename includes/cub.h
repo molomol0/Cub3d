@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/29 17:52:20 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 01:31:03 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ int			check_forward(t_cub *cub);
 int			rotate_right(t_cub *cub, int rotate);
 int			rotate_left(t_cub *cub, int rotate);
 void		do_move(t_cub *cub);
+void		check_doors(t_cub *cub);
 
 #endif

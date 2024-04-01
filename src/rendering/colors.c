@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 16:51:59 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/29 19:03:29 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 01:36:10 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,16 @@ int	get_color(t_cub *cub, int flag, int x, int y, int t_pix)
 
 	(void)y;
 	ray = cub->player->ray;
-	if (ray->side == 0)
+	if (ray->side == 0 || ray->side == 2)
 		wall_x = cub->player->map_y + ray->perp_dist * ray->raydir_y;
 	else
 		wall_x = cub->player->map_x + ray->perp_dist * ray->raydir_x;
 	wall_x -= floor((wall_x));
 	if (flag == 0)
 		return (get_xpm_color(cub->texture->so_img, x, y, cub, wall_x, t_pix));
-	else
+	if (flag == 1)
 		return (get_xpm_color(cub->texture->we_img, x, y, cub, wall_x, t_pix));
+	if (flag == 2 || flag == 3)
+		return get_xpm_color(cub->texture->ea_img, x, y, cub, wall_x, t_pix);
+	return (0);
 }

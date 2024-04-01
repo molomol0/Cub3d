@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:25:57 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/29 15:56:43 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 01:34:17 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	find_spawn(char **map, int *x, int *y)
 			if (map[j][i] == 'N' || map[j][i] == 'W' || map[j][i] == 'E'
 				|| map[j][i] == 'S')
 			{
-				*x = j;
-				*y = i;
+				*y = j;
+				*x = i;
 				return ;
 			}
 			i++;
@@ -42,7 +42,7 @@ void	find_spawn(char **map, int *x, int *y)
 
 static int	is_valid(char c)
 {
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '0' || c == '1'
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '0' || c == '1' || c == '3'
 		|| c == ' ')
 		return (1);
 	else
