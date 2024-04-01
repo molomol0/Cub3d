@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/29 17:59:43 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 07:55:11 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_cub	*init_data(char **argv)
 	cub->texture->pistol_flame = malloc(sizeof(t_img));
 	cub->texture->pistol_r1 = malloc(sizeof(t_img));
 	cub->texture->pistol_r2 = malloc(sizeof(t_img));
+	cub->texture->door_img = malloc(sizeof(t_img));
 	null_init(cub);
 	if (travel_file(argv[1], cub) == -1 || check_data(cub) == -1)
 	{
@@ -111,6 +112,11 @@ void	free_texture(t_cub *cub)
 		free(cub->texture->so_img);
 		free(cub->texture->we_img);
 		free(cub->texture->ea_img);
+		free(cub->texture->pistol);
+		free(cub->texture->pistol_flame);
+		free(cub->texture->pistol_r1);
+		free(cub->texture->pistol_r2);
+		free(cub->texture->door_img);
 	}
 	free(cub->texture);
 }

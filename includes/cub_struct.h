@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/29 15:59:31 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 07:54:38 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 # define CUB_STRUCT_H
 
 # include <stdbool.h>
+
+enum	e_side
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST,
+	DOOR_NS,
+	DOOR_EW
+};
 
 typedef struct s_ray
 {
@@ -32,7 +42,7 @@ typedef struct s_ray
 	int			hit;
 	int			map_x;
 	int			map_y;
-	int			side;
+	enum e_side	side;
 	double		eu_dist;
 	double		perp_dist;
 	int			wall_h;
@@ -87,6 +97,8 @@ typedef struct s_texture
 	char		*pir1;
 	t_img		*pistol_r2;
 	char		*pir2;
+	t_img		*door_img;
+	char		*door;
 }				t_texture;
 
 typedef struct s_cub

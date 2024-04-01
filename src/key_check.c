@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 16:44:13 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 01:27:44 by francesco        ###   ########.fr       */
+/*   Updated: 2024/04/01 07:32:37 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	check_press(int key, t_cub *cub)
 		cub->player->move[3] = true;
 	if (key == KEY_ESC)
 		clean_close(cub);
-	if (key == 65513)
+	if (key == KEY_ALT)
 		cub->on_of = 1;
-	if (key == 101)
+	if (key == KEY_E)
 		check_doors(cub);
 	return (0);
 }

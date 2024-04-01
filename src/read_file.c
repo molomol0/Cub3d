@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:12:38 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/29 16:49:37 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 07:56:07 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	assign_data(char *line, t_cub *cub)
 	cub->texture->pif = ft_strdup("/texture/feu.xpm");
 	cub->texture->pir1 = ft_strdup("/texture/recul1.xpm");
 	cub->texture->pir2 = ft_strdup("/texture/recul2.xpm");
+	cub->texture->door = ft_strdup("/texture/door.xpm");
 	put_ceiling_floor(line, "F ", cub->floor, cub);
 	put_ceiling_floor(line, "C ", cub->ceiling, cub);
 	put_map(line, cub);

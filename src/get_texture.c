@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:32:19 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/29 18:25:52 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 07:54:49 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ void	get_texture(t_cub *cub)
 	init_texture(cub->texture->so_img, cub, cub->texture->so);
 	init_texture(cub->texture->we_img, cub, cub->texture->we);
 	init_texture(cub->texture->ea_img, cub, cub->texture->ea);
+	init_texture(cub->texture->door_img, cub, cub->texture->door);
 }

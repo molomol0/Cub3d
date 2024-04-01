@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 01:31:03 by francesco        ###   ########.fr       */
+/*   Updated: 2024/04/01 07:32:24 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+# define KEY_E 101
 # define KEY_UP 65362
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 # define KEY_SPACE 32
+# define KEY_ALT 65513
 # define FOV 90
 # define M_PI 3.14159265358979323846
 

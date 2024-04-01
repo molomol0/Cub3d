@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/29 16:52:34 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 08:02:35 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ void	render_wall(t_cub *cub, t_ray *ray)
 	double	b_pix;
 	double	t_pix;
 
-	wall_h = (W_HEIGHT / ray->perp_dist / 1.5);
+	wall_h = (W_HEIGHT / ray->perp_dist / 3);
 	ray->wall_h = wall_h;
-	ray->wall_w = (W_WIDTH / ray->perp_dist / 1.5);
+	ray->wall_w = (W_WIDTH / ray->perp_dist / 3);
 	t_pix = -wall_h / 2 + W_HEIGHT / 2;
 	b_pix = wall_h / 2 + W_HEIGHT / 2;
 	draw_wall(cub, ray, t_pix, b_pix);
