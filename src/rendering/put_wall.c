@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_wall.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 08:02:35 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 12:10:18 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	draw_floor_ceiling(t_cub *cub, t_ray *ray, int t_pix, int b_pix)
 	i = b_pix;
 	while (i < W_HEIGHT)
 	{
-		my_mlx_pixel_put(cub, ray->x - 1, i++, convert_color(cub->ceiling));
+		my_mlx_pixel_put(cub, ray->x - 1, i++, create_trgb(0, 100, 100, 100));
 	}
 	i = 0;
 	while (i < t_pix)
-		my_mlx_pixel_put(cub, ray->x - 1, i++, create_trgb(0, 0, 0, 0));
+		my_mlx_pixel_put(cub, ray->x - 1, i++, create_trgb(0, 50, 50, 50));
 }
 
 void	draw_wall(t_cub *cub, t_ray *ray, int t_pix, int b_pix)
@@ -66,7 +66,7 @@ void	draw_wall(t_cub *cub, t_ray *ray, int t_pix, int b_pix)
 		t_pix = 0;
 	while (t_pix < b_pix)
 	{
-		color = get_color(cub, ray->side, ray->x - 1, index, temp_t);
+		color = get_color(cub, ray->side, index, temp_t);
 		my_mlx_pixel_put(cub, ray->x - 1, t_pix, color);
 		t_pix++;
 		index++;

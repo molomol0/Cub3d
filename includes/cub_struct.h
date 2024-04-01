@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_struct.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 09:34:27 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 12:14:28 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_ray
 	int			wall_h;
 	int			wall_w;
 	int			wall_x;
+	char		hit_type;
 }				t_ray;
 
 typedef struct s_player
@@ -135,6 +136,12 @@ typedef struct s_cub
 	int			on_of;
 	long		current_time;
 	long		old_time;
+	char		*dst;
+	double		scale_y;
+	double		scale_x;
+	int			real_x;
+	int			real_y;
+	double		wall_x;
 }				t_cub;
 
 #endif

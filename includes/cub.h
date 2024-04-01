@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 10:32:36 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 10:49:54 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,8 @@ void		my_put_img_to_buff(t_img *img, int x, int y, t_cub *cub);
 void		put_pixel(t_img *img, int x, int y, int color);
 int			draw_minimap(t_cub *cub);
 int			convert_color(int *color);
-int			get_xpm_color(t_img *img, int x, int y, t_cub *cub, double wall_x,
-				int t_pix);
-int			get_color(t_cub *cub, int flag, int x, int y, int t_pix);
+int			get_xpm_color(t_img *img, int y, t_cub *cub, int t_pix);
+int			get_color(t_cub *cub, int flag, int y, int t_pix);
 int			mouse_track(int x, int y, t_cub *cub);
 int			create_trgb(int t, int r, int g, int b);
 int			key_anim(int keycode, t_cub *cub);

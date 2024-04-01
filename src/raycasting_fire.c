@@ -6,7 +6,7 @@
 /*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 08:44:54 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 08:47:54 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/01 12:16:07 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,11 @@ void	fire_ray(t_player *player, t_cub *cub)
 		else
 			fire_ray_two(player, cub);
 		if (cub->map[(int)ray->map_y][(int)ray->map_x] == '1'
-			|| cub->map[(int)ray->map_y][(int)ray->map_x] == '3')
+			|| cub->map[(int)ray->map_y][(int)ray->map_x] == '3'
+			|| cub->map[(int)ray->map_y][(int)ray->map_x] >= '5')
+		{
+			ray->hit_type = cub->map[(int)ray->map_y][(int)ray->map_x];
 			ray->hit = 1;
+		}
 	}
 }
