@@ -1,6 +1,8 @@
 
 
-NO ./texture/texture_north.xpm
+NO ./texture/texture_north.xp
+
+
 SO               						    ./texture/texture_south.xpm
 PISTOL0 ./texture/gun.xpm
 PISTOL1 ./texture/feu.xpm

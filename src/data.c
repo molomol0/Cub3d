@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 09:07:49 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 09:26:51 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,71 @@ t_cub	*init_data(char **argv)
 		return (NULL);
 	}
 	cub->texture->no_img = malloc(sizeof(t_img));
+	if (!cub->texture->no_img)
+	{
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
+		return (NULL);
+	}
 	cub->texture->so_img = malloc(sizeof(t_img));
+	if (!cub->texture->so_img)
+	{
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
+		return (NULL);
+	}
 	cub->texture->we_img = malloc(sizeof(t_img));
+	if (!cub->texture->we_img)
+	{
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
+		return (NULL);
+	}
 	cub->texture->ea_img = malloc(sizeof(t_img));
+	if (!cub->texture->ea_img)
+	{
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
+		return (NULL);
+	}
 	cub->texture->pistol = malloc(sizeof(t_img));
+	if (!cub->texture->pistol)
+	{
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
+		return (NULL);
+	}
 	cub->texture->pistol_flame = malloc(sizeof(t_img));
+	if (!cub->texture->pistol_flame)
+	{
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
+		return (NULL);
+	}
 	cub->texture->pistol_r1 = malloc(sizeof(t_img));
+	if (!cub->texture->pistol_r1)
+	{
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
+		return (NULL);
+	}
 	cub->texture->pistol_r2 = malloc(sizeof(t_img));
+	if (!cub->texture->pistol_r2)
+	{
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
+		return (NULL);
+	}
 	cub->texture->door_img = malloc(sizeof(t_img));
+	if (!cub->texture->door_img)
+	{
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
+		return (NULL);
+	}
 	cub->minimap_t = malloc(sizeof(t_minimap));
+	if (!cub->minimap_t)
+	{
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
+		return (NULL);
+	}
+	cub->player = NULL;
+	cub->texture->pi = NULL;
+	cub->texture->pif = NULL;
+	cub->texture->pir1 = NULL;
+	cub->texture->pir2 = NULL;
+	cub->texture->door = NULL;
 	null_init(cub);
 	if (travel_file(argv[1], cub) == -1 || check_data(cub) == -1)
 	{
@@ -79,7 +135,17 @@ t_cub	*init_data(char **argv)
 	}
 	init_window(cub);
 	cub->buff = malloc(sizeof(t_img));
+	if (!cub->buff)
+	{
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
+		return (NULL);
+	}
 	cub->minimap = malloc(sizeof(t_img));
+	if (!cub->minimap)
+	{
+		ft_putstr_fd("Error\nMalloc failed\n", 2);
+		return (NULL);
+	}
 	cub->minimap->img = mlx_new_image(cub->mlx, W_WIDTH / 5, W_HEIGHT / 5);
 	cub->minimap->width = W_WIDTH / 5;
 	cub->minimap->height = W_HEIGHT / 5;
@@ -102,51 +168,60 @@ void	free_texture(t_cub *cub)
 	{
 		if (cub->texture->no)
 			free(cub->texture->no);
-		mlx_destroy_image(cub->mlx, cub->texture->no_img->img);
+		if (cub->mlx && cub->texture->no_img->img)
+			mlx_destroy_image(cub->mlx, cub->texture->no_img->img);
 		if (cub->texture->no_img)
 			free(cub->texture->no_img);
 
 		if (cub->texture->so)
 			free(cub->texture->so);
-		mlx_destroy_image(cub->mlx, cub->texture->so_img->img);
+		if (cub->mlx && cub->texture->so_img->img)
+			mlx_destroy_image(cub->mlx, cub->texture->so_img->img);
 		if (cub->texture->so_img)
 			free(cub->texture->so_img);
 
 		if (cub->texture->we)
 			free(cub->texture->we);
-		mlx_destroy_image(cub->mlx, cub->texture->we_img->img);
+		if (cub->mlx && cub->texture->we_img->img)
+			mlx_destroy_image(cub->mlx, cub->texture->we_img->img);
 		if (cub->texture->we_img)
 			free(cub->texture->we_img);
 
 		if (cub->texture->ea)
 			free(cub->texture->ea);
-		mlx_destroy_image(cub->mlx, cub->texture->ea_img->img);
+		if (cub->mlx && cub->texture->ea_img->img)
+			mlx_destroy_image(cub->mlx, cub->texture->ea_img->img);
 		if (cub->texture->ea_img)
 			free(cub->texture->ea_img);
 
 		if (cub->texture->pi)
 			free(cub->texture->pi);
-		mlx_destroy_image(cub->mlx, cub->texture->pistol->img);
+		if (cub->mlx && cub->texture->pistol->img)
+			mlx_destroy_image(cub->mlx, cub->texture->pistol->img);
 		free(cub->texture->pistol);
 		
 		if (cub->texture->pif)
 			free(cub->texture->pif);
-		mlx_destroy_image(cub->mlx, cub->texture->pistol_flame->img);
+		if (cub->mlx && cub->texture->pistol_flame->img)
+			mlx_destroy_image(cub->mlx, cub->texture->pistol_flame->img);
 		free(cub->texture->pistol_flame);
 
 		if (cub->texture->pir1)
 			free(cub->texture->pir1);
-		mlx_destroy_image(cub->mlx, cub->texture->pistol_r1->img);
+		if (cub->mlx && cub->texture->pistol_r1->img)
+			mlx_destroy_image(cub->mlx, cub->texture->pistol_r1->img);
 		free(cub->texture->pistol_r1);
 
 		if (cub->texture->pir2)
 			free(cub->texture->pir2);
-		mlx_destroy_image(cub->mlx, cub->texture->pistol_r2->img);
+		if (cub->mlx && cub->texture->pistol_r2->img)
+			mlx_destroy_image(cub->mlx, cub->texture->pistol_r2->img);
 		free(cub->texture->pistol_r2);
 
 		if (cub->texture->door)
 			free(cub->texture->door);
-		mlx_destroy_image(cub->mlx, cub->texture->door_img->img);
+		if (cub->mlx && cub->texture->door_img->img)
+			mlx_destroy_image(cub->mlx, cub->texture->door_img->img);
 		free(cub->texture->door_img);
 	}
 	free(cub->texture);
