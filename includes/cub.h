@@ -6,7 +6,7 @@
 /*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 10:49:54 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/01 17:29:39 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define W_WIDTH 720
 # define W_HEIGHT 720
 # define TILE_SIZE 50
-# define PLAYER_SPEED 5
+# define PLAYER_SPEED 3
 
 # define EVENT_CLOSE_BTN 17
 # define KEY_ESC 65307
@@ -82,7 +82,6 @@ char		**clone_tab(char **tab);
 
 void		init_window(t_cub *cub);
 int			clean_close(t_cub *cub);
-int			key_event(int keycode, t_cub *cub);
 
 void		get_ray_dir(t_player *player);
 void		get_delta(t_player *player);
@@ -91,7 +90,6 @@ void		rotate_player(t_player *player, int degrees);
 void		ray_casting(t_cub *cub, t_player *player);
 
 void		render_wall(t_cub *cub, t_ray *ray);
-void		refresh(t_cub *cub, t_player *player);
 void		animation(t_cub *cub);
 void		put_first_frame(t_cub *cub);
 void		put_middle_frame(t_cub *cub, t_img *img);
@@ -106,7 +104,6 @@ int			get_xpm_color(t_img *img, int y, t_cub *cub, int t_pix);
 int			get_color(t_cub *cub, int flag, int y, int t_pix);
 int			mouse_track(int x, int y, t_cub *cub);
 int			create_trgb(int t, int r, int g, int b);
-int			key_anim(int keycode, t_cub *cub);
 long		ft_gettime(long start);
 long		ft_get_start(void);
 int			game_run(t_cub *cub);

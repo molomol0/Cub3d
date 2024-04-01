@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 16:45:00 by jdenis            #+#    #+#             */
-/*   Updated: 2024/03/29 16:48:24 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 17:34:45 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,12 @@ int	move_backward(t_cub *cub)
 int	rotate_left(t_cub *cub, int rotate)
 {
 	rotate_player(cub->player, -rotate);
-	ray_casting(cub, cub->player);
-	draw_minimap(cub);
 	return (0);
 }
 
 int	rotate_right(t_cub *cub, int rotate)
 {
 	rotate_player(cub->player, rotate);
-	ray_casting(cub, cub->player);
-	draw_minimap(cub);
 	return (0);
 }
 

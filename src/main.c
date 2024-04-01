@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 09:47:54 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 17:30:08 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	main_loop(t_cub	*cub)
 {
 	mlx_hook(cub->win, 17, 0, clean_close, cub);
 	mlx_hook(cub->win, 6, 1l << 6, mouse_track, cub);
-	mlx_key_hook(cub->win, key_anim, cub);
 	mlx_mouse_hook(cub->win, mouse_event, cub);
 	mlx_loop_hook(cub->mlx, game_run, cub);
 	mlx_hook(cub->win, KeyPress, KeyPressMask, check_press, cub);
@@ -71,8 +70,8 @@ int	game_run(t_cub *cub)
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
 	tmp = ft_itoa((int)(1 / frame_time));
-	mlx_string_put(cub->mlx, cub->win, 0, 10, create_trgb(0, 255, 255, 255),
-		tmp);
+	mlx_string_put(cub->mlx, cub->win, 0, 10,
+		create_trgb(0, 255, 255, 255), tmp);
 	free(tmp);
 	cub->old_time = cub->current_time;
 	return (0);

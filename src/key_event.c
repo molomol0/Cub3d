@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:58:57 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 09:55:51 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 17:38:06 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,6 @@ void	check_doors(t_cub *cub)
 	return ;
 }
 
-int	key_anim(int keycode, t_cub *cub)
-{
-	if (keycode == 65513)
-	{
-		cub->on_of = 1;
-	}
-	return (0);
-}
-
 int	mouse_event(int code, int x, int y, t_cub *cub)
 {
 	(void)x;
@@ -81,16 +72,19 @@ int	mouse_track(int x, int y, t_cub *cub)
 {
 	if (cub->prev_mouse_x == 0)
 		cub->prev_mouse_x = x;
-	if (x > (W_WIDTH - 100))
+	if (x > (W_WIDTH / 2 + 100))
 		mlx_mouse_move(cub->mlx, cub->win, W_WIDTH / 2, y);
-	if (x < 100)
-		mlx_mouse_move(cub->mlx, cub->win, W_WIDTH / 2 + 100, y);
+	if (x < W_WIDTH / 2 - 100)
+		mlx_mouse_move(cub->mlx, cub->win, W_WIDTH / 2, y);
 	if (x > cub->prev_mouse_x)
-		rotate_right(cub, 2);
+		rotate_right(cub, 3);
 	else if (x < cub->prev_mouse_x)
-		rotate_left(cub, 2);
+		rotate_left(cub, 3);
 	else
+	{
+		cub->prev_mouse_x = x;
 		return (0);
+	}
 	cub->prev_mouse_x = x;
 	return (0);
 }
