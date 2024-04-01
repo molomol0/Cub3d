@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 09:41:39 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 09:53:17 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int			other_char(char *line);
 int			only_wall(char *line);
 void		put_map(char *line, t_cub *cub);
 void		get_texture(t_cub *cub);
+void		get_gun_img(t_cub *cub);
+void		exit_map(t_cub *cub, char *line, char *str);
 void		delete_point_texture(char **direction);
 void		get_comas(char *line, int *first_coma, int *second_coma);
 

@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:12:38 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 09:42:00 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 09:55:31 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,7 @@ void	put_texture(char *line, char *texture, char **direction, t_cub *cub)
 				exit(1);
 			}
 			if (texture_valid(*direction) == -1)
-			{
-				while (line)
-				{
-					free(line);
-					line = get_next_line(cub->tmp);
-					delete_newline(&line);
-				}
-				free_data(cub);
-				exit(1);
-			}
+				exit_map(cub, line, NULL);
 			delete_point_texture(direction);
 		}
 		else
@@ -101,11 +92,7 @@ int	travel_file(char *file, t_cub *cub)
 			delete_newline(&line);
 		}
 	}
-	cub->texture->pi = ft_strdup("/texture/gun.xpm");
-	cub->texture->pif = ft_strdup("/texture/feu.xpm");
-	cub->texture->pir1 = ft_strdup("/texture/recul1.xpm");
-	cub->texture->pir2 = ft_strdup("/texture/recul2.xpm");
-	cub->texture->door = ft_strdup("/texture/door.xpm");
+	get_gun_img(cub);
 	close(cub->tmp);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 17:58:57 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 09:48:25 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/01 09:55:51 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_doors(t_cub *cub)
 	temp_j = j;
 	temp_i = i;
 	while (j < temp_j + 3)
-	{	
+	{
 		while (i < temp_i + 3)
 		{
 			if (i == cub->player->ray->map_x && j == cub->player->ray->map_y)

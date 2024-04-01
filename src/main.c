@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 08:32:37 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 09:47:54 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	main(int argc, char **argv)
 	player = player_struct_init(cub->map);
 	cub->player = player;
 	main_loop(cub);
-	//free(player);
 	free_data(cub);
 	return (0);
 }
@@ -72,7 +71,8 @@ int	game_run(t_cub *cub)
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->buff->img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
 	tmp = ft_itoa((int)(1 / frame_time));
-	mlx_string_put(cub->mlx, cub->win, 0, 10, create_trgb(0, 255, 255, 255), tmp);
+	mlx_string_put(cub->mlx, cub->win, 0, 10, create_trgb(0, 255, 255, 255),
+		tmp);
 	free(tmp);
 	cub->old_time = cub->current_time;
 	return (0);

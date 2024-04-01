@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:32:19 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 09:13:55 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 09:55:09 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int	texture_valid(char *texture)
 		ft_putstr_fd("Error\nTexture not in right format\n", 2);
 		return (-1);
 	}
+	if (ft_strncmp(texture + ft_strlen(texture) - 4, ".xpm", 4) != 0)
+	{
+		ft_putstr_fd("Error\nTexture must be .xpm\n", 2);
+		return (-1);
+	}
 	fd = open(texture, O_RDONLY);
 	if (fd == -1)
 	{
@@ -35,11 +40,6 @@ int	texture_valid(char *texture)
 		return (-1);
 	}
 	close(fd);
-	if (ft_strncmp(texture + ft_strlen(texture) - 4, ".xpm", 4) != 0)
-	{
-		ft_putstr_fd("Error\nTexture must be .xpm\n", 2);
-		return (-1);
-	}
 	return (0);
 }
 
