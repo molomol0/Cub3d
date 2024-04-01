@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:12:38 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 09:03:31 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/01 09:42:00 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void	put_texture(char *line, char *texture, char **direction, t_cub *cub)
 			}
 			if (texture_valid(*direction) == -1)
 			{
+				while (line)
+				{
+					free(line);
+					line = get_next_line(cub->tmp);
+					delete_newline(&line);
+				}
 				free_data(cub);
 				exit(1);
 			}
