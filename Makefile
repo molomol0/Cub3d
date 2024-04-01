@@ -6,7 +6,7 @@
 #    By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/04/01 08:46:33 by ftholoza         ###   ########.fr        #
+#    Updated: 2024/04/01 09:49:21 by ftholoza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ OBJS =		$(addprefix src/,						\
 			minimap.o								\
 			ft_gettime.o							\
 			map_check.o								\
+			check_mouvement.o						\
 			raycasting_fire.o						\
 													\
 			$(addprefix rendering/,					\
