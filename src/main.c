@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 17:30:08 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/02 09:51:49 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	cub->start_time = ft_get_start();
-	cub->frame_start = 0;
-	cub->old_time = 0;
 	player = player_struct_init(cub->map);
 	cub->player = player;
 	main_loop(cub);

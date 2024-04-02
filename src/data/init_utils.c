@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: francesco <francesco@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 03:55:09 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 10:31:34 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/02 09:51:25 by francesco        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	null_init(t_cub *cub)
 	cub->end = 0;
 	cub->on_of = 0;
 	cub->frame_start = 0;
+	cub->old_time = 0;
 	cub->map = NULL;
 	cub->mlx = NULL;
 	cub->win = NULL;
