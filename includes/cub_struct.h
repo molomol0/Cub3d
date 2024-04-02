@@ -6,7 +6,7 @@
 /*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 12:14:28 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/02 13:58:32 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_ray
 	int			wall_w;
 	int			wall_x;
 	char		hit_type;
+	int			hit_x;
+	int			hit_y;
 }				t_ray;
 
 typedef struct s_player

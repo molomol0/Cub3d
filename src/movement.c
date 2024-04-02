@@ -6,7 +6,7 @@
 /*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 16:45:00 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 17:34:45 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/02 14:18:29 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	do_move(t_cub *cub)
 	if (cub->player->move[0])
 		move_forward(cub);
 	if (cub->player->move[1])
-		rotate_left(cub, 5);
+		rotate_left(cub, 4);
 	if (cub->player->move[2])
 		move_backward(cub);
 	if (cub->player->move[3])
-		rotate_right(cub, 5);
+		rotate_right(cub, 4);
 }

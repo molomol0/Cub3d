@@ -6,7 +6,7 @@
 /*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 17:29:39 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/02 14:11:35 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,9 @@ int			rotate_left(t_cub *cub, int rotate);
 void		do_move(t_cub *cub);
 void		check_doors(t_cub *cub);
 void		fire_ray(t_player *player, t_cub *cub);
+void		get_perpwall_dist(t_player *player);
+void		init_ray_struct(t_player *player);
+void		fire_ray_two(t_player *player, t_cub *cub);
+void		fire_ray_one(t_player *player, t_cub *cub);
 
 #endif

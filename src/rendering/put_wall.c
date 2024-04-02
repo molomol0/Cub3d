@@ -6,7 +6,7 @@
 /*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 15:51:52 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 12:10:18 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/02 12:17:38 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	draw_floor_ceiling(t_cub *cub, t_ray *ray, int t_pix, int b_pix)
 	i = b_pix;
 	while (i < W_HEIGHT)
 	{
-		my_mlx_pixel_put(cub, ray->x - 1, i++, create_trgb(0, 100, 100, 100));
+		my_mlx_pixel_put(cub, ray->x - 1, i++, convert_color(cub->floor));
 	}
 	i = 0;
 	while (i < t_pix)
-		my_mlx_pixel_put(cub, ray->x - 1, i++, create_trgb(0, 50, 50, 50));
+		my_mlx_pixel_put(cub, ray->x - 1, i++, convert_color(cub->ceiling));
 }
 
 void	draw_wall(t_cub *cub, t_ray *ray, int t_pix, int b_pix)

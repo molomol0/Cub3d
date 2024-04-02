@@ -6,7 +6,7 @@
 /*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:21:30 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/03/19 14:22:25 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/02 14:14:16 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,27 @@ int	fill(char **map, int x, int y)
 	return (i);
 }
 
+int	replace_zero(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map[j])
+	{
+		while (map[j][i])
+		{
+			if (map[j][i] == '0' || map[j][i] == '3')
+				map[j][i] = '2';
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+	return (0);
+}
+
 int	flood_fill(char **map, int x, int y, int *signal)
 {
 	int	i;
@@ -76,7 +97,7 @@ int	flood_fill(char **map, int x, int y, int *signal)
 
 	i = 0;
 	j = 0;
-	map[y][x] = '2';
+	replace_zero(map);
 	while (map[j])
 	{
 		while (map[j][i])
