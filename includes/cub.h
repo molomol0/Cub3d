@@ -6,7 +6,7 @@
 /*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/02 14:11:35 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/02 16:55:11 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <stdlib.h>
 # include <sys/time.h>
 
-# define W_WIDTH 720
-# define W_HEIGHT 720
+# define W_WIDTH 450
+# define W_HEIGHT 450
 # define TILE_SIZE 50
 # define PLAYER_SPEED 3
 

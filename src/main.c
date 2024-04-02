@@ -6,7 +6,7 @@
 /*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:17:52 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/02 14:07:30 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:48:03 by ftholoza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	game_run(t_cub *cub)
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->minimap->img, 0, 0);
 	tmp = ft_itoa((int)(1 / frame_time));
 	mlx_string_put(cub->mlx, cub->win, 0, 10,
-		create_trgb(0, 255, 255, 255), tmp);
+		create_trgb(0, 255, 0, 0), tmp);
 	free(tmp);
 	cub->old_time = cub->current_time;
 	return (0);
