@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_struct.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:42:07 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/02 13:58:32 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:19:24 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ typedef struct s_player
 	double		camera_plane_right_y;
 	double		camera_plane_lenght;
 	t_ray		*ray;
-	bool		move[4];
+	bool		move[5];
+	int			speed;
 }				t_player;
 
 typedef struct s_img

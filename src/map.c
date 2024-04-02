@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 15:20:16 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 12:21:00 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/02 19:37:52 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	split_map(t_cub *cub, char *joined_map)
 void	exit_invalid_map(t_cub *cub, char *line, char *joined_map)
 {
 	free(joined_map);
-	exit_map(cub, line, "Error\nInvalid\n");
+	exit_map(cub, line, "Error\nInvalid Map\n");
 }
 
 void	put_map(char *line, t_cub *cub)

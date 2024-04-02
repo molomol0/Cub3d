@@ -1,20 +1,15 @@
 
 
-WE ./texture/wood.xpm
+WE ./texture/brick.xpm
 
 
 
 EA               						    ./texture/brickv2.xpm
-PISTOL0 ./texture/gun.xpm
-PISTOL1 ./texture/feu.xpm
-PISTOL2 ./texture/recul1.xpm
-PISTOL3 ./texture/recul2.xpm
+
 
 F     112,    128,144
 C 56,    64,72
 
-
-gptnpigntg
 
 
 NO ./texture/brick.xpm

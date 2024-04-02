@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_mouvement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 09:47:35 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/02 14:12:54 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/02 18:20:37 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	check_forward(t_cub *cub)
 	if (!double_check_forward(cub))
 		return (0);
 	pos_x = cub->player->pos_x;
-	pos_x += cub->player->dir_x * (PLAYER_SPEED * 5);
+	pos_x += cub->player->dir_x * (cub->player->speed * 5);
 	pos_y = cub->player->pos_y;
-	pos_y += cub->player->dir_y * (PLAYER_SPEED * 5);
+	pos_y += cub->player->dir_y * (cub->player->speed * 5);
 	map_x = pos_x / TILE_SIZE;
 	map_y = pos_y / TILE_SIZE;
 	if (check_if_null(cub->map, (int)map_x, (int)map_y))
@@ -77,9 +77,9 @@ int	check_backward(t_cub *cub)
 	if (!double_check_backward(cub))
 		return (0);
 	pos_x = cub->player->pos_x;
-	pos_x -= cub->player->dir_x * (PLAYER_SPEED * 5);
+	pos_x -= cub->player->dir_x * (cub->player->speed * 5);
 	pos_y = cub->player->pos_y;
-	pos_y -= cub->player->dir_y * (PLAYER_SPEED * 5);
+	pos_y -= cub->player->dir_y * (cub->player->speed * 5);
 	map_x = pos_x / TILE_SIZE;
 	map_y = pos_y / TILE_SIZE;
 	if (check_if_null(cub->map, (int)map_x, (int)map_y))

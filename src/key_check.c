@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 16:44:13 by jdenis            #+#    #+#             */
-/*   Updated: 2024/04/01 07:32:37 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/02 18:29:13 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	check_press(int key, t_cub *cub)
 		cub->on_of = 1;
 	if (key == KEY_E)
 		check_doors(cub);
+	if (key == KEY_SHIFT)
+		cub->player->speed *= 2;
 	return (0);
 }
 
@@ -43,5 +45,7 @@ int	check_release(int key, t_cub *cub)
 		cub->player->move[2] = false;
 	if (key == KEY_D)
 		cub->player->move[3] = false;
+	if (key == KEY_SHIFT)
+		cub->player->speed /= 2;
 	return (0);
 }

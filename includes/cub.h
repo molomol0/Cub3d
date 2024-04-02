@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftholoza <ftholoza@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:18:25 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/02 16:55:11 by ftholoza         ###   ########.fr       */
+/*   Updated: 2024/04/02 19:43:44 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define W_WIDTH 450
 # define W_HEIGHT 450
 # define TILE_SIZE 50
-# define PLAYER_SPEED 3
+# define PLAYER_SPEED 1
 
 # define EVENT_CLOSE_BTN 17
 # define KEY_ESC 65307
@@ -40,6 +40,7 @@
 # define KEY_RIGHT 65363
 # define KEY_SPACE 32
 # define KEY_ALT 65513
+# define KEY_SHIFT 65505
 # define FOV 90
 # define M_PI 3.14159265358979323846
 
@@ -67,6 +68,7 @@ int			other_char(char *line);
 int			only_wall(char *line);
 void		put_map(char *line, t_cub *cub);
 void		get_texture(t_cub *cub);
+int			check_line_ok(char *line);
 void		get_gun_img(t_cub *cub);
 void		exit_map(t_cub *cub, char *line, char *str);
 void		delete_point_texture(char **direction);

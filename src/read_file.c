@@ -6,7 +6,7 @@
 /*   By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:12:38 by ftholoza          #+#    #+#             */
-/*   Updated: 2024/04/01 09:55:31 by jdenis           ###   ########.fr       */
+/*   Updated: 2024/04/02 19:43:23 by jdenis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,22 @@ void	put_ceiling_floor(char *line, char *cf, int *color, t_cub *cub)
 	}
 }
 
+void	unknown_line(char *line, t_cub *cub)
+{
+	if (line[0] != '\0')
+	{
+		ft_putstr_fd("Error\nUnknown line\n", 2);
+		free_data(cub);
+		exit(1);
+	}
+}
+
 void	assign_data(char *line, t_cub *cub)
 {
+	if (check_line_ok(line) == -1)
+	{
+		exit_map(cub, line, "Error\nInvalid line\n");
+	}
 	put_texture(line, "NO ", &cub->texture->no, cub);
 	put_texture(line, "SO ", &cub->texture->so, cub);
 	put_texture(line, "WE ", &cub->texture->we, cub);

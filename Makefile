@@ -6,7 +6,7 @@
 #    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 18:05:44 by jdenis            #+#    #+#              #
-#    Updated: 2024/04/01 10:34:07 by jdenis           ###   ########.fr        #
+#    Updated: 2024/04/02 19:41:39 by jdenis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ OBJS =		$(addprefix src/,						\
 			put_wall.o						))
 			
 NAME = Cub3d
+NAME_BONUS = Cub3d_bonus
 LIBFT = libft/libft.a
 LIBFTPATH = libft/
 
@@ -78,6 +79,11 @@ $(NAME): $(OBJS)
 	@ $(CC) $(CFLAGS) -o $(NAME) $(MLX) $^ $(LDFLAGS) -lXext -lX11 -lm  > /dev/null 2>&1 
 	@ echo "Compilation of  $(NAME):  \033[1;32mOK\033[m"
 
+bonus: $(OBJS)
+	@ $(MAKE) -C $(LIBFTPATH) > /dev/null 2>&1
+	@ $(CC) $(CFLAGS) -o $(NAME_BONUS) $(MLX) $^ $(LDFLAGS) -lXext -lX11 -lm
+	@ echo "Compilation of  $(NAME_BONUS):  \033[1;32mOK\033[m"
+
 clean:
 	@ $(RM) $(OBJS) > /dev/null 2>&1
 	@ $(MAKE) clean -C $(LIBFTPATH) > /dev/null 2>&1
@@ -86,6 +92,7 @@ clean:
 
 fclean: clean
 	@ $(RM) $(NAME) > /dev/null 2>&1
+	@ $(RM) $(NAME_BONUS) > /dev/null 2>&1
 	@ $(MAKE) fclean -C $(LIBFTPATH) > /dev/null 2>&1
 	@ $(RM) libtest.so > /dev/null 2>&1
 	@echo "\033[0;31m>> $(NAME) all objects are deleted.\033[0m"
