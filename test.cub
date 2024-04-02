@@ -10,8 +10,8 @@ PISTOL1 ./texture/feu.xpm
 PISTOL2 ./texture/recul1.xpm
 PISTOL3 ./texture/recul2.xpm
 
-F      220,100,0
-C 225,       30,0
+F     112,    128,144
+C 56,    64,72
 
 
 gptnpigntg
